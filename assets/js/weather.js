@@ -15,7 +15,7 @@ GLoc = {
         searchQuery: '',
         closeButton: $('#close-error'),
         closeDecline: $('#close-decline'),
-        lang : navigator.language || navigator.userLanguage
+        lang : 'ua'
     },
 
     init: function() {
@@ -224,42 +224,6 @@ WeatherInfo = {
         WeatherInfo.getDayOrNight(time, data.sys.sunrise, data.sys.sunset);
         CanvasBackground.chooseBackground(data.weather[0].main);
 
-    },
-
-    translateToUrk: function(weather) {
-      if (weather === 'Thunderstorm') {
-        return "Штормове попередження"
-      } else if (weather === 'aa') {
-
-      } else if (weather === 'a') {
-
-      } else if (weather === 'b') {
-
-      } else if (weather === 'c') {
-
-      } else if (weather === 'd') {
-
-      } else if (weather === 'e') {
-
-      } else if (weather === 'f') {
-
-      } else if (weather === 'j') {
-
-      } else if (weather === 'l') {
-
-      } else if (weather === 'k') {
-
-      } else if (weather === 'm') {
-
-      } else if (weather === 'n') {
-
-      } else if (weather === 'o') {
-
-      } else if (weather === 'p') {
-
-      } else if (weather === 'k') {
-
-      }
     },
 
     getWeatherDirection: function() {
