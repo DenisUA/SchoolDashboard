@@ -94,7 +94,7 @@ GLoc = {
             var latitude = position.coords.latitude;
             var longitude = position.coords.longitude;
         }
-        g.searchQuery = 'http://api.openweathermap.org/data/2.5/weather?lat=' + latitude + '&lon=' + longitude + '&appid=0596fe0573fa9daa94c2912e5e383ed3' +'&lang=' + g.lang;
+        g.searchQuery = 'http://api.openweathermap.org/data/2.5/weather?lat=' + 49.5510381 + '&lon=' + 25.5863906 + '&appid=0596fe0573fa9daa94c2912e5e383ed3' +'&lang=' + g.lang;
 
         $.getJSON(g.searchQuery, function(data) {
             WeatherInfo.setWeatherData(data);
