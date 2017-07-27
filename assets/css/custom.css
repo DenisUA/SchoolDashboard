@@ -1,0 +1,42 @@
+.static-header {
+  height: 250px;
+  width: 100%;
+  top: 0;
+  position: fixed;
+  display: flex;
+  color: black;
+}
+
+.static-header h4 {
+  color: black;
+}
+
+.static-header .digital-date-time {
+  padding: 0 2rem;
+  width: 17%;
+  display: inline-block;
+  text-align: center;
+}
+
+.static-header .digital-date-time .js-digital-clock {
+  font-size: 6rem;
+  line-height: 1;
+  font-weight: 100;
+}
+
+.static-header .digital-date-time .js-date{
+  font-size: 1.6rem;
+}
+
+.static-header .circle-wrapper {
+  margin: 0 1.5rem;
+  display: inline-block;
+  text-align: center;
+  width: 220px;
+}
+
+.static-header .circle-wrapper .circle-countdown {
+  margin-top: -20px;
+  width: 220px;
+  height: 220px;
+}
