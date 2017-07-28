@@ -13,7 +13,7 @@
 
 .static-header .digital-date-time {
   padding: 0 2rem;
-  width: 17%;
+  width: 18%;
   display: inline-block;
   text-align: center;
 }
@@ -39,4 +39,92 @@
   margin-top: -20px;
   width: 220px;
   height: 220px;
+}
+
+/*===============================
+            Birthday
+===============================*/
+
+.panel.spotlight .content.birthday {
+  justify-content: flex-start;
+}
+
+.birthday .avatar {
+  width: 4.5rem;
+  height: 4.5rem;
+  border-radius: 2.25rem;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.birthday h1 {
+  font-size: 4rem;
+}
+
+.birthday h4 {
+  letter-spacing: normal;
+  font-size: 1.2rem;
+}
+
+.birthday .people {
+  text-align: center;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.birthday .people .person {
+  padding: 0 0.5rem;
+  flex-grow: 1;
+  width: calc(100% * (1/4));
+}
+
+/*===============================
+            Awards
+===============================*/
+
+.panel.spotlight .content.awards {
+  justify-content: flex-start;
+  width: 100%
+}
+
+.awards .events {
+  text-align: center;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.description {
+  position: relative;
+  background-color: rgba(255, 255, 255, 0.2);
+  z-index: 1;
+  top: -3.5rem;
+  min-height: 9rem;
+  padding: 0.3rem;
+  max-width: 14rem;
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+}
+
+.awards .description h4 {
+  letter-spacing: normal;
+  font-size: 1rem;
+  padding-top: 3.5rem;
+  max-width: 14rem;
+  margin: 0;
+}
+
+.awards .description p {
+  margin: 0.5rem 0.2rem;
+  line-height: normal;
+}
+
+.awards .badge {
+  margin: auto;
+  position: relative;
+  z-index: 2;
+}
+
+.awards .badge img {
+  height: 5.5rem;
+  margin-top: 1rem;
 }

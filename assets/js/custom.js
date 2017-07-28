@@ -115,8 +115,6 @@ function clockUpdate() {
   var day = date.getDate();
   // var year = date.getFullYear();
 
-  var dateString = dayOfWeek + ', ' + month + ' ' + day;
-
   $('.js-digital-clock').text(h + ':' + m)
-  $('.js-date').text(dateString)
+  $('.js-date').text(dayOfWeek + ', ' + month + ' ' + day)
 }

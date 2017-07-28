@@ -2611,7 +2611,7 @@
 		}
 
 		.panel.small .span-5, .panel.medium .span-5, .panel.large .span-5 {
-			width: 50%;
+			width: 60%;
 		}
 
 		.panel.small .span-5-25, .panel.medium .span-5-25, .panel.large .span-5-25 {
@@ -3486,7 +3486,7 @@
 		-ms-flex-shrink: 1;
 		flex-shrink: 1;
 		height: 100%;
-    padding: 250px 1% 2% 1%;
+    padding: 250px 1% 2.5% 1%;
 	}
 
 		@media screen and (orientation: portrait) {
