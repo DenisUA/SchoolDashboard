@@ -1,0 +1,22 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/SchoolDashboard/bin
+/SchoolDashboard/obj
+/SchoolDashboard/System.Data.SQLite.xml
+/SchoolDashboard/System.Data.SQLite.dll
+/SchoolDashboard/SchoolDashboard.pdb
+/SchoolDashboard/SchoolDashboard.exe.config
+/SchoolDashboard/SchoolDashboard.exe
+/SchoolDashboard/NetJSON.xml
+/SchoolDashboard/NetJSON.dll
+/SchoolDashboard/Nancy.xml
+/SchoolDashboard/Nancy.Serialization.NetJSON.xml
+/SchoolDashboard/Nancy.Serialization.NetJSON.dll
+/SchoolDashboard/Nancy.Hosting.Self.xml
+/SchoolDashboard/Nancy.Hosting.Self.dll
+/SchoolDashboard/Nancy.dll
+/SchoolDashboard/Dapper.xml
+/SchoolDashboard/Dapper.dll
+*.manifest

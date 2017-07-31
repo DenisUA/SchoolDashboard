@@ -15,7 +15,7 @@ namespace SchoolDashboard
         {
             var hostConfig = new HostConfiguration();
             hostConfig.UrlReservations.CreateAutomatically = true;
-            _webHost = new NancyHost(hostConfig, new Uri("http://localhost:8080"));
+            _webHost = new NancyHost(hostConfig, new Uri("http://localhost:8000"));
         }
 
         public void Start()
