@@ -1,0 +1,190 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Nancy.Serialization.NetJSON</name>
+    </assembly>
+    <members>
+        <member name="M:Nancy.Serialization.NetJSON.Helpers.IsJsonType(System.String)">
+            <summary>
+            Attempts to detect if the content type is JSON.
+            Supports:
+              application/json
+              text/json
+              application/vnd[something]+json
+            Matches are case insentitive to try and be as "accepting" as possible.
+            </summary>
+            <param name="contentType">Request content type</param>
+            <returns>True if content type is JSON, false otherwise</returns>
+        </member>
+        <member name="T:Nancy.Serialization.NetJSON.NetJSONBodyDeserializer">
+            <summary>
+            A <see cref="T:Nancy.ModelBinding.IBodyDeserializer"/> implementation based on <see cref="N:Nancy.Serialization.NetJSON"/>.
+            </summary>
+        </member>
+        <member name="M:Nancy.Serialization.NetJSON.NetJSONBodyDeserializer.CanDeserialize(System.String,Nancy.ModelBinding.BindingContext)">
+            <summary>
+            Whether the deserializer can deserialize the content type
+            </summary>
+            <param name="contentType">Content type to deserialize</param><param name="context">Current <see cref="T:Nancy.ModelBinding.BindingContext"/>.</param>
+            <returns>
+            True if supported, false otherwise
+            </returns>
+        </member>
+        <member name="M:Nancy.Serialization.NetJSON.NetJSONBodyDeserializer.Deserialize(System.String,System.IO.Stream,Nancy.ModelBinding.BindingContext)">
+            <summary>
+            Deserialize the request body to a model
+            </summary>
+            <param name="contentType">Content type to deserialize</param><param name="bodyStream">Request body stream</param><param name="context">Current <see cref="T:Nancy.ModelBinding.BindingContext"/>.</param>
+            <returns>
+            Model instance
+            </returns>
+        </member>
+        <member name="M:Nancy.Serialization.NetJSON.NetJSONBodyDeserializer.CleanBlacklistedMembers(Nancy.ModelBinding.BindingContext,System.Object,Nancy.ModelBinding.BindingMemberInfo[])">
+            <summary>
+            Cleans the blacklisted properties from the <see cref="!:deserializedObject"/>.
+            If it is a an <see cref="T:System.Collections.IEnumerable"/>, the blacklisted properties from each element are cleaned.
+            </summary>
+            <param name="context">The context.</param>
+            <param name="deserializedObject">The deserialized object.</param>
+            <param name="cachedBindingMemberInfo">The cached property information.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Nancy.Serialization.NetJSON.NetJSONBodyDeserializer.CleanPropertyValues(Nancy.ModelBinding.BindingContext,System.Object,System.Collections.Generic.IEnumerable{Nancy.ModelBinding.BindingMemberInfo})">
+            <summary>
+            Cleans the property values for the provided <see cref="!:targetObject"/>.
+            </summary>
+            <param name="context">The context.</param>
+            <param name="targetObject">The target object.</param>
+            <param name="cachedBindingMemberInfo">The cached property information.</param>
+        </member>
+        <member name="M:Nancy.Serialization.NetJSON.NetJSONBodyDeserializer.GetDefaultForType(System.Type)">
+            <summary>
+            Gets the default for the provided <see cref="!:targetType"/>.
+            (see http://stackoverflow.com/questions/325426/programmatic-equivalent-of-defaulttype)
+            </summary>
+            <param name="targetType">Type of the target.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Nancy.Serialization.NetJSON.NetJSONSerializer">
+            <summary>
+            A <see cref="T:Nancy.ISerializer"/> implementation based on <see cref="N:Nancy.Serialization.NetJSON"/>.
+            </summary>
+        </member>
+        <member name="M:Nancy.Serialization.NetJSON.NetJSONSerializer.CanSerialize(System.String)">
+            <summary>
+            Whether the serializer can serialize the content type
+            </summary>
+            <param name="contentType">Content type to serialize</param>
+            <returns>
+            True if supported, false otherwise
+            </returns>
+        </member>
+        <member name="M:Nancy.Serialization.NetJSON.NetJSONSerializer.Serialize``1(System.String,``0,System.IO.Stream)">
+            <summary>
+            Serializes the given model instance with the given contentType
+            </summary>
+            <typeparam name="TModel">The type of the model.</typeparam>
+            <param name="contentType">Content type to serialize into</param>
+            <param name="model">Model instance to serialize.</param>
+            <param name="outputStream">Output stream to serialize to.</param>
+        </member>
+        <member name="P:Nancy.Serialization.NetJSON.NetJSONSerializer.Extensions">
+            <summary>
+            Gets the list of extensions that the serializer can handle.
+            </summary>
+            <value>
+            An <see cref="T:System.Collections.Generic.IEnumerable`1"/> of extensions if any are available, otherwise an empty enumerable.
+            </value>
+        </member>
+        <member name="P:Nancy.Serialization.NetJSON.Options.UseIso8601DateTimeFormat">
+            <summary>
+            This merely forwards the provided value to <see cref="!:NetJSON.DateFormat"/>.
+            As that property does not expose a getter, no one can reliably be provided here, too.
+            </summary>
+            <value>
+            <c>true</c> if ISO8601 date time format shall be used; otherwise, <c>false</c> (which means ticks will be used).
+            </value>
+        </member>
+        <member name="P:Nancy.Serialization.NetJSON.Options.CaseSensitive">
+            <summary>
+            This merely forwards the provided value to <see cref="!:NetJSON.CaseSensitive"/>.
+            As that property does not expose a getter, no one can reliably be provided here, too.
+            </summary>
+            <value>
+              <c>true</c> if (de-)serialization shall be case sensitive; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Nancy.Serialization.NetJSON.Options.UseEnumString">
+            <summary>
+            This merely forwards the provided value to <see cref="!:NetJSON.UseEnumString"/>.
+            As that property does not expose a getter, no one can reliably be provided here, too.
+            </summary>
+            <value>
+              <c>true</c> if use enums shall be (de-)serialized via their string representation; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Nancy.Serialization.NetJSON.Options.SkipDefaultValue">
+            <summary>
+            This merely forwards the provided value to <see cref="!:NetJSON.SkipDefaultValue"/>.
+            As that property does not expose a getter, no one can reliably be provided here, too.
+            </summary>
+            <value>
+              <c>true</c> if default values shall be skipped entirely; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Nancy.Serialization.NetJSON.Options.GenerateAssembly">
+            <summary>
+            This merely forwards the provided value to <see cref="!:NetJSON.GenerateAssembly"/>.
+            As that property does not expose a getter, no one can reliably be provided here, too.
+            </summary>
+            <value>
+              <c>true</c> if a serialization assembly shall be generated during runtime; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Nancy.Serialization.NetJSON.Options.IncludeFields">
+            <summary>
+            This merely forwards the provided value to <see cref="!:NetJSON.IncludeFields"/>.
+            As that property does not expose a getter, no one can reliably be provided here, too.
+            </summary>
+            <value>
+              <c>true</c> if fields shall be included in serialization, otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Nancy.Serialization.NetJSON.Options.IncludeTypeInformation">
+            <summary>
+            This merely forwards the provided value to <see cref="!:NetJSON.IncludeTypeInformation"/>.
+            As that property does not expose a getter, no one can reliably be provided here, too.
+            </summary>
+            <value>
+              <c>true</c> if type information shall be included in serialization, otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Nancy.Serialization.NetJSON.Options.DateFormat">
+            <summary>
+            This merely forwards the provided value to <see cref="!:NetJSON.DateFormat"/>.
+            As that property does not expose a getter, no one can reliably be provided here, too.
+            </summary>
+            <value>
+              The <see cref="T:NetJSON.NetJSONDateFormat"/> to use for (de-)serialization of <see cref="T:System.DateTime"/> data.
+            </value>
+        </member>
+        <member name="P:Nancy.Serialization.NetJSON.Options.QuoteType">
+            <summary>
+            This merely forwards the provided value to <see cref="!:NetJSON.QuoteType"/>.
+            As that property does not expose a getter, no one can reliably be provided here, too.
+            </summary>
+            <value>
+              The <see cref="T:NetJSON.NetJSONQuote"/> to use for (de-)serialization.
+            </value>
+        </member>
+        <member name="P:Nancy.Serialization.NetJSON.Options.TimeZoneFormat">
+            <summary>
+            This merely forwards the provided value to <see cref="!:NetJSON.TimeZoneFormat"/>.
+            As that property does not expose a getter, no one can reliably be provided here, too.
+            </summary>
+            <value>
+              The <see cref="T:NetJSON.NetJSONTimeZoneFormat"/> to use for (de-)serialization.
+            </value>
+        </member>
+    </members>
+</doc>

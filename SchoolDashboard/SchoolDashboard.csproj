@@ -1,0 +1,193 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{424022A3-7E13-4389-B4F3-56913BAED545}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SchoolDashboard</RootNamespace>
+    <AssemblyName>SchoolDashboard</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>.\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Dapper, Version=1.50.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.1.50.2\lib\net451\Dapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Nancy, Version=1.4.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Nancy.1.4.4\lib\net40\Nancy.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Nancy.Hosting.Self, Version=1.4.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Nancy.Hosting.Self.1.4.1\lib\net40\Nancy.Hosting.Self.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Nancy.Serialization.NetJSON, Version=1.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Nancy.Serialization.NetJSON.1.1.1\lib\net40\Nancy.Serialization.NetJSON.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NetJSON, Version=1.2.1.5, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NetJSON.1.2.1.7\lib\net40\NetJSON.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.SQLite, Version=1.0.105.2, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.Core.1.0.105.2\lib\net451\System.Data.SQLite.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Dashboard.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Web\CustomConventionsBootstrapper.cs" />
+    <Compile Include="Web\SchoolDashboardWebModule.cs" />
+    <Compile Include="Web\WebModule.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+    <None Include="Web\Content\Fonts\fontawesome-webfont.eot" />
+    <None Include="Web\Content\Fonts\fontawesome-webfont.ttf" />
+    <None Include="Web\Content\Fonts\fontawesome-webfont.woff" />
+    <None Include="Web\Content\Fonts\fontawesome-webfont.woff2" />
+    <None Include="Web\Content\Fonts\FontAwesome.otf" />
+    <None Include="Web\Content\Sass\base\_page.scss" />
+    <None Include="Web\Content\Sass\base\_typography.scss" />
+    <None Include="Web\Content\Sass\components\_button.scss" />
+    <None Include="Web\Content\Sass\components\_form.scss" />
+    <None Include="Web\Content\Sass\components\_gallery.scss" />
+    <None Include="Web\Content\Sass\components\_icon.scss" />
+    <None Include="Web\Content\Sass\components\_image.scss" />
+    <None Include="Web\Content\Sass\components\_list.scss" />
+    <None Include="Web\Content\Sass\components\_panel-banner.scss" />
+    <None Include="Web\Content\Sass\components\_panel-spotlight.scss" />
+    <None Include="Web\Content\Sass\components\_panel.scss" />
+    <None Include="Web\Content\Sass\components\_table.scss" />
+    <None Include="Web\Content\Sass\layout\_page-wrapper.scss" />
+    <None Include="Web\Content\Sass\layout\_wrapper.scss" />
+    <None Include="Web\Content\Sass\libs\_functions.scss" />
+    <None Include="Web\Content\Sass\libs\_mixins.scss" />
+    <None Include="Web\Content\Sass\libs\_skel.scss" />
+    <None Include="Web\Content\Sass\libs\_vars.scss" />
+    <None Include="Web\Content\Sass\main.scss" />
+    <None Include="Web\Content\Sass\noscript.scss" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DAL\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Web\Content\CSS\custom.css" />
+    <Content Include="Web\Content\CSS\font-awesome.min.css" />
+    <Content Include="Web\Content\CSS\main.css" />
+    <Content Include="Web\Content\CSS\noscript.css" />
+    <Content Include="Web\Content\CSS\TimeCircles.css" />
+    <Content Include="Web\Content\CSS\weather.css" />
+    <Content Include="Web\Content\Fonts\fontawesome-webfont.svg" />
+    <Content Include="Web\Content\Images\awards\1-2-3.png" />
+    <Content Include="Web\Content\Images\awards\basketboll.png" />
+    <Content Include="Web\Content\Images\awards\bowling.png" />
+    <Content Include="Web\Content\Images\awards\crown.png" />
+    <Content Include="Web\Content\Images\awards\diploma.png" />
+    <Content Include="Web\Content\Images\awards\football.png" />
+    <Content Include="Web\Content\Images\awards\medal-test.png" />
+    <Content Include="Web\Content\Images\awards\medal.png" />
+    <Content Include="Web\Content\Images\awards\medal2.png" />
+    <Content Include="Web\Content\Images\awards\medal3.png" />
+    <Content Include="Web\Content\Images\awards\medal4.png" />
+    <Content Include="Web\Content\Images\awards\medal5.png" />
+    <Content Include="Web\Content\Images\awards\medal6.png" />
+    <Content Include="Web\Content\Images\awards\shiled.png" />
+    <Content Include="Web\Content\Images\awards\star-medal.png" />
+    <Content Include="Web\Content\Images\awards\star.png" />
+    <Content Include="Web\Content\Images\awards\star2.png" />
+    <Content Include="Web\Content\Images\awards\tennis.png" />
+    <Content Include="Web\Content\Images\awards\trophy.png" />
+    <Content Include="Web\Content\Images\awards\trophy2.png" />
+    <Content Include="Web\Content\Images\awards\voleyboll.png" />
+    <Content Include="Web\Content\Images\bg.jpg" />
+    <Content Include="Web\Content\Images\gallery\fulls\01.jpg" />
+    <Content Include="Web\Content\Images\gallery\fulls\02.jpg" />
+    <Content Include="Web\Content\Images\gallery\fulls\03.jpg" />
+    <Content Include="Web\Content\Images\gallery\fulls\04.jpg" />
+    <Content Include="Web\Content\Images\gallery\fulls\05.jpg" />
+    <Content Include="Web\Content\Images\gallery\fulls\06.jpg" />
+    <Content Include="Web\Content\Images\gallery\fulls\07.jpg" />
+    <Content Include="Web\Content\Images\gallery\fulls\08.jpg" />
+    <Content Include="Web\Content\Images\gallery\fulls\09.jpg" />
+    <Content Include="Web\Content\Images\gallery\thumbs\01.jpg" />
+    <Content Include="Web\Content\Images\gallery\thumbs\02.jpg" />
+    <Content Include="Web\Content\Images\gallery\thumbs\03.jpg" />
+    <Content Include="Web\Content\Images\gallery\thumbs\04.jpg" />
+    <Content Include="Web\Content\Images\gallery\thumbs\05.jpg" />
+    <Content Include="Web\Content\Images\gallery\thumbs\06.jpg" />
+    <Content Include="Web\Content\Images\gallery\thumbs\07.jpg" />
+    <Content Include="Web\Content\Images\gallery\thumbs\08.jpg" />
+    <Content Include="Web\Content\Images\gallery\thumbs\09.jpg" />
+    <Content Include="Web\Content\Images\overlay.png" />
+    <Content Include="Web\Content\Images\pic01.jpg" />
+    <Content Include="Web\Content\Images\pic01_2.jpg" />
+    <Content Include="Web\Content\Images\pic02.jpg" />
+    <Content Include="Web\Content\Images\pic03.jpg" />
+    <Content Include="Web\Content\Images\pic03_2.jpg" />
+    <Content Include="Web\Content\Images\pic03_3.jpg" />
+    <Content Include="Web\Content\JS\custom.js" />
+    <Content Include="Web\Content\JS\jquery.min.js" />
+    <Content Include="Web\Content\JS\main.js" />
+    <Content Include="Web\Content\JS\skel.min.js" />
+    <Content Include="Web\Content\JS\TimeCircles.js" />
+    <Content Include="Web\Content\JS\weather.js" />
+    <Content Include="Web\Views\index.html" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\System.Data.SQLite.Core.1.0.105.2\build\net451\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.105.2\build\net451\System.Data.SQLite.Core.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\System.Data.SQLite.Core.1.0.105.2\build\net451\System.Data.SQLite.Core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\System.Data.SQLite.Core.1.0.105.2\build\net451\System.Data.SQLite.Core.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
