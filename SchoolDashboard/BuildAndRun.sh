@@ -1,0 +1,2 @@
+xbuild SchoolDashboard.csproj
+mono SchoolDashboard.exe
