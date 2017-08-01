@@ -73,6 +73,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAL\Models\Lesson.cs" />
     <Compile Include="Dashboard.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -109,10 +110,9 @@
     <None Include="Web\Content\Sass\main.scss" />
     <None Include="Web\Content\Sass\noscript.scss" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="DAL\" />
-  </ItemGroup>
-  <ItemGroup>
+    <Content Include="DAL\Scripts\CreateDb.sql" />
     <Content Include="Web\Content\CSS\custom.css" />
     <Content Include="Web\Content\CSS\font-awesome.min.css" />
     <Content Include="Web\Content\CSS\main.css" />
