@@ -1,4 +1,5 @@
-﻿using Nancy.Hosting.Self;
+﻿using Nancy;
+using Nancy.Hosting.Self;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,8 @@ namespace SchoolDashboard
             var hostConfig = new HostConfiguration();
             hostConfig.UrlReservations.CreateAutomatically = true;
             _webHost = new NancyHost(hostConfig, new Uri("http://localhost:8000"));
+            StaticConfiguration.Caching.EnableRuntimeViewUpdates = true;
+            StaticConfiguration.Caching.EnableRuntimeViewUpdates = true;
         }
 
         public void Start()
