@@ -9,7 +9,32 @@ namespace SchoolDashboard.DAL.Models
     class Lesson
     {
         public int Id { get; set; }
-        public string StartTime { get; set; }
-        public string StopTime { get; set; }
+        public string StartTimeString { get; set; }
+        public string EndTimeString { get; set; }
+        public string Description { get; set; }
+
+        public DateTime StartTime
+        {
+            get
+            {
+                return DateTime.Parse(StartTimeString);
+            }
+            set
+            {
+                StartTimeString = value.ToString();
+            }
+        }
+
+        public DateTime EndTime
+        {
+            get
+            {
+                return DateTime.Parse(EndTimeString);
+            }
+            set
+            {
+                EndTimeString = value.ToString();
+            }
+        }
     }
 }
