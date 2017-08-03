@@ -12,14 +12,28 @@ namespace SchoolDashboard
     class Dashboard
     {
         private NancyHost _webHost;
+        private static object _lockObj = new Object();
+        private static Dashboard _instance;
 
         public LessonsController Lessons { get; set; }
 
-        public Dashboard()
+        private Dashboard()
         {
             InitWebHost();
             InitControllers();
         }
+
+        public static Dashboard GetInstance()
+        {
+            lock (_lockObj)
+            {
+                if (_instance == null)
+                    _instance = new Dashboard();
+            }
+
+            return _instance;
+        }
+
 
         public void Start()
         {

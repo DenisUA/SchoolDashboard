@@ -9,31 +9,31 @@ namespace SchoolDashboard.DAL.Models
     class Lesson
     {
         public int Id { get; set; }
-        public string StartTimeString { get; set; }
-        public string EndTimeString { get; set; }
+        public double StartTimeSeconds { get; set; }
+        public double EndTimeSeconds { get; set; }
         public string Description { get; set; }
 
-        public DateTime StartTime
+        public TimeSpan StartTime
         {
             get
             {
-                return DateTime.Parse(StartTimeString);
+                return TimeSpan.FromSeconds(StartTimeSeconds);
             }
             set
             {
-                StartTimeString = value.ToString();
+                StartTimeSeconds = value.TotalSeconds;
             }
         }
 
-        public DateTime EndTime
+        public TimeSpan EndTime
         {
             get
             {
-                return DateTime.Parse(EndTimeString);
+                return TimeSpan.FromSeconds(EndTimeSeconds);
             }
             set
             {
-                EndTimeString = value.ToString();
+                EndTimeSeconds = value.TotalSeconds;
             }
         }
     }

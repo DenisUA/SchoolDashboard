@@ -23,12 +23,11 @@ namespace SchoolDashboard.DAL
         {
             if (!File.Exists(DbFilePath))
             {
-                File.Create(DbFilePath).Close();
+                SQLiteConnection.CreateFile(DbFilePath);
                 using (var conn = GetConnection())
                 {
-                    var filePath = Path.Combine(Directory.GetCurrentDirectory(), @"DAL\Scripts\", "CreateDb.sql");
-                    var script = File.ReadAllText(filePath);
-                    conn.Execute(script);
+                    RunScript(Path.Combine(Directory.GetCurrentDirectory(), "DAL", "Scripts", "CreateDb.sql"), conn);
+                    RunScript(Path.Combine(Directory.GetCurrentDirectory(), "DAL", "Scripts", "InitDb.sql"), conn);
                 }
             }
         }
@@ -76,6 +75,12 @@ namespace SchoolDashboard.DAL
         private static T[] GetAllRows<T>(string tableName)
         {
             return ExecuteToModel<T>("select * from " + tableName);
+        }
+
+        private static void RunScript(string filePath, SQLiteConnection connection)
+        {
+            var script = File.ReadAllText(filePath);
+            connection.Execute(script);
         }
     }
 }

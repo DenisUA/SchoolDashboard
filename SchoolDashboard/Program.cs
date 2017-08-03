@@ -10,7 +10,7 @@ namespace SchoolDashboard
     {
         static void Main(string[] args)
         {
-            var dashboard = new Dashboard();
+            var dashboard = Dashboard.GetInstance();
             dashboard.Start();
             Console.WriteLine("Dashboard started. Press Enter(Return) to exit...");
 

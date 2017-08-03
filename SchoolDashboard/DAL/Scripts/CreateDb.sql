@@ -1,15 +1,15 @@
 ﻿CREATE TABLE SchoolLevels
 (
-  Id			INT	PRIMARY KEY	NOT NULL,
-  [Description]	TEXT			NOT NULL
-)
+  Id			INTEGER	PRIMARY KEY AUTOINCREMENT	NOT NULL,
+  [Description]	TEXT								NOT NULL
+);
 
 CREATE TABLE Lessons
 (
-  Id				INT PRIMARY KEY	NOT NULL,
-  SchoolLevel		INT				NOT NULL,
-  StartTimeString	TEXT			NOT NULL,
-  EndTimeString		TEXT			NOT NULL,
-  [Description]		TEXT			NOT NULL,
+  Id				INTEGER	PRIMARY KEY AUTOINCREMENT	NOT NULL,
+  SchoolLevel		INTEGER								NOT NULL,
+  StartTimeSeconds	REAL								NOT NULL,
+  EndTimeSeconds	REAL								NOT NULL,
+  [Description]		TEXT								NOT NULL,
   FOREIGN KEY (SchoolLevel) REFERENCES SchoolLevels(Id)
-)
+);
