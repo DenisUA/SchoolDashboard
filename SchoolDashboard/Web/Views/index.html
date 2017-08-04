@@ -61,45 +61,45 @@
 						<!-- Panel (Weather) -->
 							<section class="panel spotlight medium right" id="first">
 								<div id="weather-background" class="default-weather" style="width: 100%; pointer-events: none">
-								        <canvas id="rain-canvas"></canvas>
-								        <canvas id="cloud-canvas"></canvas>
-								        <canvas id="weather-canvas"></canvas>
-								        <canvas id="time-canvas"></canvas>
-								        <canvas id="lightning-canvas"></canvas>
-								    <div class="page-wrap">
-								        <div id="geo-error-message" class="geo-error-message hide">
-													<button id='close-error' class='fa fa-times close-error'></button>
-													Uh oh! It looks like we can't find your location. If you're using an Adblocker,
-													it may block our ability to find your location. Please type your city into the search box above!
-												</div>
-								        <div id="front-page-description" class="front-page-description middle">
-								            <h1>Погода всьо</h1>
-								            <h2>¯ \ _ (ツ) _ / ¯</h2>
-								        </div>
-								        <div id="weather" class="weather middle hide">
-								            <div class="location" id="location"></div>
-								            <div class="weather-container">
-								                <div id="temperature-info" class="temperature-info">
-								                    <div class="temperature" id="temperature"></div>
-								                    <div class="weather-description" id="weather-description"></div>
-								                </div>
-								                <div class="weather-box">
-								                    <ul class="weather-info" id="weather-info">
-								                        <li class="weather-item humidity">
-																					Вологість:
-																					<span id="humidity"></span>%
-																				</li>
-								                     		<li class="weather-item wind">
-																					Вітер:
-																					<span id="wind-direction"></span>
-																					<span id="wind"></span>
-																					<span id="speed-unit"></span>
-																				</li>
-								                    </ul>
-								                </div>
-								            </div>
-								        </div>
-								    </div>
+					        <canvas id="rain-canvas"></canvas>
+					        <canvas id="cloud-canvas"></canvas>
+					        <canvas id="weather-canvas"></canvas>
+					        <canvas id="time-canvas"></canvas>
+					        <canvas id="lightning-canvas"></canvas>
+							    <div class="page-wrap">
+						        <div id="geo-error-message" class="geo-error-message hide">
+											<button id='close-error' class='fa fa-times close-error'></button>
+											Uh oh! It looks like we can't find your location. If you're using an Adblocker,
+											it may block our ability to find your location. Please type your city into the search box above!
+										</div>
+						        <div id="front-page-description" class="front-page-description middle">
+						            <h1>Погода всьо</h1>
+						            <h2>¯ \ _ (ツ) _ / ¯</h2>
+						        </div>
+						        <div id="weather" class="weather middle hide">
+					            <div class="location" id="location"></div>
+					            <div class="weather-container">
+				                <div id="temperature-info" class="temperature-info">
+			                    <div class="temperature" id="temperature"></div>
+			                    <div class="weather-description" id="weather-description"></div>
+				                </div>
+				                <div class="weather-box">
+			                    <ul class="weather-info" id="weather-info">
+		                        <li class="weather-item humidity">
+															Вологість:
+															<span id="humidity"></span>%
+														</li>
+		                     		<li class="weather-item wind">
+															Вітер:
+															<span id="wind-direction"></span>
+															<span id="wind"></span>
+															<span id="speed-unit"></span>
+														</li>
+			                    </ul>
+				                </div>
+					            </div>
+						        </div>
+							    </div>
 								</div>
 							</section>
 
@@ -233,41 +233,109 @@
 								</div>
 							</section>
 
-						<!-- Panel -->
+						<!-- Panel (Timeline) -->
 							<section class="panel color4-alt">
-								<div class="intro color4">
-									<h2 class="major">Contact</h2>
-									<p>Sed vel nibh libero. Mauris et lorem pharetra massa lorem turpis congue pulvinar. Vivamus sed feugiat finibus. Duis amet bibendum amet sed. Duis mauris ex, dapibus sed ligula tempus volutpat magna etiam.</p>
-								</div>
-								<div class="inner columns divided">
-									<div class="span-3-25">
-										<form method="post" action="#">
-											<div class="field half">
-												<label for="name">Name</label>
-												<input type="text" name="name" id="name" />
+								<div class="timeline">
+									<div class="line median"></div>
+
+								  <div class="event">
+								    <div class="event-wrapper top">
+								      <div class="event-time">
+								        <div class="day-digit">02</div>
+								        <div class="day">
+								           Листопада
+								        </div>
+								      </div>
+								      <div class="event-description">Репетиція гей параду</div>
+								    </div>
+										<div class="line circle"></div>
+								    <div class="time bot">14:20</div>
+								  </div>
+
+									<div class="line long"></div>
+
+								  <div class="event">
+								    <div class="event-wrapper bot">
+								      <div class="event-time">
+								        <div class="day-digit">10</div>
+								        <div class="day">
+								           Листопада
+								        </div>
+								      </div>
+								      <div class="event-description">
+												Свято 10 Листопада
 											</div>
-											<div class="field half">
-												<label for="email">Email</label>
-												<input type="email" name="email" id="email" />
+								    </div>
+										<div class="line circle"></div>
+								    <div class="time top">08:30</div>
+								  </div>
+
+									<div class="line long"></div>
+
+									<div class="event">
+								    <div class="event-wrapper top">
+								      <div class="event-time">
+								        <div class="day-digit">32</div>
+								        <div class="day">
+								           Листопада
+								        </div>
+								      </div>
+								      <div class="event-description">
+												Ще якесь свято
 											</div>
-											<div class="field">
-												<label for="message">Message</label>
-												<textarea name="message" id="message" rows="4"></textarea>
+								    </div>
+										<div class="line circle"></div>
+								    <div class="time bot">10:20</div>
+								  </div>
+
+									<div class="line long"></div>
+
+								  <div class="event">
+								    <div class="event-wrapper bot">
+								      <div class="event-time">
+								        <div class="day-digit">33</div>
+								        <div class="day">
+								           Листопада
+								        </div>
+								      </div>
+								      <div class="event-description">
+												Майстер клас приготування шаурми вокзальної. Біля вокзалу.
 											</div>
-											<ul class="actions">
-												<li><input type="submit" value="Send Message" class="button special" /></li>
-											</ul>
-										</form>
-									</div>
-									<div class="span-1-5">
-										<ul class="contact-icons color1">
-											<li class="icon fa-twitter"><a href="#">@untitled-tld</a></li>
-											<li class="icon fa-facebook"><a href="#">facebook.com/untitled</a></li>
-											<li class="icon fa-snapchat-ghost"><a href="#">@untitled-tld</a></li>
-											<li class="icon fa-instagram"><a href="#">@untitled-tld</a></li>
-											<li class="icon fa-medium"><a href="#">medium.com/untitled</a></li>
-										</ul>
-									</div>
+								    </div>
+										<div class="line circle"></div>
+								    <div class="time top">08:30</div>
+								  </div>
+
+								  <div class="line median"></div>
+
+								  <div class="now">Зараз</div>
+
+								  <div class="line long"></div>
+
+								  <div class="event future-gray">
+								    <div class="event-wrapper top future-opacity">
+								      <div class="event-time">
+								        <div class="day-digit">05</div>
+								        <div class="day">
+								           Місяць
+								        </div>
+								      </div>
+								      <div class="event-description">Канікули</div>
+								    </div>
+										<div class="line circle"></div>
+								  </div>
+
+									<svg height="5" width="50">
+										<line x1="0" y1="0" x2="50" y2="0" style="stroke:rgba(255, 255, 255, 0.25);stroke-width:5" />
+										</svg>
+										<svg height="20" width="42">
+										<line x1="1" y1="0" x2="1" y2="20" style="stroke:rgba(255, 255, 255, 0.25);stroke-width:2" />
+										<circle cx="11" cy="10" r="3" fill="rgba(255, 255, 255, 0.25)" />
+										<circle cx="21" cy="10" r="3" fill="rgba(255, 255, 255, 0.25)" />
+										<circle cx="31" cy="10" r="3" fill="rgba(255, 255, 255, 0.25)" />
+										<line x1="41" y1="0" x2="41" y2="20" style="stroke:rgba(255, 255, 255, 0.25);stroke-width:2" />
+									</svg>
+
 								</div>
 							</section>
 
