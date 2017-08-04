@@ -37,6 +37,11 @@ namespace SchoolDashboard.DAL
             return ExecuteToModel<Lesson>("SELECT * FROM Lessons WHERE SchoolLevel = @Level", new { Level = schoolLevel });
         }
 
+        public static SchoolLevel[] GetSchoolLevels()
+        {
+            return GetAllRows<SchoolLevel>("SchoolLevels");
+        }
+
         private static SQLiteConnection GetConnection()
         {
             return new SQLiteConnection("Data Source=" + DbFilePath);
