@@ -21,10 +21,18 @@ namespace SchoolDashboard.Controllers
             for (int i = 0; i < lessons.Length; i++)
             {
                 if (lessons[i].StartTime <= currentTime && currentTime <= lessons[i].EndTime)
-                    return LessonInfo.AsLesson(lessons[i].Description, (int)Math.Round((lessons[i].EndTime - currentTime).TotalMinutes, MidpointRounding.AwayFromZero));
+                {
+                    var minutes = (int)Math.Round((lessons[i].EndTime - currentTime).TotalMinutes, MidpointRounding.AwayFromZero);
+                    var perc = 100 - (minutes * 100 / (lessons[i].EndTime.TotalMinutes - lessons[i].StartTime.TotalMinutes));
+                    return LessonInfo.AsLesson(lessons[i].Description, minutes, (int)perc);
+                }
 
                 if (lessons[i].EndTime < currentTime && currentTime < lessons[i+1].StartTime)
-                    return LessonInfo.AsBreak((int)Math.Round((lessons[i + 1].StartTime - currentTime).TotalMinutes, MidpointRounding.AwayFromZero));
+                {
+                    var minutes = (int)Math.Round((lessons[i + 1].StartTime - currentTime).TotalMinutes, MidpointRounding.AwayFromZero);
+                    var perc = 100 - (minutes * 100 / (lessons[i + 1].StartTime.TotalMinutes - lessons[i].EndTime.TotalMinutes));
+                    return LessonInfo.AsBreak(minutes, (int)perc);
+                }
             }
 
             return null;

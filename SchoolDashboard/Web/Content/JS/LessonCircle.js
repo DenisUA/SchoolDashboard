@@ -16,13 +16,18 @@ class LessonCircle {
         this.maxPulsarRadius = 15;
         this.pulsar1Radius = 0;
         this.pulsar2Radius = 5;
-        this.progressCirclePercent = 25;
+        this.progressCirclePercent = 0;
         this.lineWidth = 15;
         this.radian = 0;
         this.defaultCirclesRadius = this.width / 2 - this.lineWidth;
-        this.progressColor = "rgba(0, 169, 11, %1$s)";
-        this.endPointColor = "rgba(0, 195, 13, %1$s)";
+        this.endPointColor = "";
         this.isLessonsEnded = false;
+        this.description = "";
+        this.timeRemainingText = "";
+        this.isBreak = false;
+        this.lessonColor = "";
+        this.breakColor = "rgb(255,140,0)";
+        this.breakEndpointColor = "rgba(255, 177, 82, %1$s)"
     }
 
     draw() {
@@ -46,7 +51,7 @@ class LessonCircle {
             this.ctx.beginPath();
             this.ctx.arc(x0, y0, radius, 1.5 * Math.PI, this.radian + 1.5 * Math.PI, false);
             this.ctx.lineWidth = this.lineWidth;
-            this.ctx.strokeStyle = sprintf(this.progressColor, "1");
+            this.ctx.strokeStyle = this.isBreak ? this.breakColor : this.lessonColor;
             this.ctx.lineCap = 'round';
             this.ctx.stroke();
 
@@ -60,7 +65,7 @@ class LessonCircle {
 
             this.ctx.beginPath();
             this.ctx.arc(pointX, pointY, this.lineWidth / 2, 0, 2 * Math.PI, false);
-            this.ctx.fillStyle = sprintf(this.endPointColor, 1);
+            this.ctx.fillStyle = this.isBreak ? sprintf(this.breakEndpointColor, 1) : sprintf(this.endPointColor, 1);
             this.ctx.fill();
 
             //pulsar 1
@@ -68,7 +73,7 @@ class LessonCircle {
             this.ctx.arc(pointX, pointY, this.pulsar1Radius, 0, 2 * Math.PI);
             this.ctx.lineWidth = 3;
             var t = 1 - this.pulsar1Radius / this.maxPulsarRadius;
-            this.ctx.strokeStyle = sprintf(this.endPointColor, t);
+            this.ctx.strokeStyle = this.isBreak ? sprintf(this.breakEndpointColor, t) : sprintf(this.endPointColor, t);
             this.ctx.stroke();
 
             //pulsar 2
@@ -76,7 +81,7 @@ class LessonCircle {
             this.ctx.arc(pointX, pointY, this.pulsar2Radius, 0, 2 * Math.PI);
             this.ctx.lineWidth = 3;
             var t1 = 1 - this.pulsar2Radius / this.maxPulsarRadius;
-            this.ctx.strokeStyle = sprintf(this.endPointColor, t1);
+            this.ctx.strokeStyle = this.isBreak ? sprintf(this.breakEndpointColor, t1) : sprintf(this.endPointColor, t1);
             this.ctx.stroke();
         }
 
@@ -106,13 +111,13 @@ class LessonCircle {
             this.ctx.font = "15pt Arial";
             this.ctx.textBaseline = "bottom";
             this.ctx.textAlign = "center";
-            this.ctx.fillText("Урок №2", textX, textY - 23);
+            this.ctx.fillText(this.description, textX, textY - 23);
 
             this.ctx.fillStyle = "rgba(0, 0, 0, 1)";
             this.ctx.font = "33pt Arial";
             this.ctx.textBaseline = "middle";
             this.ctx.textAlign = "center";
-            this.ctx.fillText("32 хв", textX, textY);
+            this.ctx.fillText(this.timeRemainingText, textX, textY);
 
             this.ctx.fillStyle = "rgba(0, 0, 0, 0.5)";
             this.ctx.font = "11pt Arial";
