@@ -1,5 +1,6 @@
 ﻿using Nancy;
 using Nancy.Hosting.Self;
+using SchoolDashboard.Controllers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,15 +12,28 @@ namespace SchoolDashboard
     class Dashboard
     {
         private NancyHost _webHost;
+        private static object _lockObj = new Object();
+        private static Dashboard _instance;
 
-        public Dashboard()
+        public LessonsController Lessons { get; set; }
+
+        private Dashboard()
         {
-            var hostConfig = new HostConfiguration();
-            hostConfig.UrlReservations.CreateAutomatically = true;
-            _webHost = new NancyHost(hostConfig, new Uri("http://localhost:8000"));
-            StaticConfiguration.Caching.EnableRuntimeViewUpdates = true;
-            StaticConfiguration.Caching.EnableRuntimeViewUpdates = true;
+            InitWebHost();
+            InitControllers();
         }
+
+        public static Dashboard GetInstance()
+        {
+            lock (_lockObj)
+            {
+                if (_instance == null)
+                    _instance = new Dashboard();
+            }
+
+            return _instance;
+        }
+
 
         public void Start()
         {
@@ -30,6 +44,20 @@ namespace SchoolDashboard
         {
             _webHost.Stop();
             _webHost.Dispose();
+        }
+
+        private void InitWebHost()
+        {
+            var hostConfig = new HostConfiguration();
+            hostConfig.UrlReservations.CreateAutomatically = true;
+            _webHost = new NancyHost(hostConfig, new Uri("http://localhost:8000"));
+            StaticConfiguration.Caching.EnableRuntimeViewUpdates = true;
+            StaticConfiguration.Caching.EnableRuntimeViewUpdates = true;
+        }
+
+        private void InitControllers()
+        {
+            Lessons = new LessonsController();
         }
     }
 }

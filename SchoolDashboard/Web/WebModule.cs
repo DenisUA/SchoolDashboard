@@ -36,7 +36,7 @@ namespace SchoolDashboard.Web
         public dynamic InvokeMethodFromClass(string methodName, dynamic parameters)
         {
             var type = this.GetType();
-            var method = type.GetMethod(methodName, BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Instance);
+            var method = type.GetMethod(methodName, BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Instance | BindingFlags.FlattenHierarchy);
             if (method == null)
                 throw new ArgumentException(string.Format("No method {0} in class {1}", methodName, type.Name));
 

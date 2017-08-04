@@ -20,3 +20,5 @@
 /SchoolDashboard/Dapper.xml
 /SchoolDashboard/Dapper.dll
 *.manifest
+/.vs/config/applicationhost.config
+/.vs/SchoolDashboard/v14/.suo
