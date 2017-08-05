@@ -89,6 +89,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="libSQLite.Interop.so" />
     <None Include="packages.config" />
     <None Include="Web\Content\Fonts\fontawesome-webfont.eot" />
     <None Include="Web\Content\Fonts\fontawesome-webfont.ttf" />
