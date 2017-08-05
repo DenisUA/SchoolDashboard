@@ -14,8 +14,14 @@ namespace SchoolDashboard
             dashboard.Start();
             Console.WriteLine("Dashboard started. Press Enter(Return) to exit...");
 
-            Console.ReadLine();
-            dashboard.Stop();
+			while (true)
+			{
+				if (Console.ReadLine() == "e")
+				{
+					dashboard.Stop();
+					break;
+				}
+			}
         }
     }
 }

@@ -2,7 +2,7 @@
 using SchoolDashboard.DAL.Models;
 using System;
 using System.Collections.Generic;
-using System.Data.SQLite;
+using Mono.Data.Sqlite;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -23,7 +23,7 @@ namespace SchoolDashboard.DAL
         {
             if (!File.Exists(DbFilePath))
             {
-                SQLiteConnection.CreateFile(DbFilePath);
+                SqliteConnection.CreateFile(DbFilePath);
                 using (var conn = GetConnection())
                 {
                     RunScript(Path.Combine(Directory.GetCurrentDirectory(), "DAL", "Scripts", "CreateDb.sql"), conn);
@@ -48,9 +48,9 @@ namespace SchoolDashboard.DAL
         }
 
         #region Helpers
-        private static SQLiteConnection GetConnection()
+        private static SqliteConnection GetConnection()
         {
-            return new SQLiteConnection("Data Source=" + DbFilePath);
+            return new SqliteConnection("Data Source=" + DbFilePath);
         }
 
         private static T[] ExecuteToModel<T>(string sqlQuery, object parameters = null)
@@ -88,7 +88,7 @@ namespace SchoolDashboard.DAL
             return ExecuteToModel<T>("select * from " + tableName);
         }
 
-        private static void RunScript(string filePath, SQLiteConnection connection)
+        private static void RunScript(string filePath, SqliteConnection connection)
         {
             var script = File.ReadAllText(filePath);
             connection.Execute(script);
