@@ -180,12 +180,12 @@
 
 .timeline .event-wrapper.top {
   top: -10rem;
-  left: -5rem;
+  left: -4.8rem;
 }
 
 .timeline .event-wrapper.bot {
-  left: -5rem;
-  top: 2rem;
+  left: -4.8rem;
+  top: 1.8rem;
 }
 
 .timeline .event .event-time {
@@ -212,15 +212,37 @@
 }
 
 .timeline .event .event-description {
-  /*font-family: "Arial Black", Gadget, sans-serif;*/
   font-size: 1rem;
   display: flex;
+  flex-direction: column;
   flex: 1;
-  align-items: center;
   padding-left: 0.5rem;
 }
 
-.timeline .time {
+.timeline .event .event-description .time {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 50%;
+}
+
+.timeline .event .event-description .location {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.timeline .event .event-description .event-icon {
+  width: 2rem;
+  text-align: center;
+}
+
+.fa-15x {
+  font-size: 1.5rem;
+}
+
+/*.timeline .time {
   position: absolute;
   font-family: Arial, Helvetica, sans-serif;
   width: 50px;
@@ -233,7 +255,7 @@
 
 .timeline .time.bot {
   margin-top: 0.5rem;
-}
+}*/
 
 .timeline .now {
   color: white;
