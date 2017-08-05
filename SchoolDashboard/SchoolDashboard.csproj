@@ -71,6 +71,10 @@
   <ItemGroup>
     <Compile Include="Common\StringConstants.cs" />
     <Compile Include="Controllers\LessonsController.cs" />
+    <Compile Include="Controllers\TilesController.cs" />
+    <Compile Include="Controllers\Tiles\AchievementsTile.cs" />
+    <Compile Include="Controllers\Tiles\Tile.cs" />
+    <Compile Include="DAL\Models\Achievement.cs" />
     <Compile Include="DAL\Models\Lesson.cs" />
     <Compile Include="DAL\Models\SchoolLevel.cs" />
     <Compile Include="DAL\Repository.cs" />

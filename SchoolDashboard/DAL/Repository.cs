@@ -42,6 +42,12 @@ namespace SchoolDashboard.DAL
             return GetAllRows<SchoolLevel>("SchoolLevels");
         }
 
+        public static Achievement[] GetAchievements(int count)
+        {
+            return ExecuteToModel<Achievement>("SELECT * FROM Achievements ORDER BY Id LIMIT " + count);
+        }
+
+        #region Helpers
         private static SQLiteConnection GetConnection()
         {
             return new SQLiteConnection("Data Source=" + DbFilePath);
@@ -86,6 +92,7 @@ namespace SchoolDashboard.DAL
         {
             var script = File.ReadAllText(filePath);
             connection.Execute(script);
-        }
+        } 
+        #endregion
     }
 }

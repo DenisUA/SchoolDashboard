@@ -1,5 +1,9 @@
 ﻿var circlesObjects = [];
-var circlesColors = [["rgb(50,205,50)", "rgba(111, 220, 111, %1$s)"], ["rgb(32,178,170)", "rgba(36, 204, 195, %1$s)"], ["rgb(0,0,205)", "rgba(66, 66, 255, %1$s)"]]
+var circlesColors = [
+    ["rgb(50,205,50)", "rgba(111, 220, 111, %1$s)"],
+    ["rgb(32,178,170)", "rgba(36, 204, 195, %1$s)"],
+    ["rgb(0,0,205)", "rgba(66, 66, 255, %1$s)"]
+];
 
 function processCircles() {
     $(".lesson-circle").each(function () {
