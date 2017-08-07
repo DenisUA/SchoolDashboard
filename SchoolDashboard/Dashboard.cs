@@ -16,6 +16,7 @@ namespace SchoolDashboard
         private static Dashboard _instance;
 
         public LessonsController Lessons { get; set; }
+        public TilesController Tiles { get; set; }
 
         private Dashboard()
         {
@@ -58,6 +59,7 @@ namespace SchoolDashboard
         private void InitControllers()
         {
             Lessons = new LessonsController();
+            Tiles = new TilesController();
         }
     }
 }

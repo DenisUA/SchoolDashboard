@@ -74,15 +74,18 @@
     <Compile Include="Common\StringConstants.cs" />
     <Compile Include="Controllers\LessonsController.cs" />
     <Compile Include="Controllers\TilesController.cs" />
-    <Compile Include="Controllers\Tiles\AchievementsTile.cs" />
     <Compile Include="Controllers\Tiles\AwardsTile.cs" />
     <Compile Include="Controllers\Tiles\BirthdaysTile.cs" />
     <Compile Include="Controllers\Tiles\HistoryDayTile.cs" />
     <Compile Include="Controllers\Tiles\Tile.cs" />
     <Compile Include="Controllers\Tiles\TimelineTile.cs" />
+    <Compile Include="Controllers\Tiles\ViewDataModels\AwardsTileData.cs" />
     <Compile Include="Controllers\Tiles\ViewDataModels\DataModel.cs" />
+    <Compile Include="Controllers\Tiles\ViewDataModels\HistoryDayTileData.cs" />
+    <Compile Include="Controllers\Tiles\ViewDataModels\TimelineTileData.cs" />
+    <Compile Include="Controllers\Tiles\ViewDataModels\WeatherTileData.cs" />
     <Compile Include="Controllers\Tiles\WeatherTile.cs" />
-    <Compile Include="DAL\Models\Achievement.cs" />
+    <Compile Include="DAL\Models\Awards.cs" />
     <Compile Include="DAL\Models\Lesson.cs" />
     <Compile Include="DAL\Models\SchoolLevel.cs" />
     <Compile Include="DAL\Repository.cs" />
@@ -129,7 +132,7 @@
   <ItemGroup>
     <Content Include="DAL\Scripts\InitDb.sql" />
     <Content Include="DAL\Scripts\CreateDb.sql" />
-    <Content Include="Web\Content\CSS\animate.min.css" />
+    <Content Include="Web\Content\CSS\animate.css" />
     <Content Include="Web\Content\CSS\custom.css" />
     <Content Include="Web\Content\CSS\font-awesome.min.css" />
     <Content Include="Web\Content\CSS\main.css" />

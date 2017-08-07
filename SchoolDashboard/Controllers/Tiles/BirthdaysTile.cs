@@ -10,6 +10,15 @@ namespace SchoolDashboard.Controllers.Tiles
     class BirthdaysTile : Tile
     {
         public override bool IsActive { get; }
+
+        public override string TileId
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+        }
+
         public override DataModel GetViewData()
         {
             throw new NotImplementedException();

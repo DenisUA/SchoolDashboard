@@ -9,10 +9,13 @@ namespace SchoolDashboard.Controllers.Tiles
 {
     class WeatherTile : Tile
     {
-        public override bool IsActive { get; }
+        public override bool IsActive { get { return true; } }
+
+        public override string TileId { get { return "weatherPanel"; } }
+
         public override DataModel GetViewData()
         {
-            throw new NotImplementedException();
+            return new WeatherTileData();
         }
     }
 }

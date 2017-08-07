@@ -9,10 +9,13 @@ namespace SchoolDashboard.Controllers.Tiles
 {
     class HistoryDayTile : Tile
     {
-        public override bool IsActive { get; }
+        public override bool IsActive { get { return true; } }
+
+        public override string TileId { get { return "historyDayPanel"; } }
+
         public override DataModel GetViewData()
         {
-            throw new NotImplementedException();
+            return new HistoryDayTileData();
         }
     }
 }

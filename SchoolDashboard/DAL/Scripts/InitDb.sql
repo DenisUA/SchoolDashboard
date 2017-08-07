@@ -38,3 +38,17 @@ INSERT INTO Lessons (SchoolLevel, StartTimeSeconds, EndTimeSeconds, [Description
 ((SELECT [Value] FROM _Variables WHERE Name = 'Id'), 53400, 56100, 'Урок 7');
 
 DROP TABLE _Variables;
+
+---------------Test data
+
+INSERT INTO Awards ([Type], Owner, Description) VALUES 
+(1, 'Test1', 'Some text blah blah'),
+(2, 'Test2', 'Some text blah blah'),
+(3, 'Test3', 'Some text blah blah'),
+(4, 'Test4', 'Some text blah blah'),
+(5, 'Test5', 'Some text blah blah'),
+(6, 'Test6', 'Some text blah blah'),
+(7, 'Test7', 'Some text blah blah'),
+(8, 'Test8', 'Some text blah blah'),
+(9, 'Test9', 'Some text blah blah'),
+(10, 'Test10', 'Some text blah blah')

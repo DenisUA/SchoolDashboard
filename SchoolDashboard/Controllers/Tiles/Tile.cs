@@ -10,6 +10,7 @@ namespace SchoolDashboard.Controllers.Tiles
     abstract class Tile
     {
         public abstract bool IsActive { get; }
+        public abstract string TileId { get; }
         public abstract DataModel GetViewData();
     }
 }

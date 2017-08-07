@@ -23,5 +23,11 @@ namespace SchoolDashboard.Web
             var levels = Repository.GetSchoolLevels();
             return Response.AsJson(levels);
         }
+
+        public dynamic GetTileShowInfo()
+        {
+            var res = Dashboard.GetInstance().Tiles.GetShowTilesInfo();
+            return Response.AsJson(res);
+        }
     }
 }

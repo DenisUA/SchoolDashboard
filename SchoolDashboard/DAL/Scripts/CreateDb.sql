@@ -14,7 +14,7 @@ CREATE TABLE Lessons
   FOREIGN KEY (SchoolLevel) REFERENCES SchoolLevels(Id)
 );
 
-CREATE TABLE Achievement
+CREATE TABLE Awards
 (
   Id				INTEGER PRIMARY KEY AUTOINCREMENT	NOT NULL,
   [Type]			INTEGER								NOT NULL,

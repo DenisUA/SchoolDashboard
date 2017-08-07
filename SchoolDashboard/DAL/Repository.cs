@@ -47,9 +47,9 @@ namespace SchoolDashboard.DAL
             return GetAllRows<SchoolLevel>("SchoolLevels");
         }
 
-        public static Achievement[] GetAchievements(int count)
+        public static Awards[] GetAwards(int count)
         {
-            return ExecuteToModel<Achievement>("SELECT * FROM Achievements ORDER BY Id LIMIT " + count);
+            return ExecuteToModel<Awards>("SELECT * FROM Awards ORDER BY Id DESC LIMIT " + count);
         }
 
         #region Helpers
