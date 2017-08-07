@@ -75,7 +75,13 @@
     <Compile Include="Controllers\LessonsController.cs" />
     <Compile Include="Controllers\TilesController.cs" />
     <Compile Include="Controllers\Tiles\AchievementsTile.cs" />
+    <Compile Include="Controllers\Tiles\AwardsTile.cs" />
+    <Compile Include="Controllers\Tiles\BirthdaysTile.cs" />
+    <Compile Include="Controllers\Tiles\HistoryDayTile.cs" />
     <Compile Include="Controllers\Tiles\Tile.cs" />
+    <Compile Include="Controllers\Tiles\TimelineTile.cs" />
+    <Compile Include="Controllers\Tiles\ViewDataModels\DataModel.cs" />
+    <Compile Include="Controllers\Tiles\WeatherTile.cs" />
     <Compile Include="DAL\Models\Achievement.cs" />
     <Compile Include="DAL\Models\Lesson.cs" />
     <Compile Include="DAL\Models\SchoolLevel.cs" />
@@ -123,6 +129,7 @@
   <ItemGroup>
     <Content Include="DAL\Scripts\InitDb.sql" />
     <Content Include="DAL\Scripts\CreateDb.sql" />
+    <Content Include="Web\Content\CSS\animate.min.css" />
     <Content Include="Web\Content\CSS\custom.css" />
     <Content Include="Web\Content\CSS\font-awesome.min.css" />
     <Content Include="Web\Content\CSS\main.css" />
@@ -177,6 +184,7 @@
     <Content Include="Web\Content\Images\pic03.jpg" />
     <Content Include="Web\Content\Images\pic03_2.jpg" />
     <Content Include="Web\Content\Images\pic03_3.jpg" />
+    <Content Include="Web\Content\JS\panels.js" />
     <Content Include="Web\Content\JS\staticPanel.js" />
     <Content Include="Web\Content\JS\sprintf.min.js" />
     <Content Include="Web\Content\JS\LessonCircle.js" />

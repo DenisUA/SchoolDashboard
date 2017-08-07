@@ -2170,6 +2170,7 @@
 		height: 100%;
 		overflow-x: hidden;
 		overflow-y: auto;
+	    box-shadow: 0 2rem 4rem 0.25rem rgba(46, 43, 55, 0.575);
 	}
 
 		.panel > * {
@@ -3553,7 +3554,7 @@
 		cursor: default;
 		position: relative;
 		height: 100%;
-		box-shadow: 0 2rem 4rem 0.25rem rgba(46, 43, 55, 0.575);
+		/*box-shadow: 0 2rem 4rem 0.25rem rgba(46, 43, 55, 0.575);*/
 	}
 
 		#wrapper > .scrollZone {

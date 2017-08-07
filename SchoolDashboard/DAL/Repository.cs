@@ -8,9 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 #if MONO
-using BdConnection = Mono.Data.Sqlite;
+using Mono.Data.Sqlite;
 #else
-using BdConnection = System.Data.SQLite.SQLiteConnection;
+using SqliteConnection = System.Data.SQLite.SQLiteConnection;
 #endif
 
 namespace SchoolDashboard.DAL
@@ -28,7 +28,7 @@ namespace SchoolDashboard.DAL
         {
             if (!File.Exists(DbFilePath))
             {
-                BdConnection.CreateFile(DbFilePath);
+                SqliteConnection.CreateFile(DbFilePath);
                 using (var conn = GetConnection())
                 {
                     RunScript(Path.Combine(Directory.GetCurrentDirectory(), "DAL", "Scripts", "CreateDb.sql"), conn);
@@ -53,9 +53,9 @@ namespace SchoolDashboard.DAL
         }
 
         #region Helpers
-        private static BdConnection GetConnection()
+        private static SqliteConnection GetConnection()
         {
-            return new BdConnection("Data Source=" + DbFilePath);
+            return new SqliteConnection("Data Source=" + DbFilePath);
         }
 
         private static T[] ExecuteToModel<T>(string sqlQuery, object parameters = null)
@@ -93,7 +93,7 @@ namespace SchoolDashboard.DAL
             return ExecuteToModel<T>("select * from " + tableName);
         }
 
-        private static void RunScript(string filePath, BdConnection connection)
+        private static void RunScript(string filePath, SqliteConnection connection)
         {
             var script = File.ReadAllText(filePath);
             connection.Execute(script);

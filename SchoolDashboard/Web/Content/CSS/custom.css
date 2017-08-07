@@ -277,3 +277,7 @@
   -webkit-filter: opacity(.3);
   filter: opacity(.3);
 }
+
+.hidden {
+    display: none !important;
+}

@@ -4,7 +4,8 @@
 		<title>Info Monitor</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" charset="UTF-8"/>
-		<link rel="stylesheet" href="CSS/main.css" />
+	    <link rel="stylesheet" href="CSS/main.css" />
+	    <link rel="stylesheet" href="CSS/animate.min.css">
 		<noscript><link rel="stylesheet" href="CSS/noscript.css" /></noscript>
 	</head>
 	<body>
@@ -40,7 +41,7 @@
 					<div id="wrapper">
 
 						<!-- Panel (Banner) -->
-							<section class="panel banner right">
+							<section class="panel banner right hidden" id="historyDayPanel">
 								<div class="content color0 span-3-75">
 									<h1 class="major">1 Вересня<br/> перший дзвоник</h1>
 									<p>
@@ -64,7 +65,7 @@
 							</section>
 
 						<!-- Panel (Weather) -->
-							<section class="panel spotlight medium right" id="first">
+							<section class="panel spotlight medium right hidden" id="weatherPanel">
 								<div id="weather-background" class="default-weather" style="width: 100%; pointer-events: none">
 								        <canvas id="rain-canvas"></canvas>
 								        <canvas id="cloud-canvas"></canvas>
@@ -127,7 +128,7 @@
 							</section> -->
 
 						<!-- Panel (Birthday) -->
-							<section class="panel spotlight large left">
+							<section class="panel spotlight large left hidden" id="birthdaysPanel">
 								<div class="content span-5 birthday">
 									<h1 class="major">Happy Birthday!</h1>
 									<div class="people">
@@ -182,7 +183,7 @@
 							</section> -->
 
 						<!-- Panel (Awards) -->
-							<section class="panel spotlight large left">
+							<section class="panel spotlight large left hidden" id="awardsPanel">
 								<div class="content awards">
 									<h1 class="major">Наші перемоги</h1>
 									<div class="events">
@@ -239,7 +240,7 @@
 							</section>
 
 						<!-- Panel (Timeline) -->
-							<section class="panel color4-alt">
+							<section class="panel color4-alt hidden" id="timelinePanel">
 									<div class="timeline">
 										<div class="line median"></div>
 
@@ -669,6 +670,7 @@
 			<script src="JS/custom.js"></script>
 			<script src="JS/weather.js"></script>
       <script src="JS/LessonCircle.js"></script>
-      <script src="JS/staticPanel.js"></script>
+	<script src="JS/staticPanel.js"></script>
+	<script src="JS/panels.js"></script>
 	</body>
 </html>

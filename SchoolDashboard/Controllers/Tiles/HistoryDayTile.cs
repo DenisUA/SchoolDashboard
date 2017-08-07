@@ -7,7 +7,7 @@ using SchoolDashboard.Controllers.Tiles.ViewDataModels;
 
 namespace SchoolDashboard.Controllers.Tiles
 {
-    class AchievementsTile : Tile
+    class HistoryDayTile : Tile
     {
         public override bool IsActive { get; }
         public override DataModel GetViewData()
