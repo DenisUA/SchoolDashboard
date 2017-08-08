@@ -42,7 +42,7 @@ class LessonCircle {
         this.ctx.beginPath();
         this.ctx.arc(x0, y0, radius, 0, 2 * Math.PI, false);
         this.ctx.lineWidth = this.lineWidth;
-        this.ctx.strokeStyle = "rgb(176, 176, 176)";
+        this.ctx.strokeStyle = "rgba(180, 180, 180, 0.7)";
         this.ctx.stroke();
 
 
@@ -100,7 +100,7 @@ class LessonCircle {
             this.ctx.fillText("Уроки", textX, textY);
 
             this.ctx.fillStyle = "rgba(0, 0, 0, 1)";
-            this.ctx.font = "20pt Arial";
+            this.ctx.font = "17pt Arial";
             this.ctx.textBaseline = "top";
             this.ctx.textAlign = "center";
             this.ctx.fillText("завершено", textX, textY);

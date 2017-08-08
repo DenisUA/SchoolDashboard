@@ -16,6 +16,7 @@
   width: 18%;
   display: inline-block;
   text-align: center;
+  align-self: center;
 }
 
 .static-header .digital-date-time .js-digital-clock {
@@ -36,6 +37,11 @@
   display: inline-block;
   text-align: center;
   width: 220px;
+  align-self: center;
+}
+
+.static-header .circle-wrapper .circle-title{
+    font-size: 22px;
 }
 
 .static-header .circle-wrapper .circle-countdown {

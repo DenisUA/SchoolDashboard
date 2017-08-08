@@ -75,7 +75,7 @@ $(".third-circle-countdown").TimeCircles({
 
 $(document).ready(function() {
   clockUpdate();
-  setInterval(clockUpdate, 1000);
+  setInterval(clockUpdate, 30000);
 })
 
 function clockUpdate() {
@@ -89,17 +89,8 @@ function clockUpdate() {
     }
   }
 
-  // function twelveHour(x) {
-  //   if (x > 12) {
-  //     return x = x - 12;
-  //   } else if (x == 0) {
-  //     return x = 12;
-  //   } else {
-  //     return x;
-  //   }
-  // }
   var months = [
-    'Січень', 'Лютий', 'Березень', 'Квітень', 'Травень', 'Червень', 'Липень', 'Серпень', 'Вересень', 'Жовтень', 'Листопад', 'Грудень'
+    'Січня', 'Лютого', 'Березня', 'Квітня', 'Травня', 'Червня', 'Липня', 'Серпня', 'Веерсня', 'Жовтня', 'Листопада', 'Грудня'
   ];
 
   var days = [
@@ -108,13 +99,13 @@ function clockUpdate() {
 
   var h = addZero(date.getHours());
   var m = addZero(date.getMinutes());
-  // var s = addZero(date.getSeconds());
+  var s = addZero(date.getSeconds());
 
   var dayOfWeek = days[date.getDay()];
   var month = months[date.getMonth()];
   var day = date.getDate();
-  // var year = date.getFullYear();
 
-  $('.js-digital-clock').text(h + ':' + m)
-  $('.js-date').text(dayOfWeek + ', ' + month + ' ' + day)
+  //var isSecondOdd = s % 2;
+  $('.js-digital-clock').text(h + ':' + m);
+  $('.js-date').html(day + ' ' + month + '<br/>' + dayOfWeek);
 }

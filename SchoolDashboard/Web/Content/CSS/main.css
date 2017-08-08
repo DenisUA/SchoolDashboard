@@ -2169,7 +2169,7 @@
 		align-items: stretch;
 		height: 100%;
 		overflow-x: hidden;
-		overflow-y: auto;
+		overflow-y: hidden;
 	    box-shadow: 0 2rem 4rem 0.25rem rgba(46, 43, 55, 0.575);
 	}
 

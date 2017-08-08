@@ -22,7 +22,8 @@ GLoc = {
         g = this.settings;
         this.bindUIActions();
 
-        GLoc.getGeoLocation("start");
+        GLoc.geoSuccess();
+        //GLoc.getGeoLocation("start");
     },
 
     bindUIActions: function() {
@@ -79,22 +80,11 @@ GLoc = {
         g.geoErrorMessage.addClass('hide');
     },
 
-    geoSuccess: function(position, method) {
+    geoSuccess: function() {
         // We have the location. Don't display the banner.
         GLoc.hideGeoErrorMessageBanner();
 
-
-
-        // Do magic with the location
-        if (method === "IP") {
-            var latitude = position.lat;
-            var longitude = position.lon;
-        } else {
-            localStorage['authorizedGeoLocation'] = 1;
-            var latitude = position.coords.latitude;
-            var longitude = position.coords.longitude;
-        }
-        g.searchQuery = 'http://api.openweathermap.org/data/2.5/weather?lat=' + 49.5510381 + '&lon=' + 25.5863906 + '&appid=0596fe0573fa9daa94c2912e5e383ed3' +'&lang=' + g.lang;
+        g.searchQuery = 'http://api.openweathermap.org/data/2.5/weather?lat=49.5510381&lon=25.5863906&appid=0596fe0573fa9daa94c2912e5e383ed3&lang=ua';
 
         $.getJSON(g.searchQuery, function(data) {
             WeatherInfo.setWeatherData(data);
