@@ -51,4 +51,10 @@ INSERT INTO Awards ([Type], Owner, Description) VALUES
 (7, 'Test7', 'Some text blah blah'),
 (8, 'Test8', 'Some text blah blah'),
 (9, 'Test9', 'Some text blah blah'),
-(10, 'Test10', 'Some text blah blah')
+(10, 'Test10', 'Some text blah blah');
+
+INSERT INTO CalendarEvents (TimeBinary, HasTime, Description, Place) VALUES
+(636378732000000000, 1, 'Some event 1', 'School'),
+(636378840000000000, 1, 'Some event 2', 'School'),
+(636380586000000000, 1, 'Some event 3', 'School'),
+(636398550000000000, 1, 'Some event 4', 'School');

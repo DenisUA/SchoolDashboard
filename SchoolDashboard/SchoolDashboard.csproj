@@ -86,6 +86,7 @@
     <Compile Include="Controllers\Tiles\ViewDataModels\WeatherTileData.cs" />
     <Compile Include="Controllers\Tiles\WeatherTile.cs" />
     <Compile Include="DAL\Models\Awards.cs" />
+    <Compile Include="DAL\Models\CalendarEvent.cs" />
     <Compile Include="DAL\Models\Lesson.cs" />
     <Compile Include="DAL\Models\SchoolLevel.cs" />
     <Compile Include="DAL\Repository.cs" />

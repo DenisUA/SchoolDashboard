@@ -52,6 +52,11 @@ namespace SchoolDashboard.DAL
             return ExecuteToModel<Awards>("SELECT * FROM Awards ORDER BY Id DESC LIMIT " + count);
         }
 
+        public static CalendarEvent[] GetCalendarEvents(int count)
+        {
+            return ExecuteToModel<CalendarEvent>("SELECT * FROM CalendarEvents ORDER BY TimeBinary DESC LIMIT " + count);
+        }
+
         #region Helpers
         private static SqliteConnection GetConnection()
         {

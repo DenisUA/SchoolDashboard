@@ -21,3 +21,12 @@ CREATE TABLE Awards
   Owner				TEXT								NOT NULL,
   Description		TEXT								NOT NULL
 );
+
+CREATE TABLE CalendarEvents
+(
+  Id				INTEGER PRIMARY KEY AUTOINCREMENT	NOT NULL,
+  TimeBinary		INTEGER								NOT NULL, 
+  HasTime			INTEGER								NOT NULL,
+  Description		TEXT								NOT NULL,
+  Place				TEXT								NOT NULL
+)

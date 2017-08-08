@@ -222,14 +222,14 @@
 .timeline .event .event-description .time {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: flex-start;
   width: 50%;
 }
 
 .timeline .event .event-description .location {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: flex-start;
   margin-bottom: 0.5rem;
 }
 
@@ -276,8 +276,4 @@
 .timeline .future-opacity {
   -webkit-filter: opacity(.3);
   filter: opacity(.3);
-}
-
-.hidden {
-    display: none !important;
 }
