@@ -2535,6 +2535,18 @@
 			width: 65rem;
 		}
 
+        .panel.one {
+            width: 850px;
+        }
+
+        .panel.two {
+            width: 1000px;
+        }
+
+        .panel.full {
+            width: 1800px;
+        }
+
 		.panel.small .span-0-25, .panel.medium .span-0-25, .panel.large .span-0-25 {
 			width: 2.5%;
 		}

@@ -14,25 +14,6 @@
 				<div class="js-digital-clock">00:00</div>
 				<div class="js-date"></div>
 			</div>
-			<!--<div class="circle-wrapper">
-				<div class="">Молодша школа</div>
-				<div class="circle-countdown first-circle-countdown" data-date="2017-09-01 00:00:00"></div>
-			</div>
-
-			<div class="circle-wrapper">
-				<div class="">Середня школа</div>
-				<div class="circle-countdown second-circle-countdown" data-date="2017-09-01 00:20:00"></div>
-			</div>
-
-			<div class="circle-wrapper">
-				<div class="">Старша школа</div>
-				<div class="circle-countdown third-circle-countdown" data-date="2017-09-01 00:40:00"></div>
-			</div>
-
-      <div class="circle-wrapper">
-          <div class="">Старша школа</div>
-          <canvas width="200" height="200" id="firstCanvas"></canvas>
-      </div>-->
 		</div>
 		<!-- Page Wrapper -->
 			<div id="page-wrapper">
@@ -41,8 +22,8 @@
 					<div id="wrapper">
 
 						<!-- Panel (Banner) -->
-							<section class="panel banner right" id="historyDayPanel">
-								<div class="content color0 span-3-75">
+							<section class="panel banner right two" id="historyDayPanel">
+								<div class="content color0 span-3-5">
 									<h1 class="major">1 Вересня<br/> перший дзвоник</h1>
 									<p>
 										День знань був оголошений державним святом в 1980 році, але
@@ -62,7 +43,7 @@
 							</section>
 
 						<!-- Panel (Weather) -->
-							<section class="panel spotlight medium right" id="weatherPanel">
+							<section class="panel spotlight one right span-3-5" id="weatherPanel">
 								<div id="weather-background" class="default-weather" style="width: 100%; pointer-events: none">
 								        <canvas id="rain-canvas"></canvas>
 								        <canvas id="cloud-canvas"></canvas>
@@ -107,137 +88,9 @@
 							</section>
 
                         <!-- Panel (Timeline) -->
-                        <section class="panel color4-alt" id="timelinePanel">
+                        <section class="panel full color4-alt" id="timelinePanel">
                             <div class="timeline">
-                                <!--<div class="line median"></div>
-
-                                <div class="event">
-                                    <div class="event-wrapper top">
-                                        <div class="event-time">
-                                            <div class="day-digit">02</div>
-                                            <div class="day">
-                                                Листопада
-                                            </div>
-                                        </div>
-
-                                        <div class="event-description">
-                                            <div class="time">
-                                                <div class="event-icon">
-                                                    <i class="fa fa-15x fa-clock-o" aria-hidden="true"></i>
-                                                </div>
-                                                02:00
-                                            </div>
-                                            <div class="location">
-                                                <div class="event-icon">
-                                                    <i class="fa fa-15x fa-map-marker" aria-hidden="true"></i>
-                                                </div>
-                                                Хата за школою
-                                            </div>
-                                            Репетиція гей параду
-                                        </div>
-                                    </div>
-
-                                    <div class="line circle"></div>
-                                </div>
-
-                                <div class="line long"></div>
-
-                                <div class="event">
-                                    <div class="event-wrapper bot">
-                                        <div class="event-time">
-                                            <div class="day-digit">10</div>
-                                            <div class="day">
-                                                Листопада
-                                            </div>
-                                        </div>
-                                        <div class="event-description">
-                                            <div class="time">
-                                                <div class="event-icon">
-                                                    <i class="fa fa-15x fa-clock-o" aria-hidden="true"></i>
-                                                </div>
-                                                02:00
-                                            </div>
-                                            <div class="location">
-                                                <div class="event-icon">
-                                                    <i class="fa fa-15x fa-map-marker" aria-hidden="true"></i>
-                                                </div>
-                                                Хата за школою
-                                            </div>
-                                            Свято 10 Листопада
-                                        </div>
-                                    </div>
-
-                                    <div class="line circle"></div>
-                                </div>
-
-                                <div class="line long"></div>
-
-                                <div class="event">
-                                    <div class="event-wrapper top">
-                                        <div class="event-time">
-                                            <div class="day-digit">32</div>
-                                            <div class="day">
-                                                Листопада
-                                            </div>
-                                        </div>
-
-                                        <div class="event-description">
-                                            <div class="time">
-                                                <div class="event-icon">
-                                                    <i class="fa fa-15x fa-clock-o" aria-hidden="true"></i>
-                                                </div>
-                                                02:00
-                                            </div>
-                                            <div class="location">
-                                                <div class="event-icon">
-                                                    <i class="fa fa-15x fa-map-marker" aria-hidden="true"></i>
-                                                </div>
-                                                Хата за школою
-                                            </div>
-                                            Ще якесь свято
-                                        </div>
-                                    </div>
-                                    <div class="line circle"></div>
-                                </div>
-
-                                <div class="line long"></div>
-
-                                <div class="event">
-                                    <div class="event-wrapper bot">
-                                        <div class="event-time">
-                                            <div class="day-digit">33</div>
-                                            <div class="day">
-                                                Листопада
-                                            </div>
-                                        </div>
-                                        <div class="event-description">
-                                            <div class="time">
-                                                <div class="event-icon">
-                                                    <i class="fa fa-15x fa-clock-o" aria-hidden="true"></i>
-                                                </div>
-                                                02:00
-                                            </div>
-                                            <div class="location">
-                                                <div class="event-icon">
-                                                    <i class="fa fa-15x fa-map-marker" aria-hidden="true"></i>
-                                                </div>
-                                                Хата за школою
-                                            </div>
-                                            Майстер клас приготування шаурми вокзальної. Біля вокзалу.
-                                        </div>
-                                    </div>
-                                    <div class="line circle"></div>
-                                </div>
-
-                                <div class="line median"></div>
-
-                                <svg height="20" width="42">
-                                    <line x1="1" y1="0" x2="1" y2="20" style="stroke:rgba(255, 255, 255, 0.25);stroke-width:2" />
-                                    <circle cx="11" cy="10" r="3" fill="rgba(255, 255, 255, 0.25)" />
-                                    <circle cx="21" cy="10" r="3" fill="rgba(255, 255, 255, 0.25)" />
-                                    <circle cx="31" cy="10" r="3" fill="rgba(255, 255, 255, 0.25)" />
-                                    <line x1="41" y1="0" x2="41" y2="20" style="stroke:rgba(255, 255, 255, 0.25);stroke-width:2" />
-                                </svg>-->
+                                
                             </div>
                         </section>
 
@@ -315,55 +168,11 @@
 							</section> -->
 
 						<!-- Panel (Awards) -->
-							<section class="panel spotlight large left" id="awardsPanel">
+							<section class="panel spotlight full left" id="awardsPanel">
 								<div class="content awards">
 									<h1 class="major">Наші перемоги</h1>
 									<div class="events">
-										<!--<div class="award">
-											<div class="badge">
-												<img src="Images/awards/medal.png">
-											</div>
-											<div class="description">
-												<h4>Темний Ярослав</h4>
-												<p>3 місце Олімпіада з Лабуди</p>
-											</div>
-										</div>
-										<div class="award">
-											<div class="badge">
-												<img src="Images/awards/diploma.png">
-											</div>
-											<div class="description">
-												<h4>Темний Ярослав</h4>
-												<p>Почесна грамота і не дуже багато тексту</p>
-											</div>
-										</div>
-										<div class="award">
-											<div class="badge">
-												<img src="Images/awards/football.png">
-											</div>
-											<div class="description">
-												<h4>5 класс</h4>
-												<p>Перемога в турнірі за гаражами</p>
-											</div>
-										</div>
-										<div class="award">
-											<div class="badge">
-												<img src="Images/awards/diploma.png">
-											</div>
-											<div class="description">
-												<h4>Марія Ноуфамілія</h4>
-												<p>Диплом невидомості 3 ступеня</p>
-											</div>
-										</div>
-										<div class="award">
-											<div class="badge">
-												<img src="Images/awards/trophy.png">
-										  </div>
-											<div class="description">
-												<h4>Закінчилась фантазія</h4>
-												<p>Тут теж опиc</p>
-											</div>
-										</div>-->
+										
 									</div>
 								</div>
 								<div class="image filtered tinted" data-position="top right">

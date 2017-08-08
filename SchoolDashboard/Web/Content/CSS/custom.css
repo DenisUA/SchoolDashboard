@@ -108,17 +108,17 @@
   background-color: rgba(255, 255, 255, 0.2);
   z-index: 1;
   top: -3.5rem;
-  min-height: 9rem;
+  height: 180px;
   padding: 0.3rem;
-  max-width: 14rem;
+  width: 300px;
   box-shadow: 0 0 20px rgba(0,0,0,0.3);
+  overflow: hidden;
 }
 
 .awards .description h4 {
   letter-spacing: normal;
   font-size: 1rem;
   padding-top: 3.5rem;
-  max-width: 14rem;
   margin: 0;
 }
 

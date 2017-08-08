@@ -16,7 +16,7 @@ namespace SchoolDashboard.Controllers.Tiles
 
         public override DataModel GetViewData()
         {
-            var events = Repository.GetCalendarEvents(4)
+            var events = Repository.GetCalendarEvents(7)
                 .Select(e => new TimelineItem()
                 {
                     Day = e.DateTime.Day.ToString(),

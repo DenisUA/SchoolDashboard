@@ -54,7 +54,7 @@ namespace SchoolDashboard.DAL
 
         public static CalendarEvent[] GetCalendarEvents(int count)
         {
-            return ExecuteToModel<CalendarEvent>("SELECT * FROM CalendarEvents ORDER BY TimeBinary DESC LIMIT " + count);
+            return ExecuteToModel<CalendarEvent>("SELECT * FROM CalendarEvents ORDER BY TimeBinary ASC LIMIT " + count);
         }
 
         #region Helpers
