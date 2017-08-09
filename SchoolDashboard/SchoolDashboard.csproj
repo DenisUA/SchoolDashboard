@@ -80,6 +80,7 @@
     <Compile Include="Controllers\Tiles\Tile.cs" />
     <Compile Include="Controllers\Tiles\TimelineTile.cs" />
     <Compile Include="Controllers\Tiles\ViewDataModels\AwardsTileData.cs" />
+    <Compile Include="Controllers\Tiles\ViewDataModels\BirthdayTileData.cs" />
     <Compile Include="Controllers\Tiles\ViewDataModels\DataModel.cs" />
     <Compile Include="Controllers\Tiles\ViewDataModels\HistoryDayTileData.cs" />
     <Compile Include="Controllers\Tiles\ViewDataModels\TimelineTileData.cs" />
@@ -163,6 +164,11 @@
     <Content Include="Web\Content\Images\awards\trophy2.png" />
     <Content Include="Web\Content\Images\awards\voleyboll.png" />
     <Content Include="Web\Content\Images\bg.jpg" />
+    <Content Include="Web\Content\Images\BPhotos\people.jpg" />
+    <Content Include="Web\Content\Images\BPhotos\people1.jpg" />
+    <Content Include="Web\Content\Images\BPhotos\people2.png" />
+    <Content Include="Web\Content\Images\BPhotos\people3.jpg" />
+    <Content Include="Web\Content\Images\BPhotos\people4.jpg" />
     <Content Include="Web\Content\Images\gallery\fulls\01.jpg" />
     <Content Include="Web\Content\Images\gallery\fulls\02.jpg" />
     <Content Include="Web\Content\Images\gallery\fulls\03.jpg" />

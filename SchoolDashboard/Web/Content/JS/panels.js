@@ -2,15 +2,17 @@
 tilesHandlers["historyDayPanel"] = function (data, element) {
 
 };
+
 tilesHandlers["weatherPanel"] = function (data, element) {
 
 };
+
 tilesHandlers["timelinePanel"] = function (data, element) {
     let innerHtml = "<div class='line median'></div>";
     let isTop = true;
 
     $.each(data.timelineItems,
-        function(i, el) {
+        function (i, el) {
             innerHtml += "<div class='event'>" +
                             "<div class='event-wrapper " + (isTop ? "top" : "bot") + "'>" +
                             "<div class='event-time'>" +
@@ -46,13 +48,22 @@ tilesHandlers["timelinePanel"] = function (data, element) {
 
     $(element).find(".timeline").html(innerHtml);
 };
-tilesHandlers["birthdaysPanel"] = function (data, element) {
 
+tilesHandlers["birthdaysPanel"] = function (data, element) {
+    let innerHtml = "";
+    $.each(data.items, function (i, el) {
+        innerHtml += "<div class='person'>" +
+            "<img class='avatar' src='Images/BPhotos/" + el.photoName + "'>" +
+            "<h4>" + el.name + "</h4></div>";
+    });
+
+    $(element).find(".people").html(innerHtml);
 };
+
 tilesHandlers["awardsPanel"] = function (data, element) {
     let innerHtml = "";
     $.each(data.awards,
-        function(i, el) {
+        function (i, el) {
             innerHtml += "<div class='award'><div class='badge'><img src='Images/awards/" +
                 el.imageName +
                 "'></div><div class='description'><h4>" +
@@ -78,7 +89,7 @@ var currentTilesIds = [];
 function processTiles() {
     if (currentTilesIds.length > 0) {
         $.each(currentTilesIds,
-            function(index, el) {
+            function (index, el) {
                 hide(el);
             });
     }
@@ -88,7 +99,7 @@ function processTiles() {
 
             $.each(data, function (index, dataElement) {
                 let htmlElement = $("#" + dataElement.tileId);
-                
+
                 tilesHandlers[dataElement.tileId](dataElement.data, htmlElement);
 
                 if (showTime < dataElement.data.showTime) {

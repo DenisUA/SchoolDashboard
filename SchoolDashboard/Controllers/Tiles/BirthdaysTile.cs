@@ -9,19 +9,22 @@ namespace SchoolDashboard.Controllers.Tiles
 {
     class BirthdaysTile : Tile
     {
-        public override bool IsActive { get; }
+        public override bool IsActive { get { return true; } }
 
-        public override string TileId
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-        }
+        public override string TileId { get { return "birthdaysPanel"; } }
 
         public override DataModel GetViewData()
         {
-            throw new NotImplementedException();
+            var res = new BirthdayTileData();
+            res.Items = new BirthdayItem[] {
+                new BirthdayItem() {Name = "Лемішка Максим", PhotoName = "people1.jpg" },
+                new BirthdayItem() {Name = "Сташків Анастасія", PhotoName = "people.jpg" },
+                new BirthdayItem() {Name = "Дублянко Марта", PhotoName = "people2.png" },
+                new BirthdayItem() {Name = "Грицина Ольга", PhotoName = "people3.jpg" },
+                new BirthdayItem() {Name = "Масна Наталія", PhotoName = "people4.jpg" },
+            };
+
+            return res;
         }
     }
 }
