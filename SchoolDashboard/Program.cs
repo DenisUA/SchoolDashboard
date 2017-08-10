@@ -14,14 +14,24 @@ namespace SchoolDashboard
             dashboard.Start();
             Console.WriteLine("Dashboard started. Press Enter(Return) to exit...");
 
-			while (true)
-			{
-				if (Console.ReadLine() == "e")
-				{
-					dashboard.Stop();
-					break;
-				}
+			var commads = new ConsoleCommand[] { new LessonCirclesCommand() };
+
+			while (true) {
+				ProcessCommand(Console.ReadLine(), commads);
 			}
         }
+
+		static void ProcessCommand(string input, ConsoleCommand[] commads)
+		{
+			foreach (var command in commads)
+			{
+				if (command.IsMatch(input))
+				{
+					command.Process(input);
+					return;
+				}
+			}
+			Console.WriteLine("Incorrect command");
+		}
     }
 }
