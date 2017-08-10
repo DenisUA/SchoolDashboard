@@ -21,11 +21,11 @@ namespace SchoolDashboard.Controllers.Tiles
             var url = "https://uk.wikipedia.org/wiki/";
             var now = DateTime.Now;
             url += now.Day + "_";
-            url += Uri.EscapeDataString(Helpers.MonthToLocalName(now.Month));
+            url += Uri.EscapeDataString(Helpers.MonthToLocalName(now.Month).ToLower());
 
             var web = new HtmlWeb();
             var doc = web.Load(url);
-            var nodes = doc.DocumentNode.Descendants();
+            var nodes = doc.DocumentNode.SelectNodes("//*[@id=\"mw-content-text\"]/div/ul[2]");
 
             return null;
         }
