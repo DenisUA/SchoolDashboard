@@ -2524,28 +2524,28 @@
 		}
 
 		.panel.small {
-			width: 35rem;
+			width: 35%;
 		}
 
 		.panel.medium {
-			width: 50rem;
+			width: 65%;
 		}
 
 		.panel.large {
-			width: 65rem;
+			width: 100%;
 		}
 
-        .panel.one {
-            width: 850px;
-        }
+    /*.panel.one {
+        width: 850px;
+    }
 
-        .panel.two {
-            width: 1000px;
-        }
+    .panel.two {
+        width: 1000px;
+    }
 
-        .panel.full {
-            width: 1800px;
-        }
+    .panel.full {
+        width: 1800px;
+    }*/
 
 		.panel.small .span-0-25, .panel.medium .span-0-25, .panel.large .span-0-25 {
 			width: 2.5%;
@@ -3499,7 +3499,8 @@
 		-ms-flex-shrink: 1;
 		flex-shrink: 1;
 		height: 100%;
-    padding: 250px 1% 2.5% 1%;
+    padding: 250px 2% 2.5% 2%;
+		width: 100%;
 	}
 
 		@media screen and (orientation: portrait) {
@@ -3566,6 +3567,7 @@
 		cursor: default;
 		position: relative;
 		height: 100%;
+		width: 100%;
 		/*box-shadow: 0 2rem 4rem 0.25rem rgba(46, 43, 55, 0.575);*/
 	}
 
