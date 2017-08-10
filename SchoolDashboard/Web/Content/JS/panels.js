@@ -87,8 +87,11 @@ function hide(id) {
 var currentTilesIds = [];
 
 function processTiles() {
-    $.get("/IsTileFixed", function (data) {
-        if (data == "True") {
+
+    $.get("/GetTileShowInfo", function (data) {
+
+        if (currentTilesIds.length > 0 && currentTilesIds.every(function (el, i){return el == data[i].tileId})) {
+            setTimeout(processTiles, 1000);
             return;
         }
 
@@ -97,26 +100,27 @@ function processTiles() {
                 function (index, el) {
                     hide(el);
                 });
+
+            currentTilesIds = [];
         }
+
+        let showTime = 0;
+
         setTimeout(function () {
-            $.get("/GetTileShowInfo", function (data) {
-                let showTime = 0;
+            $.each(data, function (index, dataElement) {
+                let htmlElement = $("#" + dataElement.tileId);
 
-                $.each(data, function (index, dataElement) {
-                    let htmlElement = $("#" + dataElement.tileId);
+                tilesHandlers[dataElement.tileId](dataElement.data, htmlElement);
 
-                    tilesHandlers[dataElement.tileId](dataElement.data, htmlElement);
+                if (showTime < dataElement.data.showTime) {
+                    showTime = dataElement.data.showTime;
+                }
 
-                    if (showTime < dataElement.data.showTime) {
-                        showTime = dataElement.data.showTime;
-                    }
-
-                    show(dataElement.tileId);
-                    currentTilesIds.push(dataElement.tileId);
-                });
-
-                setTimeout(processTiles, showTime);
+                show(dataElement.tileId);
+                currentTilesIds[index] = dataElement.tileId;
             });
+
+            setTimeout(processTiles, showTime);
         }, 1000);
     });
 }

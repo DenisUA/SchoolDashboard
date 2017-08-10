@@ -35,7 +35,7 @@ namespace SchoolDashboard.ConsoleCommands
                 }
 
                 var tiles = Dashboard.GetInstance().Tiles.Tiles;
-                var selectedTile = tiles.First(t => t.GetType().Name.ToLower() == argument);
+                var selectedTile = tiles.FirstOrDefault(t => t.GetType().Name.ToLower() == argument);
                 if (selectedTile != null)
                 {
                     Dashboard.GetInstance().Tiles.FixedTile = selectedTile;
