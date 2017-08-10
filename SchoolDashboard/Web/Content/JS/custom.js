@@ -107,5 +107,5 @@ function clockUpdate() {
 
   //var isSecondOdd = s % 2;
   $('.js-digital-clock').text(h + ':' + m);
-  $('.js-date').html(day + ' ' + month + '<br/>' + dayOfWeek);
+  $('.js-date').html(day + ' ' + month + ', ' + dayOfWeek);
 }

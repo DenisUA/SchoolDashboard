@@ -13,7 +13,7 @@
 
 .static-header .digital-date-time {
   padding: 0 2rem;
-  width: 18%;
+  width: 20%;
   display: inline-block;
   text-align: center;
   align-self: center;
@@ -108,7 +108,7 @@
   background-color: rgba(255, 255, 255, 0.2);
   z-index: 1;
   top: -3.5rem;
-  height: 180px;
+  min-height: 180px;
   padding: 0.3rem;
   width: 300px;
   box-shadow: 0 0 20px rgba(0,0,0,0.3);
@@ -135,17 +135,25 @@
 
 .awards .badge img {
   height: 5.5rem;
-  margin-top: 1rem;
 }
 
 /*===============================
             Timeline
 ===============================*/
 
-.timeline {
+.timeline-wrapper {
+  padding: 3.5rem
+}
+
+.timeline-wrapper .timeline-title {
+  height: 20%;
+}
+
+ .timeline-wrapper .timeline {
   display: flex;
   align-items: center;
-  padding: 3.5rem;
+  height: 70%;
+  /*padding: 3.5rem;*/
 }
 
 .timeline .line {
@@ -186,11 +194,11 @@
 
 .timeline .event-wrapper.top {
   top: -10rem;
-  left: -4.8rem;
+  left: -3.55rem;
 }
 
 .timeline .event-wrapper.bot {
-  left: -4.8rem;
+  left: -3.55rem;
   top: 1.8rem;
 }
 
