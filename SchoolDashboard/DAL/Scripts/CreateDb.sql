@@ -29,4 +29,20 @@ CREATE TABLE CalendarEvents
   HasTime			INTEGER								NOT NULL,
   Description		TEXT								NOT NULL,
   Place				TEXT								NOT NULL
-)
+);
+
+CREATE TABLE Facts
+(
+  Id				INTEGER PRIMARY KEY AUTOINCREMENT	NOT NULL,
+  FactText			TEXT								NOT NULL
+);
+
+CREATE TABLE Holidays
+(
+  Id				INTEGER PRIMARY KEY AUTOINCREMENT	NOT NULL,
+  [Day]				INTEGER								NOT NULL,
+  [Month]			INTEGER								NOT NULL,
+  Name				TEXT								NOT NULL,
+  Description		TEXT								NOT NULL,
+  Picture			TEXT								NOT NULL
+);

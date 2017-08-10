@@ -1,4 +1,6 @@
-﻿using System;
+﻿using SchoolDashboard.ConsoleCommands;
+using SchoolDashboard.Controllers.Tiles;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,24 +16,36 @@ namespace SchoolDashboard
             dashboard.Start();
             Console.WriteLine("Dashboard started. Press Enter(Return) to exit...");
 
-			var commads = new ConsoleCommand[] { new LessonCirclesCommand() };
+            var t = new FamousBirthdaysTile();
+            t.GetViewData();
+
+
+			var commads = new ConsoleCommand[] { new LessonCirclesCommand(), new FixTileCommand() };
 
 			while (true) {
-				ProcessCommand(Console.ReadLine(), commads);
+                if (ProcessCommand(Console.ReadLine(), commads))
+                    break;
 			}
         }
 
-		static void ProcessCommand(string input, ConsoleCommand[] commads)
+		static bool ProcessCommand(string input, ConsoleCommand[] commads)
 		{
+            if (input.ToLower() == "exit")
+                return true;
+
 			foreach (var command in commads)
 			{
 				if (command.IsMatch(input))
 				{
 					command.Process(input);
-					return;
+					return false;
 				}
 			}
+
+            Console.ForegroundColor = ConsoleColor.Red;
 			Console.WriteLine("Incorrect command");
+            Console.ResetColor();
+            return false;
 		}
     }
 }

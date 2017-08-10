@@ -87,33 +87,38 @@ function hide(id) {
 var currentTilesIds = [];
 
 function processTiles() {
-    if (currentTilesIds.length > 0) {
-        $.each(currentTilesIds,
-            function (index, el) {
-                hide(el);
+    $.get("/IsTileFixed", function (data) {
+        if (data == "True") {
+            return;
+        }
+
+        if (currentTilesIds.length > 0) {
+            $.each(currentTilesIds,
+                function (index, el) {
+                    hide(el);
+                });
+        }
+        setTimeout(function () {
+            $.get("/GetTileShowInfo", function (data) {
+                let showTime = 0;
+
+                $.each(data, function (index, dataElement) {
+                    let htmlElement = $("#" + dataElement.tileId);
+
+                    tilesHandlers[dataElement.tileId](dataElement.data, htmlElement);
+
+                    if (showTime < dataElement.data.showTime) {
+                        showTime = dataElement.data.showTime;
+                    }
+
+                    show(dataElement.tileId);
+                    currentTilesIds.push(dataElement.tileId);
+                });
+
+                setTimeout(processTiles, showTime);
             });
-    }
-    setTimeout(function () {
-        $.get("/GetTileShowInfo", function (data) {
-            let showTime = 0;
-
-            $.each(data, function (index, dataElement) {
-                let htmlElement = $("#" + dataElement.tileId);
-
-                tilesHandlers[dataElement.tileId](dataElement.data, htmlElement);
-
-                if (showTime < dataElement.data.showTime) {
-                    showTime = dataElement.data.showTime;
-                }
-
-                show(dataElement.tileId);
-                currentTilesIds.push(dataElement.tileId);
-            });
-
-            setTimeout(processTiles, showTime);
-        });
-    }, 1000);
-
+        }, 1000);
+    });
 }
 
 $(document).ready(function () {

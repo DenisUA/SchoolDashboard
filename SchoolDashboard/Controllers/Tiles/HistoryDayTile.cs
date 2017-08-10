@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SchoolDashboard.Controllers.Tiles.ViewDataModels;
+using SchoolDashboard.DAL;
 
 namespace SchoolDashboard.Controllers.Tiles
 {
@@ -15,7 +16,27 @@ namespace SchoolDashboard.Controllers.Tiles
 
         public override DataModel GetViewData()
         {
-            return new HistoryDayTileData();
+            var today = DateTime.Now;
+            var holiday = Repository.GetHoliday(today.Day, today.Month);
+            if (holiday == null)
+            {
+                var fact = Repository.GetRandomFact();
+                return new HistoryDayTileData()
+                {
+                    Title = "А ви знали що...",
+                    Text = fact,
+                    Image = ""
+                };
+            }
+            else
+            {
+                return new HistoryDayTileData()
+                {
+                    Title = holiday.Name,
+                    Text = holiday.Description,
+                    Image = holiday.Picture
+                };
+            }
         }
     }
 }

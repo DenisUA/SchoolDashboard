@@ -32,7 +32,8 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>anycpu</PlatformTarget>
-    <DebugType></DebugType>
+    <DebugType>
+    </DebugType>
     <Optimize>true</Optimize>
     <OutputPath>.\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
@@ -52,6 +53,10 @@
   <ItemGroup>
     <Reference Include="Dapper, Version=1.50.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Dapper.1.50.2\lib\net451\Dapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="HtmlAgilityPack, Version=1.5.1.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlAgilityPack.1.5.1\lib\Net45\HtmlAgilityPack.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Nancy, Version=1.4.4.0, Culture=neutral, processorArchitecture=MSIL">
@@ -81,11 +86,14 @@
     <Reference Include="Mono.Data.Sqlite" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\Helpers.cs" />
     <Compile Include="Common\StringConstants.cs" />
+    <Compile Include="ConsoleCommands\FixTileCommand.cs" />
     <Compile Include="Controllers\LessonsController.cs" />
     <Compile Include="Controllers\TilesController.cs" />
     <Compile Include="Controllers\Tiles\AwardsTile.cs" />
     <Compile Include="Controllers\Tiles\BirthdaysTile.cs" />
+    <Compile Include="Controllers\Tiles\FamousBirthdaysTile.cs" />
     <Compile Include="Controllers\Tiles\HistoryDayTile.cs" />
     <Compile Include="Controllers\Tiles\Tile.cs" />
     <Compile Include="Controllers\Tiles\TimelineTile.cs" />
@@ -98,6 +106,8 @@
     <Compile Include="Controllers\Tiles\WeatherTile.cs" />
     <Compile Include="DAL\Models\Awards.cs" />
     <Compile Include="DAL\Models\CalendarEvent.cs" />
+    <Compile Include="DAL\Models\Fact.cs" />
+    <Compile Include="DAL\Models\Holiday.cs" />
     <Compile Include="DAL\Models\Lesson.cs" />
     <Compile Include="DAL\Models\SchoolLevel.cs" />
     <Compile Include="DAL\Repository.cs" />
@@ -199,6 +209,7 @@
     <Content Include="Web\Content\Images\gallery\thumbs\07.jpg" />
     <Content Include="Web\Content\Images\gallery\thumbs\08.jpg" />
     <Content Include="Web\Content\Images\gallery\thumbs\09.jpg" />
+    <Content Include="Web\Content\Images\HolidaysPictures\1September.jpg" />
     <Content Include="Web\Content\Images\overlay.png" />
     <Content Include="Web\Content\Images\pic01.jpg" />
     <Content Include="Web\Content\Images\pic01_2.jpg" />
@@ -218,9 +229,7 @@
     <Content Include="Web\Content\JS\weather.js" />
     <Content Include="Web\Views\index.html" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ConsoleCommands\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Data.SQLite.Core.1.0.105.2\build\net451\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.105.2\build\net451\System.Data.SQLite.Core.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

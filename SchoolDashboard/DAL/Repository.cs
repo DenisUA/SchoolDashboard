@@ -57,6 +57,19 @@ namespace SchoolDashboard.DAL
             return ExecuteToModel<CalendarEvent>("SELECT * FROM CalendarEvents ORDER BY TimeBinary ASC LIMIT " + count);
         }
 
+        public static string GetRandomFact()
+        {
+            var facts = GetAllRows<Fact>("Facts");
+            var random = new Random();
+            var randomIndex = random.Next(0, facts.Length);
+            return facts[randomIndex].FactText;
+        }
+
+        public static Holiday GetHoliday(int month, int day)
+        {
+            return ExecuteToModel<Holiday>("SELECT * FROM Holidays WHERE [Month] = @Month AND [Day] = @Day", new { Month = month, Day = day }).FirstOrDefault();
+        }
+
         #region Helpers
         private static SqliteConnection GetConnection()
         {

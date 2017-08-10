@@ -1,5 +1,6 @@
 ﻿using System;
-namespace SchoolDashboard
+
+namespace SchoolDashboard.ConsoleCommands
 {
 	public class LessonCirclesCommand : ConsoleCommand
 	{
@@ -9,8 +10,8 @@ namespace SchoolDashboard
 
 		public override bool IsMatch(string command)
 		{
-			Console.WriteLine("Match working");
-			return true;
+			//Console.WriteLine("Match working");
+			return false;
 		}
 
 		public override void Process(string command)

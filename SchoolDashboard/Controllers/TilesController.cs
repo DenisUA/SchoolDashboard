@@ -13,6 +13,9 @@ namespace SchoolDashboard.Controllers
         private Tile[][] _tilesSets;
         private int _currentTileSetIndex;
 
+        public Tile FixedTile { get; set; }
+        public Tile[] Tiles { get { return _tilesSets.SelectMany(a => a.ToArray()).ToArray(); } }
+
         public TilesController()
         {
             _tilesSets = new Tile[][]
@@ -23,10 +26,15 @@ namespace SchoolDashboard.Controllers
                 new Tile[] { new BirthdaysTile() }
             };
             _currentTileSetIndex = 0;
+
+            FixedTile = null;
         }
 
         public ShowTilesInfo[] GetShowTilesInfo()
         {
+            if (FixedTile != null)
+                return new ShowTilesInfo[] { new ShowTilesInfo() { TileId = FixedTile.TileId, Data = FixedTile.GetViewData() } };
+
             if (_currentTileSetIndex > _tilesSets.Length - 1)
                 _currentTileSetIndex = 0;
 

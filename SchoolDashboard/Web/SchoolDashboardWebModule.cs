@@ -29,5 +29,11 @@ namespace SchoolDashboard.Web
             var res = Dashboard.GetInstance().Tiles.GetShowTilesInfo();
             return Response.AsJson(res);
         }
+
+        public dynamic IsTileFixed()
+        {
+            var res = Dashboard.GetInstance().Tiles.FixedTile != null;
+            return Response.AsText(res.ToString());
+        }
     }
 }
