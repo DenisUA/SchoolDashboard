@@ -36,7 +36,7 @@ function initCircles() {
         function (data) {
             $.each(data,
                 function (index, el) {
-                    $("#staticPanel").append("<div class='circle-wrapper'><div class='circle-title'>" +
+                    $(".cicles-wrapper").append("<div class='circle-wrapper'><div class='circle-title'>" +
                         el.description + "</div><canvas width='200' height='200' class='lesson-circle' data-school-level='" +
                         el.id + "' id='lessonCircle" + el.id + "'></canvas></div>");
                     let circle = new LessonCircle("lessonCircle" + el.id);
