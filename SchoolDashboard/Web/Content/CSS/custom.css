@@ -298,3 +298,32 @@
   margin: initial;
   letter-spacing: normal;
 }
+
+/*===============================
+            List of items
+===============================*/
+
+.items-list {
+  width: 100%;
+  overflow: hidden;
+  column-count: 3;
+  column-gap: 0.2rem;
+}
+
+.items-list .item {
+  padding: 1rem;
+  -webkit-column-break-inside: avoid;
+}
+
+.items-list .item blockquote {
+  font-size: 1.15rem;
+}
+
+.items-list .item.important blockquote{
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 0.25rem;
+}
+
+.items-list .item p{
+  margin-bottom: auto;
+}
