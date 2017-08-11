@@ -16,8 +16,8 @@ namespace SchoolDashboard
             dashboard.Start();
             Console.WriteLine("Dashboard started. Press Enter(Return) to exit...");
 
-            var t = new FamousBirthdaysTile();
-            t.GetViewData();
+            //var t = new FamousBirthdaysTile();
+            //t.GetViewData();
 
 
 			var commads = new ConsoleCommand[] { new LessonCirclesCommand(), new FixTileCommand() };
