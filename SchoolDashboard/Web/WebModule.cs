@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace SchoolDashboard.Web
 {
-    public class WebModule : NancyModule
+    public abstract class WebModule : NancyModule
     {
         public WebModule()
         {
