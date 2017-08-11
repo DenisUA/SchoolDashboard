@@ -256,21 +256,6 @@
   font-size: 1.5rem;
 }
 
-/*.timeline .time {
-  position: absolute;
-  font-family: Arial, Helvetica, sans-serif;
-  width: 50px;
-  font-size: 0.7rem;
-}
-
-.timeline .time.top {
-  margin-top: -2rem;
-}
-
-.timeline .time.bot {
-  margin-top: 0.5rem;
-}*/
-
 .timeline .now {
   color: white;
   border-radius: 7px;
@@ -290,4 +275,26 @@
 .timeline .future-opacity {
   -webkit-filter: opacity(.3);
   filter: opacity(.3);
+}
+
+/*===============================
+            Famous
+===============================*/
+
+
+.panel.spotlight.left.famous {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.panel.spotlight.left.famous .content {
+  background-image: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.5) 30%, rgba(0, 0, 0, 0.5) 50%);
+}
+
+.panel.spotlight.left.famous h5 {
+  font-size: 0.6rem;
+  font-weight: normal;
+  margin: initial;
+  letter-spacing: normal;
 }
