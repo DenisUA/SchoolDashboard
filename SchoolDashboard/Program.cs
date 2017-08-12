@@ -20,7 +20,7 @@ namespace SchoolDashboard
             //t.GetViewData();
 
 
-			var commads = new ConsoleCommand[] { new LessonCirclesCommand(), new FixTileCommand() };
+            var commads = new ConsoleCommand[] { new LessonCirclesCommand(), new FixTileCommand() };
 
 			while (true) {
                 if (ProcessCommand(Console.ReadLine(), commads))
