@@ -107,6 +107,7 @@
     <Compile Include="DAL\Models\Awards.cs" />
     <Compile Include="DAL\Models\CalendarEvent.cs" />
     <Compile Include="DAL\Models\Fact.cs" />
+    <Compile Include="DAL\Models\FamousBirthday.cs" />
     <Compile Include="DAL\Models\Holiday.cs" />
     <Compile Include="DAL\Models\Lesson.cs" />
     <Compile Include="DAL\Models\SchoolLevel.cs" />

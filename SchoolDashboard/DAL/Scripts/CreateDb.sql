@@ -46,3 +46,13 @@ CREATE TABLE Holidays
   Description		TEXT								NOT NULL,
   Picture			TEXT								NOT NULL
 );
+
+CREATE TABLE FamousBirthdays
+(
+  Id				INTEGER PRIMARY KEY AUTOINCREMENT	NOT NULL,
+  [Day]				INTEGER								NOT NULL,
+  [Month]			INTEGER								NOT NULL,
+  Name				TEXT								NOT NULL,
+  Description		TEXT								NOT NULL,
+  Photo				TEXT								NOT NULL
+);

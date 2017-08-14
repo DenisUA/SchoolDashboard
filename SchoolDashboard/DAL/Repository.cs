@@ -70,6 +70,11 @@ namespace SchoolDashboard.DAL
             return ExecuteToModel<Holiday>("SELECT * FROM Holidays WHERE [Month] = @Month AND [Day] = @Day", new { Month = month, Day = day }).FirstOrDefault();
         }
 
+        public static void AddFamousBirthday(FamousBirthday model)
+        {
+            Execute("INSERT INTO FamousBirthdays ([Day], [Month], Name, Description, Photo) VALUES (@Day, @Month, @Name, @Description, @Photo)", model);
+        }
+
         #region Helpers
         private static SqliteConnection GetConnection()
         {
