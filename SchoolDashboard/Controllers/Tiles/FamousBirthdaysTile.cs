@@ -104,7 +104,26 @@ namespace SchoolDashboard.Controllers.Tiles
             if (link == null || link.InnerText.Contains("action=edit"))
                 return null;
 
-            return new Tuple<string, string>(match.Groups["name"].Value, link.Attributes["href"].Value);
+            var info = GetPhotoAndDescription(link.Attributes["href"].Value);
+
+            return new Tuple<string, string>(match.Groups["name"].Value, info.Item1);
+        }
+
+        private Tuple<string, string> GetPhotoAndDescription(string link)
+        {
+            var doc = (new HtmlWeb()).Load("https://uk.wikipedia.org" + link);
+
+            var descriptionNode = doc.DocumentNode.SelectNodes("//div[@class=\"mw-parser-output\"]").First().ChildNodes.Where(n => n.Name == "p").FirstOrDefault();
+            if (descriptionNode == null)
+                return null;
+
+            var match = Regex.Match(descriptionNode.InnerText, @"(\s|(\&\#160\;)|(&nbsp;))\—\s(?<description>\D[^\.]+)\.");
+            if (!match.Success)
+                return null;
+
+            var description = match.Groups["description"].Value;
+
+            return new Tuple<string,string>(description, "");
         }
     }
 }
