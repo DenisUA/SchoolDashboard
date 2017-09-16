@@ -75,6 +75,20 @@ namespace SchoolDashboard.DAL
             Execute("INSERT INTO FamousBirthdays ([Day], [Month], Name, Description, Photo) VALUES (@Day, @Month, @Name, @Description, @Photo)", model);
         }
 
+        public static Notice[] GetAllNotices()
+        {
+            var now = DateTime.Now.Date;
+            var notices = GetAllRows<Notice>("Notices");
+            if (notices.Length == 0)
+                return notices;
+
+            var expired = notices.Where(n => n.Date.AddDays(n.Duration) < now);
+            foreach (var notice in expired)
+                DeleteRow("Notices", notice.Id);
+
+            return GetAllRows<Notice>("Notices");
+        }
+
         #region Helpers
         private static SqliteConnection GetConnection()
         {

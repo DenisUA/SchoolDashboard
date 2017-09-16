@@ -76,6 +76,21 @@ tilesHandlers["awardsPanel"] = function (data, element) {
     $(element).find(".events").html(innerHtml);
 };
 
+tilesHandlers["noticesPanel"] = function (data, element) {
+    let innerHtml = "";
+    $.each(data.nortices, function (i, el) {
+        innerHtml += "<div class=\"item" + el.isImportant ? " important" : "" + "\">";
+        innerHtml += "<h3>" + el.title + "</h3>";
+        innerHtml += "<blockquote>";
+        innerHtml += "<p>" + el.dateString + "</p>";
+        innerHtml += el.Text;
+        innerHtml += "</blockquote>";
+        innerHtml += "</div>\n";
+    })
+
+    $(element).find(".items-list").html(innerHtml);
+}
+
 function show(id) {
     $("#" + id).fadeIn();
 }

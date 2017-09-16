@@ -56,3 +56,13 @@ CREATE TABLE FamousBirthdays
   Description		TEXT								NOT NULL,
   Photo				TEXT								NOT NULL
 );
+
+CREATE TABLE  Notices
+(
+  Id				INTEGER PRIMARY KEY AUTOINCREMENT	NOT NULL,
+  Title				TEXT								NOT NULL,
+  DateBinary		INTEGER								NOT NULL,
+  [Text]			TEXT								NOT NULL,
+  Duration			INTEGER								NOT NULL,
+  IsImportant		INTEGER								NOT NULL
+)
