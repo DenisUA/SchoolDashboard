@@ -1,0 +1,46 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    @*<link rel="icon" href="../../../../favicon.ico">*@
+
+    <title>Панель керування</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/CSS/bootstrap.min.css" rel="stylesheet">
+
+</head>
+
+<body style="min-height: 75rem;">
+
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+        <a class="navbar-brand" href="#">Панель керування</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/ControlPanel/CalendarEvents">Календарні події</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/ControlPanel/Awards">Нагороди</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Оголошення</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <main role="main" class="container-fluid">
+        @RenderBody()
+    </main>
+
+    <script src="/JS/jquery.min.js"></script>
+    <script src="/JS/bootstrap.bundle.min.js"></script>
+    <script src="/JS/validation.js"></script>
+</body>
+</html>
+

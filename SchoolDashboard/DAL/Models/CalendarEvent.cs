@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace SchoolDashboard.DAL.Models
 {
-    class CalendarEvent
+    [TableName("CalendarEvents")]
+    public class CalendarEvent
     {
         public int Id { get; set; }
         public long TimeBinary { get; set; }

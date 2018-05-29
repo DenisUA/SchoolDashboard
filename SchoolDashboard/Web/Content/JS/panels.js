@@ -53,7 +53,7 @@ tilesHandlers["birthdaysPanel"] = function (data, element) {
     let innerHtml = "";
     $.each(data.items, function (i, el) {
         innerHtml += "<div class='person'>" +
-            "<img class='avatar' src='Images/BPhotos/" + el.photoName + "'>" +
+            "<img class='avatar' src='/Images/BPhotos/" + el.photoName + "'>" +
             "<h4>" + el.name + "</h4></div>";
     });
 
@@ -64,7 +64,7 @@ tilesHandlers["awardsPanel"] = function (data, element) {
     let innerHtml = "";
     $.each(data.awards,
         function (i, el) {
-            innerHtml += "<div class='award'><div class='badge'><img src='Images/awards/" +
+            innerHtml += "<div class='award'><div class='badge'><img src='/Images/awards/" +
                 el.imageName +
                 "'></div><div class='description'><h4>" +
                 el.title +
@@ -78,12 +78,12 @@ tilesHandlers["awardsPanel"] = function (data, element) {
 
 tilesHandlers["noticesPanel"] = function (data, element) {
     let innerHtml = "";
-    $.each(data.nortices, function (i, el) {
-        innerHtml += "<div class=\"item" + el.isImportant ? " important" : "" + "\">";
+    $.each(data.notices, function (i, el) {
+        innerHtml += "<div class=\"item" + (el.isImportant ? " important" : "") + "\">";
         innerHtml += "<h3>" + el.title + "</h3>";
         innerHtml += "<blockquote>";
         innerHtml += "<p>" + el.dateString + "</p>";
-        innerHtml += el.Text;
+        innerHtml += el.text;
         innerHtml += "</blockquote>";
         innerHtml += "</div>\n";
     })
@@ -103,7 +103,7 @@ var currentTilesIds = [];
 
 function processTiles() {
 
-    $.get("/GetTileShowInfo", function (data) {
+    $.get("/Dashboard/GetTileShowInfo", function (data) {
 
         if (currentTilesIds.length > 0 && currentTilesIds.every(function (el, i){return el == data[i].tileId})) {
             setTimeout(processTiles, 1000);

@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace SchoolDashboard.DAL.Models
 {
-    class Awards
+    [TableName("Awards")]
+    public class Awards
     {
         public int Id { get; set; }
         public string Owner { get; set; }
@@ -14,7 +15,7 @@ namespace SchoolDashboard.DAL.Models
         public AwardsTypes Type { get; set; }
     }
 
-    enum AwardsTypes
+    public enum AwardsTypes
     {
         Basketball = 0,
         Crown = 1,

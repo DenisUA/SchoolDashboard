@@ -1,0 +1,70 @@
+﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<SchoolDashboard.Web.Models.Awards>
+@{
+    Layout = "_Layout.cshtml";
+}
+
+<div class="row justify-content-md-center">
+    <div class="col-md-10">
+        <div class="card" style="margin-bottom:15px;">
+            <div class="card-header h4 text-success">
+                Активні
+                <a class="btn btn-outline-success btn-sm" href="/ControlPanel/EditAward" role="button">Додати</a>
+            </div>
+            <div class="card-body">
+                <div class="col-md-12">
+                    <div class="row justify-content-md-center">
+                        @foreach (var award in Model.ActiveAwards)
+                        {
+                            <div class="card text-center" style="width: 17rem; margin-bottom:20px; margin-left:10px; margin-right: 10px; max-height:350px;">
+                                <img class="card-img-top" src="@award.ImageName" style="width: auto; height:30%; margin-left: auto; margin-right: auto; margin-top:5px;" alt="">
+                                <div class="card-body">
+                                    <h5 class="card-title">@award.Owner</h5>
+                                    <p class="card-text">@award.Description</p>
+                                    
+                                </div>
+                                <div class="card-footer">
+                                    <a class="btn btn-outline-warning btn-sm" href="/ControlPanel/EditAward?Id=@award.Id" role="button">Редагувати</a>
+                                    <a class="btn btn-outline-danger btn-sm" href="/ControlPanel/DeleteAward?Id=@award.Id" role="button">Видалити</a>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="row justify-content-md-center">
+    <div class="col-md-10">
+        <div class="card">
+            <div class="card-header text-danger h4">
+                Неактивні
+                <a class="btn btn-outline-danger btn-sm" href="#" role="button">Видалити усі</a>
+            </div>
+            <div class="card-body">
+                <div class="col-md-12">
+                    <div class="row justify-content-md-center">
+                        @foreach (var award in Model.UnactiveAwards)
+                        {
+                            <div class="card text-center" style="width: 17rem; margin-bottom:20px; margin-left:10px; margin-right: 10px; max-height:350px;">
+                                <img class="card-img-top" src="@award.ImageName" style="width: auto; height:30%; margin-left: auto; margin-right: auto; margin-top:5px;" alt="">
+                                <div class="card-body">
+                                    <h5 class="card-title">@award.Owner</h5>
+                                    <p class="card-text">@award.Description</p>
+
+                                </div>
+                                <div class="card-footer">
+                                    <a class="btn btn-outline-warning btn-sm" href="#" role="button">Редагувати</a>
+                                    <a class="btn btn-outline-danger btn-sm" href="#" role="button">Видалити</a>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

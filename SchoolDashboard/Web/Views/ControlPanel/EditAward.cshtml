@@ -1,0 +1,68 @@
+﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<SchoolDashboard.Web.Models.Award>
+@{
+    Layout = "_Layout.cshtml";
+}
+
+<style>
+        label > input { /* HIDE RADIO */
+            visibility: hidden; /* Makes input not-clickable */
+            position: absolute; /* Remove input from document flow */
+        }
+
+        label > input + img { /* IMAGE STYLES */
+            cursor: pointer;
+            border: 4px solid transparent;
+        }
+
+        label > input:checked + img { /* (RADIO CHECKED) IMAGE STYLES */
+            border: 4px solid #f00;
+        }
+</style>
+
+<div class="row justify-content-md-center">
+    <div class="col-md-4">
+        <form class="needs-validation" action="/ControlPanel/SaveAward" method="post" novalidate>
+            <div class="form-group">
+                <label for="Owner">Ім'я і прізвище</label>
+                <input type="text" class="form-control" id="Owner" name="Owner" value="@Model.Owner" required>
+                <div class="invalid-feedback">
+                    Введіть ім'я та прівище
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="description">Опис</label>
+                <input type="text" class="form-control" id="description" name="Description" value="@Model.Description" required>
+                <div class="invalid-feedback">
+                    Введіть опис
+                </div>
+            </div>
+
+
+            <p>
+                Виберіть зображення:
+            </p>
+
+            <div>
+                @foreach (var awardType in Model.AllAwards)
+                {
+                    <label>
+                        @if (Model.Type == awardType.Key)
+                        {
+                            <input type="radio" name="Type" value="@awardType.Key.ToString()" checked />
+                        }
+                        else
+                        {
+                            <input type="radio" name="Type" value="@awardType.Key.ToString()" />
+                        }
+                        <img src="/Images/awards/@awardType.Value" style="width: 100px; height: auto;">
+                    </label>
+                }
+            </div>
+
+            <input type="hidden" name="Id" value="@Model.Id">
+
+            <button type="submit" class="btn btn-primary">Зберегти</button>
+        </form>
+    </div>
+</div>

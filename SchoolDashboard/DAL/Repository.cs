@@ -42,9 +42,14 @@ namespace SchoolDashboard.DAL
             return ExecuteToModel<Lesson>("SELECT * FROM Lessons WHERE SchoolLevel = @Level", new { Level = schoolLevel });
         }
 
+        public static void AddCalendarEvent(CalendarEvent model)
+        {
+            Execute("INSERT INTO CalendarEvents (TimeBinary, HasTime, Description, Place) VALUES (@TimeBinary, @HasTime, @Description, @Place)", model);
+        }
+
         public static SchoolLevel[] GetSchoolLevels()
         {
-            return GetAllRows<SchoolLevel>("SchoolLevels");
+            return GetAllRows<SchoolLevel>();
         }
 
         public static Awards[] GetAwards(int count)
@@ -52,17 +57,44 @@ namespace SchoolDashboard.DAL
             return ExecuteToModel<Awards>("SELECT * FROM Awards ORDER BY Id DESC LIMIT " + count);
         }
 
+        public static Awards[] GetAwards()
+        {
+            return ExecuteToModel<Awards>("SELECT * FROM Awards ORDER BY Id DESC");
+        }
+
+        internal static void SaveCalendarEvent(CalendarEvent calendarEvent)
+        {
+            Execute("update CalendarEvents set TimeBinary = @TimeBinary, HasTime = @HasTime, Description = @Description, Place = @Place where Id = @Id", calendarEvent);
+        }
+
         public static CalendarEvent[] GetCalendarEvents(int count)
         {
-            return ExecuteToModel<CalendarEvent>("SELECT * FROM CalendarEvents ORDER BY TimeBinary ASC LIMIT " + count);
+            var today = DateTime.Now.Date.ToBinary();
+            return ExecuteToModel<CalendarEvent>(string.Format("SELECT * FROM CalendarEvents WHERE TimeBinary > {0} ORDER BY TimeBinary ASC LIMIT {1}", today, count));
+        }
+        public static CalendarEvent[] GetCalendarEvents()
+        {
+            var today = DateTime.Now.Date.ToBinary();
+            
+            return ExecuteToModel<CalendarEvent>(string.Format("SELECT * FROM CalendarEvents WHERE TimeBinary > {0} ORDER BY TimeBinary ASC", today));
+        }
+
+        internal static void SaveAward(Awards award)
+        {
+            Execute("update Awards set [Type] = @Type, Owner = @Owner, Description = @Description where Id = @Id", award);
         }
 
         public static string GetRandomFact()
         {
-            var facts = GetAllRows<Fact>("Facts");
+            var facts = GetAllRows<Fact>();
             var random = new Random();
             var randomIndex = random.Next(0, facts.Length);
             return facts[randomIndex].FactText;
+        }
+
+        internal static void AddAward(Awards model)
+        {
+            Execute("insert into Awards ([Type], Owner, Description) values (@Type, @Owner, @Description)", model);
         }
 
         public static Holiday GetHoliday(int month, int day)
@@ -78,15 +110,15 @@ namespace SchoolDashboard.DAL
         public static Notice[] GetAllNotices()
         {
             var now = DateTime.Now.Date;
-            var notices = GetAllRows<Notice>("Notices");
+            var notices = GetAllRows<Notice>();
             if (notices.Length == 0)
                 return notices;
 
             var expired = notices.Where(n => n.Date.AddDays(n.Duration) < now);
             foreach (var notice in expired)
-                DeleteRow("Notices", notice.Id);
+                DeleteRow<Notice>(notice.Id);
 
-            return GetAllRows<Notice>("Notices");
+            return GetAllRows<Notice>();
         }
 
         #region Helpers
@@ -112,22 +144,31 @@ namespace SchoolDashboard.DAL
             }
         }
 
-        private static void DeleteRow(string tableName, int id)
+        public static void DeleteRow<T>(int id)
         {
-            Execute(string.Format("delete from {0} where Id = @Id", tableName), new { Id = id });
+            var attr = typeof(T).GetCustomAttributes(true).Where(a => a is TableNameAttribute).FirstOrDefault() as TableNameAttribute;
+            if (attr == null)
+                throw new Exception("Missing TableNameAttribute for model " + typeof(T).FullName);
+
+            Execute(string.Format("delete from {0} where Id = @Id", attr.TableName), new { Id = id });
         }
 
-        private static T GetById<T>(string tableName, int id)
+        public static T GetById<T>(int id)
         {
-            using (var conn = GetConnection())
-            {
-                return conn.Query<T>("select * from " + tableName + " where Id = @Id", new { Id = id }).FirstOrDefault();
-            }
+            var attr = typeof(T).GetCustomAttributes(true).Where(a => a is TableNameAttribute).FirstOrDefault() as TableNameAttribute;
+            if (attr == null)
+                throw new Exception("Missing TableNameAttribute for model " + typeof(T).FullName);
+
+            return ExecuteToModel<T>("select * from " + attr.TableName + " where Id = @Id", new { Id = id }).FirstOrDefault();
         }
 
-        private static T[] GetAllRows<T>(string tableName)
+        private static T[] GetAllRows<T>()
         {
-            return ExecuteToModel<T>("select * from " + tableName);
+            var attr = typeof(T).GetCustomAttributes(true).Where(a => a is TableNameAttribute).FirstOrDefault() as TableNameAttribute;
+            if (attr == null)
+                throw new Exception("Missing TableNameAttribute for model " + typeof(T).FullName);
+
+            return ExecuteToModel<T>("select * from " + attr.TableName);
         }
 
         private static void RunScript(string filePath, SqliteConnection connection)

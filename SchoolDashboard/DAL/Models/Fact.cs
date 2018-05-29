@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace SchoolDashboard.DAL.Models
 {
+    [TableName("Facts")]
     class Fact
     {
         public int Id { get; set; }

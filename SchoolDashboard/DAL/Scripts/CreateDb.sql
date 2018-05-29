@@ -28,7 +28,7 @@ CREATE TABLE CalendarEvents
   TimeBinary		INTEGER								NOT NULL, 
   HasTime			INTEGER								NOT NULL,
   Description		TEXT								NOT NULL,
-  Place				TEXT								NOT NULL
+  Place				TEXT								NULL
 );
 
 CREATE TABLE Facts

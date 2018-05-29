@@ -10,7 +10,7 @@ using SchoolDashboard.DAL;
 
 namespace SchoolDashboard.Web
 {
-    public class SchoolDashboardWebModule : WebModule
+    public class DashboardWebModule : WebModule
     {
         public dynamic GetLessonsInfo()
         {
@@ -34,6 +34,14 @@ namespace SchoolDashboard.Web
         {
             var res = Dashboard.GetInstance().Tiles.FixedTile != null;
             return Response.AsText(res.ToString());
+        }
+
+        internal override string PathPrefix
+        {
+            get
+            {
+                return "Dashboard";
+            }
         }
     }
 }

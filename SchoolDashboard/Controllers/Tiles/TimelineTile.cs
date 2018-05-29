@@ -11,7 +11,7 @@ namespace SchoolDashboard.Controllers.Tiles
 {
     class TimelineTile : Tile
     {
-        public override bool IsActive { get { return true; } }
+        public override bool IsActive { get { return Repository.GetCalendarEvents(1).Length > 0; } }
 
         public override string TileId { get { return "timelinePanel"; } }
 

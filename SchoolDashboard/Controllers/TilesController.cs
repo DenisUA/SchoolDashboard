@@ -41,7 +41,14 @@ namespace SchoolDashboard.Controllers
 
             var setIndex = _currentTileSetIndex;
             while (!_tilesSets[setIndex].Any(t => t.IsActive))
+            {
                 setIndex++;
+                if (setIndex > _tilesSets.Length - 1)
+                {
+                    setIndex = 0;
+                    break;
+                }
+            }
 
             var res = _tilesSets[setIndex]
                 .Where(t => t.IsActive)

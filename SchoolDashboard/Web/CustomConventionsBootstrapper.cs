@@ -15,7 +15,11 @@ namespace SchoolDashboard.Web
         {
             this.Conventions.ViewLocationConventions.Add((viewName, model, context) =>
             {
-                return "Web/Views/" + viewName;
+                if (context.ModuleName == null)
+                    return "Web/Views/" + viewName;
+
+                var moduleName = context.ModuleName.Replace("Web", "");
+                return "Web/Views/" + moduleName + "/" + viewName;
             });
         }
 

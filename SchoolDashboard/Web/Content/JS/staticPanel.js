@@ -8,7 +8,7 @@ var circlesColors = [
 function processCircles() {
     $(".lesson-circle").each(function () {
         let schoolLevel = $(this).data("school-level");
-        $.get("/GetLessonsInfo?SchoolLevel=" + schoolLevel, function (data) {
+        $.get("/Dashboard/GetLessonsInfo?SchoolLevel=" + schoolLevel, function (data) {
             let circle = circlesObjects[schoolLevel];
             if (data.lessonsEnded) {
                 circle.isLessonsEnded = true;
@@ -32,7 +32,7 @@ function processCircles() {
 }
 
 function initCircles() {
-    $.get("/GetSchoolLevels",
+    $.get("/Dashboard/GetSchoolLevels",
         function (data) {
             $.each(data,
                 function (index, el) {

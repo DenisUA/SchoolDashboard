@@ -1,0 +1,53 @@
+﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<SchoolDashboard.Web.Models.CalendarEvents>
+@{
+    Layout = "_Layout.cshtml";
+}
+
+<div class="row justify-content-md-center">
+    <div class="col-md-7">
+        <div class="alert alert-warning" role="alert">
+            Увага! Минулі події видаляються автоматично.
+        </div>
+    </div>
+</div>
+
+<div class="row justify-content-md-center">
+    <div class="col-md-7">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Дата</th>
+                    <th scope="col">Опис</th>
+                    <th scope="col">Місце</th>
+                    <th scope="col">Дії</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var ev in Model.Events)
+                {
+                    <tr>
+                        @if (ev.HasTime)
+                        {
+                            <th>@(ev.DateTime.ToShortDateString() + " - " + ev.DateTime.ToShortTimeString())</th>
+                        }
+                        else
+                        {
+                            <th>@ev.DateTime.ToShortDateString()</th>
+                        }
+                        <td>@ev.Description</td>
+                        <td>@ev.Place</td>
+                        <td>
+                            <button type="button" class="btn btn-outline-warning btn-sm" onclick="location.href = '/ControlPanel/EditCalendarEvent?Id=@ev.Id';">Редагувати</button>
+                            <button type="button" class="btn btn-outline-danger btn-sm" onclick="location.href = '/ControlPanel/DeleteCalendarEvent?Id=@ev.Id';">Видалити</button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="row justify-content-md-center">
+    <div class="col-md-7">
+        <button type="button" class="btn btn-success" onclick="location.href = '/ControlPanel/EditCalendarEvent';">Додати</button>
+    </div>
+</div>
