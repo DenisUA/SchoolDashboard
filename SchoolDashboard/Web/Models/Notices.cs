@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace SchoolDashboard.Web.Models
 {
-    class TestModel
+    public class Notices
     {
+        public Notice[] AllNotices { get; set; }
     }
 }

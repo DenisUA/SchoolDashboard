@@ -1,0 +1,53 @@
+﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<SchoolDashboard.Web.Models.Notice>
+@{
+    Layout = "_Layout.cshtml";
+}
+
+<div class="row justify-content-md-center">
+    <div class="col-md-4">
+        <form class="needs-validation" action="/ControlPanel/SaveNotice" method="post" novalidate>
+            <div class="form-group">
+                <label for="title">Заголовок</label>
+                <input type="text" class="form-control" id="title" name="Title" value="@Model.Title" required>
+                <div class="invalid-feedback">
+                    Введіть заголовок
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="text">Текст</label>
+                <input type="text" class="form-control" id="text" name="Text" value="@Model.Text" required>
+                <div class="invalid-feedback">
+                    Введіть текст оголошення
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="duration">Тривалість (у днях)</label>
+                <input type="number" class="form-control" id="duration" name="Duration" value="@Model.Duration" required min="1">
+                <div class="invalid-feedback">
+                    Введіть тривалість оголошення
+                </div>
+            </div>
+
+            <div class="form-check">
+                @if (Model.IsImportant)
+                {
+                    <input class="form-check-input" type="checkbox" id="IsImportant" name="IsImportant" checked>
+                }
+                else
+                {
+                    <input class="form-check-input" type="checkbox" id="IsImportant" name="IsImportant">
+                }
+                <label class="form-check-label" for="IsImportant">
+                    Пріоритетне
+                </label>
+            </div>
+
+            <input type="hidden" name="Id" value="@Model.Id">
+            <input type="hidden" name="DateBinary" value="@Model.DateBinary">
+
+            <button type="submit" class="btn btn-primary">Зберегти</button>
+        </form>
+    </div>
+</div>

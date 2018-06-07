@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 #if MONO
 using Mono.Data.Sqlite;
 #else
@@ -107,24 +108,50 @@ namespace SchoolDashboard.DAL
             Execute("INSERT INTO FamousBirthdays ([Day], [Month], Name, Description, Photo) VALUES (@Day, @Month, @Name, @Description, @Photo)", model);
         }
 
-        public static Notice[] GetAllNotices()
+        public static Notice[] GetNotices(int limit)
         {
             var now = DateTime.Now.Date;
             var notices = GetAllRows<Notice>();
             if (notices.Length == 0)
                 return notices;
 
-            var expired = notices.Where(n => n.Date.AddDays(n.Duration) < now);
+            var expired = notices.Where(n => n.Date.AddDays(n.Duration) < now.Date);
             foreach (var notice in expired)
                 DeleteRow<Notice>(notice.Id);
 
-            return GetAllRows<Notice>();
+            return ExecuteToModel<Notice>("select * from Notices order by id desc, IsImportant desc limit " + limit);
+        }
+
+        internal static void AddNotice(Notice model)
+        {
+            model.Date = DateTime.Now;
+            Execute("insert into Notices (Title, DateBinary, [Text], Duration, IsImportant) values (@Title, @DateBinary, @Text, @Duration, @IsImportant)", model);
+        }
+
+        internal static void SaveNotice(Notice model)
+        {
+            Execute("update Notices set Title = @Title, DateBinary = @DateBinary, [Text] = @Text, Duration = @Duration, IsImportant = @IsImportant where Id = @Id", model);
+        }
+
+        public static Notice[] GetNotices()
+        {
+            return ExecuteToModel<Notice>("select * from Notices order by id desc, IsImportant desc");
         }
 
         #region Helpers
         private static SqliteConnection GetConnection()
         {
             return new SqliteConnection("Data Source=" + DbFilePath);
+        }
+
+        internal static void SaveHoliday(Holiday model)
+        {
+            Execute("update Holidays set [Day] = @Day, [Month] = @Month, Name = @Name, Description = @Description, Picture = @Picture where Id = @Id", model);
+        }
+
+        internal static void AddHoliday(Holiday model)
+        {
+            Execute("insert into Holidays ([Day],[Month], Name, Description, Picture) values (@Day, @Month, @Name, @Description, @Picture)", model);
         }
 
         private static T[] ExecuteToModel<T>(string sqlQuery, object parameters = null)
@@ -162,7 +189,7 @@ namespace SchoolDashboard.DAL
             return ExecuteToModel<T>("select * from " + attr.TableName + " where Id = @Id", new { Id = id }).FirstOrDefault();
         }
 
-        private static T[] GetAllRows<T>()
+        public static T[] GetAllRows<T>()
         {
             var attr = typeof(T).GetCustomAttributes(true).Where(a => a is TableNameAttribute).FirstOrDefault() as TableNameAttribute;
             if (attr == null)

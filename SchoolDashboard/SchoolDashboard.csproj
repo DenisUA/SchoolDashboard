@@ -81,6 +81,7 @@
       <HintPath>..\packages\System.Data.SQLite.Core.1.0.105.2\lib\net451\System.Data.SQLite.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.30506.0\lib\net40\System.Web.Razor.dll</HintPath>
       <Private>True</Private>
@@ -129,12 +130,15 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Web\CustomConventionsBootstrapper.cs" />
     <Compile Include="Web\ControlPanelWebModule.cs" />
+    <Compile Include="Web\FilesUploadWebModule.cs" />
     <Compile Include="Web\JsonModels\LessonInfo.cs" />
     <Compile Include="Web\Models\Award.cs" />
     <Compile Include="Web\Models\Awards.cs" />
     <Compile Include="Web\Models\CalendarEvent.cs" />
     <Compile Include="Web\Models\CalendarEvents.cs" />
-    <Compile Include="Web\Models\TestModel.cs" />
+    <Compile Include="Web\Models\Holiday.cs" />
+    <Compile Include="Web\Models\Notice.cs" />
+    <Compile Include="Web\Models\Notices.cs" />
     <Compile Include="Web\RazorConfig.cs" />
     <Compile Include="Web\RequestsModels\LessonModel.cs" />
     <Compile Include="Web\DashboardWebModule.cs" />
@@ -251,6 +255,10 @@
     <Content Include="Web\Content\JS\TimeCircles.js" />
     <Content Include="Web\Content\JS\weather.js" />
     <None Include="Web\Views\ControlPanel\Awards.cshtml" />
+    <None Include="Web\Views\ControlPanel\EditHoliday.cshtml" />
+    <None Include="Web\Views\ControlPanel\Holidays.cshtml" />
+    <None Include="Web\Views\ControlPanel\EditNotice.cshtml" />
+    <None Include="Web\Views\ControlPanel\Notices.cshtml" />
     <None Include="Web\Views\ControlPanel\EditAward.cshtml" />
     <None Include="Web\Views\ControlPanel\EditCalendarEvent.cshtml" />
     <None Include="Web\Views\ControlPanel\CalendarEvents.cshtml" />

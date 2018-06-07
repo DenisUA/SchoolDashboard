@@ -1,0 +1,64 @@
+﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<SchoolDashboard.Web.Models.Notices>
+@{
+    Layout = "_Layout.cshtml";
+}
+
+<div class="row justify-content-md-center">
+    <div class="col-md-9">
+        <div class="alert alert-warning" role="alert">
+            Після закінчення термуну дії оголошення видаляється автоматично
+        </div>
+    </div>
+</div>
+<div class="row justify-content-md-center">
+    <div class="col-md-9">
+        <div class="alert alert-info" role="alert">
+            Відображаються тільки перші 9 оголошень
+        </div>
+    </div>
+</div>
+
+<div class="row justify-content-md-center">
+    <div class="col-md-9">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Заголовок</th>
+                    <th scope="col">Текст</th>
+                    <th scope="col">Дії до</th>
+                    <th scope="col">Пріоритетність</th>
+                    <th scope="col">Дії</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var notice in Model.AllNotices)
+                {
+                    <tr>
+                        <td>@notice.Title</td>
+                        <td>@notice.Text</td>
+                        <td>@notice.Expired</td>
+                        <td>
+                            @if (notice.IsImportant)
+                            {
+                                <span class="badge badge-pill badge-primary">Пріоритетне</span>
+                            }
+                            else
+                            {
+                                <span class="badge badge-pill badge-secondary">Звичайне</span>
+                            }
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-outline-warning btn-sm" onclick="location.href = '/ControlPanel/EditNotice?Id=@notice.Id';">Редагувати</button>
+                            <button type="button" class="btn btn-outline-danger btn-sm" onclick="location.href = '/ControlPanel/DeleteNotice?Id=@notice.Id';">Видалити</button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="row justify-content-md-center">
+    <div class="col-md-9">
+        <button type="button" class="btn btn-success" onclick="location.href = '/ControlPanel/EditNotice';">Додати</button>
+    </div>
+</div>

@@ -119,5 +119,94 @@ namespace SchoolDashboard.Web
             Repository.DeleteRow<Award>(parameters.Id);
             return Redirect(Awards);
         }
+
+        public dynamic Notices()
+        {
+            var notices = Repository.GetNotices();
+            var model = new Notices() { AllNotices = notices.Select(n => new Notice(n)).ToArray() };
+
+            return GetView(model);
+        }
+
+        public dynamic EditNotice(dynamic parameters)
+        {
+            Notice model;
+            if (parameters.Id == null)
+            {
+                model = new Notice();
+                model.Duration = 1;
+            }
+            else
+            {
+                model = Repository.GetById<Notice>(parameters.Id);
+            }
+
+            return GetView(model);
+        }
+
+        public dynamic SaveNotice()
+        {
+            var model = this.Bind<Notice>();
+            if (model.Id == 0)
+            {
+                Repository.AddNotice(model);
+            }
+            else
+            {
+                Repository.SaveNotice(model);
+            }
+
+            return Redirect(Notices);
+        }
+
+        public dynamic DeleteNotice(dynamic parameters)
+        {
+            Repository.DeleteRow<Notice>(parameters.Id);
+            return Redirect(Notices);
+        }
+
+        public dynamic Holidays()
+        {
+            var model = Repository.GetAllRows<Holiday>().OrderBy(h => h.Date).ToArray();
+            return GetView(model);
+        }
+
+        public dynamic EditHoliday(dynamic parameters)
+        {
+            Holiday model;
+            if (parameters.Id == null)
+            {
+                model = new Holiday();
+                model.Day = 1;
+                model.Month = 1;
+            }
+            else
+            {
+                model = Repository.GetById<Holiday>(parameters.Id);
+            }
+
+            return GetView(model);
+        }
+
+        public dynamic SaveHoliday()
+        {
+            var model = this.Bind<Holiday>();
+            if (model.Id == 0)
+            {
+                Repository.AddHoliday(model);
+            }
+            else
+            {
+                Repository.SaveHoliday(model);
+            }
+
+            return Redirect(Holidays);
+        }
+
+        public dynamic DeleteHoliday(dynamic paramters)
+        {
+            Repository.DeleteRow<Holiday>(paramters.Id);
+            return Redirect(Holidays);
+        }
     }
 }

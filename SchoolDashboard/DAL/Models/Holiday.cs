@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace SchoolDashboard.DAL.Models
 {
     [TableName("Holidays")]
-    class Holiday
+    public class Holiday
     {
         public int Id { get; set; }
         public int Day { get; set; }
@@ -15,5 +15,14 @@ namespace SchoolDashboard.DAL.Models
         public string Name { get; set; }
         public string Description { get; set; }
         public string Picture { get; set; }
+
+        public DateTime Date
+        {
+            get
+            {
+                return new DateTime(1, Month, Day).Date;
+            }
+        }
+
     }
 }

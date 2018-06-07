@@ -12,7 +12,7 @@ namespace SchoolDashboard.Controllers.Tiles
     {
         public override bool IsActive
         {
-            get { return Repository.GetAllNotices().Length > 0; }
+            get { return Repository.GetNotices(1).Length > 0; }
         }
 
         public override string TileId
@@ -22,7 +22,7 @@ namespace SchoolDashboard.Controllers.Tiles
 
         public override ViewDataModels.DataModel GetViewData()
         {
-            var notices = Repository.GetAllNotices();
+            var notices = Repository.GetNotices(9);
             return new NoticesTileData() { Notices = notices };
         }
     }

@@ -1,0 +1,38 @@
+﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<SchoolDashboard.Web.Models.Holiday[]>
+@{
+    Layout = "_Layout.cshtml";
+}
+
+<div class="row justify-content-md-center">
+    <div class="col-md-7">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Дата</th>
+                    <th scope="col">Ім'я</th>
+                    <th scope="col">Опис (скорочений)</th>
+                    <th scope="col">Дії</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var holiday in Model)
+                {
+                    <tr>
+                        <td>@holiday.DateString</td>
+                        <td>@holiday.Name</td>
+                        <td>@(holiday.Description.Length > 100 ? holiday.Description.Substring(0, 60) + "..." : holiday.Description)</td>
+                        <td>
+                            <button type="button" class="btn btn-outline-warning btn-sm" onclick="location.href = '/ControlPanel/EditHoliday?Id=@holiday.Id';">Редагувати</button>
+                            <button type="button" class="btn btn-outline-danger btn-sm" onclick="location.href = '/ControlPanel/DeleteHoliday?Id=@holiday.Id';">Видалити</button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="row justify-content-md-center">
+    <div class="col-md-7">
+        <button type="button" class="btn btn-success" onclick="location.href = '/ControlPanel/EditHoliday';">Додати</button>
+    </div>
+</div>
