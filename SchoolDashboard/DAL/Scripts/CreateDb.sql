@@ -65,4 +65,14 @@ CREATE TABLE  Notices
   [Text]			TEXT								NOT NULL,
   Duration			INTEGER								NOT NULL,
   IsImportant		INTEGER								NOT NULL
-)
+);
+
+CREATE TABLE Students
+(
+  Id				INTEGER PRIMARY KEY AUTOINCREMENT	NOT NULL,
+  Name				TEXT								NOT NULL,
+  BirthdayDay		INTEGER								NOT NULL,
+  BirthdayMounth	INTEGER								NOT NULL,
+  Class				TEXT								NOT NULL,
+  IsMale			INTEGER								NOT NULL
+);

@@ -8,6 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using SchoolDashboard.DAL;
 using SchoolDashboard.Web.Models;
+using System.IO;
+using ExcelDataReader;
+using System.Text.RegularExpressions;
+using System.Data;
+using System.Collections;
 
 namespace SchoolDashboard.Web
 {
@@ -207,6 +212,102 @@ namespace SchoolDashboard.Web
         {
             Repository.DeleteRow<Holiday>(paramters.Id);
             return Redirect(Holidays);
+        }
+
+        public dynamic Students()
+        {
+            var students = Repository.GetAllRows<DAL.Models.Student>();
+            var model = new Students()
+            {
+                StudentsCount = students.Length
+            };
+
+            return GetView(model);
+        }
+
+        public dynamic UploadStudentsFile()
+        {
+            var file = Request.Files.FirstOrDefault();
+
+            var students = new List<DAL.Models.Student>();
+
+            try
+            {
+                using (var reader = ExcelReaderFactory.CreateReader(file.Value))
+                {
+                    var dataSet = reader.AsDataSet();
+                    var table = dataSet.Tables[0];
+                    var rows = table.Rows;
+
+                    for (int i = 8; i < rows.Count; i++)
+                    {
+                        var items = rows[i].ItemArray;
+                        var student = new DAL.Models.Student()
+                        {
+                            Name = items[1].ToString(),
+                            Class = items[3].ToString(),
+                            IsMale = items[4].ToString().StartsWith("чол")
+                        };
+
+
+                        if (items[2] is DateTime)
+                        {
+                            var dateTime = (DateTime)items[2];
+                            student.BirthdayDay = dateTime.Day;
+                            student.BirthdayMounth = dateTime.Month;
+                        }
+                        else
+                        {
+                            throw new Exception("bad date" + items[1].ToString());
+                        }
+
+                        students.Add(student);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return Response.AsText(ex.Message);
+            }
+
+            Repository.DeleteAllStudents();
+            foreach (var student in students)
+            {
+                Repository.AddStudent(student);
+            }
+
+            return Response.AsText("ok");
+        }
+
+        public dynamic ExecuteSql()
+        {
+            var model = this.Bind<ExecuteSql>();
+            if (model.Request == null)
+            {
+                model.Request = "";
+            }
+            else
+            {
+                var table = Repository.ExecuteDataTable(model.Request);
+                var rows = new List<string[]>();
+
+                model.Headers = table.Columns.Cast<DataColumn>().Select(c => c.ColumnName).ToArray();
+
+                foreach (DataRow row in table.Rows)
+                {
+                    var items = new List<string>();
+                    foreach (var i in row.ItemArray)
+                    {
+                        items.Add(i.ToString());
+                    }
+
+                    rows.Add(items.ToArray());
+                }
+
+                model.Data = rows.ToArray();
+            }
+
+            return GetView(model);
         }
     }
 }

@@ -1,0 +1,97 @@
+﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<SchoolDashboard.Web.Models.Students>
+@{
+    Layout = "_Layout.cshtml";
+}
+
+<div class="row justify-content-md-center">
+    <div class="col-md-4">
+        <p>
+            Кількість учнів завантажених у систему: @Model.StudentsCount
+        </p>
+    </div>
+</div>
+
+<div class="row justify-content-md-center">
+    <div class="col-md-4">
+        <form>
+            <div class="form-group">
+                <label for="newFile">Завантажити файл з списком учнів</label>
+                <input type="file" class="form-control-file" id="newFile" name="file">
+            </div>
+            <button id="upload" class="btn btn-primary">Зберегти</button>
+        </form>
+    </div>
+</div>
+
+<div class="row justify-content-md-center" id="waitDiv" style="display: none; margin: 20px;">
+    <div class="col-md-5">
+        <div class="alert alert-info" role="alert">
+            Йде обробка...
+        </div>
+    </div>
+</div>
+
+<div class="row justify-content-md-center" id="errorDiv" style="display: none; margin: 20px;">
+    <div class="col-md-5">
+        <div class="alert alert-danger" role="alert">
+            Помилка: <p id="errorP"></p>
+        </div>
+    </div>
+</div>
+
+<div class="row justify-content-md-center" id="successDiv" style="display: none; margin: 20px;">
+    <div class="col-md-5">
+        <div class="alert alert-success" role="alert">
+            Новий список учнів успішно збережено
+        </div>
+    </div>
+</div>
+
+
+@section scripts
+{
+    <script>
+
+
+        $('#upload').on('click', function (e) {
+            e.preventDefault();
+
+            $("#waitDiv").show();
+            $.ajax({
+                // Your server script to process the upload
+                url: '/ControlPanel/UploadStudentsFile',
+                type: 'POST',
+
+                // Form data
+                data: new FormData($('form')[0]),
+
+                // Tell jQuery not to process data or worry about content-type
+                // You *must* include these options!
+                cache: false,
+                contentType: false,
+                processData: false,
+
+                success: function (x) {
+                    $("#waitDiv").hide();
+                    if (x == "ok") {
+                        $("#errorDiv").hide();
+                        $("#successDiv").show();
+                        setTimeout(function () {
+                            location.reload();
+                        }, 3000);
+                    }
+                    else {
+                        if (x.startsWith("bad date")) {
+                            $("#errorP").text("У учня невірна дата народження (невірний формат): " + x.replace("bad date", ""));
+                        }
+                        else {
+                            $("#errorP").text(x);
+                        }
+
+                        $("#errorDiv").show();
+                    }
+                }
+            });
+        });
+    </script>
+}

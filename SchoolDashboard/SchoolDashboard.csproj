@@ -55,6 +55,14 @@
       <HintPath>..\packages\Dapper.1.50.2\lib\net451\Dapper.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="ExcelDataReader, Version=3.4.0.0, Culture=neutral, PublicKeyToken=93517dbe6a4012fa, processorArchitecture=MSIL">
+      <HintPath>..\packages\ExcelDataReader.3.4.0\lib\net45\ExcelDataReader.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ExcelDataReader.DataSet, Version=3.4.0.0, Culture=neutral, PublicKeyToken=93517dbe6a4012fa, processorArchitecture=MSIL">
+      <HintPath>..\packages\ExcelDataReader.DataSet.3.4.0\lib\net45\ExcelDataReader.DataSet.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="HtmlAgilityPack, Version=1.5.1.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
       <HintPath>..\packages\HtmlAgilityPack.1.5.1\lib\Net45\HtmlAgilityPack.dll</HintPath>
       <Private>True</Private>
@@ -82,6 +90,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression" />
     <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.30506.0\lib\net40\System.Web.Razor.dll</HintPath>
       <Private>True</Private>
@@ -123,6 +132,7 @@
     <Compile Include="DAL\Models\Lesson.cs" />
     <Compile Include="DAL\Models\Notice.cs" />
     <Compile Include="DAL\Models\SchoolLevel.cs" />
+    <Compile Include="DAL\Models\Student.cs" />
     <Compile Include="DAL\Models\TableNameAttribute.cs" />
     <Compile Include="DAL\Repository.cs" />
     <Compile Include="Dashboard.cs" />
@@ -136,9 +146,11 @@
     <Compile Include="Web\Models\Awards.cs" />
     <Compile Include="Web\Models\CalendarEvent.cs" />
     <Compile Include="Web\Models\CalendarEvents.cs" />
+    <Compile Include="Web\Models\ExecuteSql.cs" />
     <Compile Include="Web\Models\Holiday.cs" />
     <Compile Include="Web\Models\Notice.cs" />
     <Compile Include="Web\Models\Notices.cs" />
+    <Compile Include="Web\Models\Students.cs" />
     <Compile Include="Web\RazorConfig.cs" />
     <Compile Include="Web\RequestsModels\LessonModel.cs" />
     <Compile Include="Web\DashboardWebModule.cs" />
@@ -236,6 +248,7 @@
     <Content Include="Web\Content\Images\gallery\thumbs\09.jpg" />
     <Content Include="Web\Content\Images\HolidaysPictures\1September.jpg" />
     <Content Include="Web\Content\Images\overlay.png" />
+    <Content Include="Web\Content\Images\question.jpeg" />
     <Content Include="Web\Content\Images\pic01.jpg" />
     <Content Include="Web\Content\Images\pic01_2.jpg" />
     <Content Include="Web\Content\Images\pic02.jpg" />
@@ -254,6 +267,8 @@
     <Content Include="Web\Content\JS\skel.min.js" />
     <Content Include="Web\Content\JS\TimeCircles.js" />
     <Content Include="Web\Content\JS\weather.js" />
+    <None Include="Web\Views\ControlPanel\ExecuteSql.cshtml" />
+    <None Include="Web\Views\ControlPanel\Students.cshtml" />
     <None Include="Web\Views\ControlPanel\Awards.cshtml" />
     <None Include="Web\Views\ControlPanel\EditHoliday.cshtml" />
     <None Include="Web\Views\ControlPanel\Holidays.cshtml" />

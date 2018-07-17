@@ -17,7 +17,7 @@ namespace SchoolDashboard.Controllers.Tiles
         public override DataModel GetViewData()
         {
             var today = DateTime.Now;
-            var holiday = Repository.GetHoliday(today.Day, today.Month);
+            var holiday = Repository.GetHoliday(today.Month, today.Day);
             if (holiday == null)
             {
                 var fact = Repository.GetRandomFact();
@@ -25,7 +25,7 @@ namespace SchoolDashboard.Controllers.Tiles
                 {
                     Title = "А ви знали що...",
                     Text = fact,
-                    Image = ""
+                    Image = "/Images/question.jpeg"
                 };
             }
             else
@@ -34,7 +34,7 @@ namespace SchoolDashboard.Controllers.Tiles
                 {
                     Title = holiday.Name,
                     Text = holiday.Description,
-                    Image = holiday.Picture
+                    Image = "/Images/HolidaysPictures/" + holiday.Picture
                 };
             }
         }

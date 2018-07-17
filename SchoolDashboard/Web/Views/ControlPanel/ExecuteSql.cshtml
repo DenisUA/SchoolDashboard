@@ -1,0 +1,48 @@
+﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<SchoolDashboard.Web.Models.ExecuteSql>
+@{
+    Layout = "_Layout.cshtml";
+}
+
+<div class="row justify-content-md-center">
+    <div class="col-md-8">
+        <form class="needs-validation" action="/ControlPanel/ExecuteSql" method="post" novalidate>
+            <div class="form-group">
+                <label for="Request">Запит</label>
+                <input type="text" class="form-control" id="Request" name="Request" value="@Model.Request" required>
+                <div class="invalid-feedback">
+                    Введіть запит
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Виконати</button>
+        </form>
+    </div>
+</div>
+
+<div class="row justify-content-md-center">
+    <div class="col-md-8">
+        @if (Model.Data != null)
+        {
+            <table class="table">
+                <thead>
+                    <tr>
+                        @foreach (var head in Model.Headers)
+                        {
+                            <th scope="col">@head</th>
+                        }
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var row in Model.Data)
+                    {
+                        <tr>
+                            @foreach (var item in row)
+                            {
+                                <td>@item</td>
+                            }
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    </div>
+</div>

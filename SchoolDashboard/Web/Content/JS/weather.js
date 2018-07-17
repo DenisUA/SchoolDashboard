@@ -1,4 +1,4 @@
-var g,
+﻿var g,
 GLoc,
 w,
 WeatherInfo,
@@ -84,7 +84,7 @@ GLoc = {
         // We have the location. Don't display the banner.
         GLoc.hideGeoErrorMessageBanner();
 
-        g.searchQuery = 'http://api.openweathermap.org/data/2.5/weather?lat=49.5510381&lon=25.5863906&appid=0596fe0573fa9daa94c2912e5e383ed3&lang=ua';
+        g.searchQuery = 'http://api.openweathermap.org/data/2.5/weather?lat=49.5510381&lon=25.5863906&appid=ad77eed12486e499c2ef1d1f3b176545&lang=ua';
 
         $.getJSON(g.searchQuery, function(data) {
             WeatherInfo.setWeatherData(data);
@@ -186,12 +186,12 @@ WeatherInfo = {
 
 
     openAttributionModal: function() {
-        w.attributionModal.removeClass('hide');
+        w.attributionModal.removeClass('hide');4
     },
 
     getWeatherData: function(searchQuery) {
         if (w.searchLocationInput.val() !== '') {
-            w.searchQuery = 'http://api.openweathermap.org/data/2.5/weather?q=' + w.searchLocationInput.val() + '&appid=0596fe0573fa9daa94c2912e5e383ed3' + '&lang=' + g.lang;
+            w.searchQuery = 'http://api.openweathermap.org/data/2.5/weather?q=ternopil&appid=ad77eed12486e499c2ef1d1f3b176545&lang=UA';
             $.getJSON(w.searchQuery, function(data) {
                 WeatherInfo.setWeatherData(data);
             });
@@ -202,7 +202,7 @@ WeatherInfo = {
         GLoc.hideGeoErrorMessageBanner();
         $('#front-page-description').addClass('hide');
         w.weather.removeClass('hide');
-        w.location.text(data.name + ', ' + data.sys.country);
+        w.location.text('Тернопіль');
         w.humidity.text(data.main.humidity);
         w.weatherDescription.text(data.weather[0].description);
         w.tempNumber = data.main.temp;

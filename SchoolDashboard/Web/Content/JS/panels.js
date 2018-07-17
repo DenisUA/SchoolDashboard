@@ -1,6 +1,8 @@
 ﻿var tilesHandlers = [];
 tilesHandlers["historyDayPanel"] = function (data, element) {
-
+    $(element).find("h1").text(data.title);
+    $(element).find("p").text(data.text);
+    $(element).find("img").attr("src", data.image)
 };
 
 tilesHandlers["weatherPanel"] = function (data, element) {

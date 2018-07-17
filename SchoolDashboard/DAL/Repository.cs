@@ -2,6 +2,8 @@
 using SchoolDashboard.DAL.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -154,6 +156,16 @@ namespace SchoolDashboard.DAL
             Execute("insert into Holidays ([Day],[Month], Name, Description, Picture) values (@Day, @Month, @Name, @Description, @Picture)", model);
         }
 
+        internal static void AddStudent(Student model)
+        {
+            Execute("insert into Students(Name, BirthdayDay, BirthdayMounth, Class, IsMale) values(@Name, @BirthdayDay, @BirthdayMounth, @Class, @IsMale)", model);
+        }
+
+        internal static void DeleteAllStudents()
+        {
+            Execute("delete from Students where Id > 0", new { });
+        }
+
         private static T[] ExecuteToModel<T>(string sqlQuery, object parameters = null)
         {
             using (var conn = GetConnection())
@@ -168,6 +180,17 @@ namespace SchoolDashboard.DAL
             using (var conn = GetConnection())
             {
                 conn.Execute(sqlQuery, parameters);
+            }
+        }
+
+        public static DataTable ExecuteDataTable(string sqlQuery)
+        {
+            using (var conn = GetConnection())
+            {
+                var reader = conn.ExecuteReader(sqlQuery);
+                var table = new DataTable();
+                table.Load(reader);
+                return table;
             }
         }
 
@@ -202,7 +225,7 @@ namespace SchoolDashboard.DAL
         {
             var script = File.ReadAllText(filePath);
             connection.Execute(script);
-        } 
+        }
         #endregion
     }
 }
