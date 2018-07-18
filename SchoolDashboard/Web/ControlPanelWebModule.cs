@@ -13,6 +13,8 @@ using ExcelDataReader;
 using System.Text.RegularExpressions;
 using System.Data;
 using System.Collections;
+using System.Net;
+using System.Reflection.Emit;
 
 namespace SchoolDashboard.Web
 {
@@ -225,6 +227,59 @@ namespace SchoolDashboard.Web
             return GetView(model);
         }
 
+        public dynamic FamousBirthdays()
+        {
+            return GetView();
+        }
+
+        public dynamic UplodaFamousBirthdaysFile()
+        {
+            var file = Request.Files.FirstOrDefault();
+
+            var birthdays = new List<DAL.Models.FamousBirthday>();
+            var picturesDirectory = new DirectoryInfo(Path.Combine(Directory.GetCurrentDirectory(), "Web", "Content", "Images", "FamousBirthdays", "NewImages"));
+            if (picturesDirectory.Exists)
+                picturesDirectory.Delete(true);
+
+            picturesDirectory.Create();
+
+            var webClient = new WebClient();
+
+            try
+            {
+                using (var reader = ExcelReaderFactory.CreateReader(file.Value))
+                {
+                    var dataSet = reader.AsDataSet();
+                    var table = dataSet.Tables[0];
+                    var rows = table.Rows;
+
+                    for (int i = 0; i < rows.Count; i++)
+                    {
+                        var items = rows[i].ItemArray;
+                        var birthday = new DAL.Models.FamousBirthday()
+                        {
+                            Day = (int)items[0],
+                            Month = (int)items[1],
+                            Name = items[2].ToString(),
+                            Description = items[3].ToString(),
+                        };
+
+                        webClient.DownloadFile(items[4].ToString(), picturesDirectory.FullName);
+
+                        birthdays.Add(birthday);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return Response.AsText(ex.Message);
+            }
+
+
+
+            return Response.AsText("ok");
+        }
+
         public dynamic UploadStudentsFile()
         {
             var file = Request.Files.FirstOrDefault();
@@ -239,7 +294,7 @@ namespace SchoolDashboard.Web
                     var table = dataSet.Tables[0];
                     var rows = table.Rows;
 
-                    for (int i = 8; i < rows.Count; i++)
+                    for (int i = 0; i < rows.Count; i++)
                     {
                         var items = rows[i].ItemArray;
                         var student = new DAL.Models.Student()

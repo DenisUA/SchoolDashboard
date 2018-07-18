@@ -57,6 +57,8 @@
             e.preventDefault();
 
             $("#waitDiv").show();
+            $("#errorDiv").hide();
+
             $.ajax({
                 // Your server script to process the upload
                 url: '/ControlPanel/UploadStudentsFile',
@@ -74,7 +76,6 @@
                 success: function (x) {
                     $("#waitDiv").hide();
                     if (x == "ok") {
-                        $("#errorDiv").hide();
                         $("#successDiv").show();
                         setTimeout(function () {
                             location.reload();

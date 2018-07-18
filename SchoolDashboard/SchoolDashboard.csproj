@@ -268,6 +268,7 @@
     <Content Include="Web\Content\JS\TimeCircles.js" />
     <Content Include="Web\Content\JS\weather.js" />
     <None Include="Web\Views\ControlPanel\ExecuteSql.cshtml" />
+    <None Include="Web\Views\ControlPanel\FamousBirthdays.cshtml" />
     <None Include="Web\Views\ControlPanel\Students.cshtml" />
     <None Include="Web\Views\ControlPanel\Awards.cshtml" />
     <None Include="Web\Views\ControlPanel\EditHoliday.cshtml" />

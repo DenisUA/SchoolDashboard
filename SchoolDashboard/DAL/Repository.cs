@@ -140,30 +140,30 @@ namespace SchoolDashboard.DAL
             return ExecuteToModel<Notice>("select * from Notices order by id desc, IsImportant desc");
         }
 
-        #region Helpers
-        private static SqliteConnection GetConnection()
-        {
-            return new SqliteConnection("Data Source=" + DbFilePath);
-        }
-
-        internal static void SaveHoliday(Holiday model)
+        public static void SaveHoliday(Holiday model)
         {
             Execute("update Holidays set [Day] = @Day, [Month] = @Month, Name = @Name, Description = @Description, Picture = @Picture where Id = @Id", model);
         }
 
-        internal static void AddHoliday(Holiday model)
+        public static void AddHoliday(Holiday model)
         {
             Execute("insert into Holidays ([Day],[Month], Name, Description, Picture) values (@Day, @Month, @Name, @Description, @Picture)", model);
         }
 
-        internal static void AddStudent(Student model)
+        public static void AddStudent(Student model)
         {
             Execute("insert into Students(Name, BirthdayDay, BirthdayMounth, Class, IsMale) values(@Name, @BirthdayDay, @BirthdayMounth, @Class, @IsMale)", model);
         }
 
-        internal static void DeleteAllStudents()
+        public static void DeleteAllStudents()
         {
             Execute("delete from Students where Id > 0", new { });
+        }
+
+        #region Helpers
+        private static SqliteConnection GetConnection()
+        {
+            return new SqliteConnection("Data Source=" + DbFilePath);
         }
 
         private static T[] ExecuteToModel<T>(string sqlQuery, object parameters = null)

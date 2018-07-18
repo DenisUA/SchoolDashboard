@@ -15,14 +15,5 @@ namespace SchoolDashboard.DAL.Models
         public string Name { get; set; }
         public string Description { get; set; }
         public string Photo { get; set; }
-
-        public FamousBirthday(int day, int month, string name, string description, string photo)
-        {
-            Day = day;
-            Month = month;
-            Name = name;
-            Description = description;
-            Photo = photo;
-        }
     }
 }
