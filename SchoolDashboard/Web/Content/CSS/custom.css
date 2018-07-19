@@ -76,8 +76,6 @@
 .birthday .avatar {
   width: 4.5rem;
   height: 4.5rem;
-  border-radius: 2.25rem;
-  box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
 
 .birthday h1 {
@@ -87,6 +85,7 @@
 .birthday h4 {
   letter-spacing: normal;
   font-size: 1.2rem;
+  margin-bottom: 0;
 }
 
 .birthday .people {
@@ -99,7 +98,7 @@
 .birthday .people .person {
   padding: 0 0.5rem;
   flex-grow: 1;
-  width: calc(100% * (1/4));
+  width: calc(100% * (1/5));
 }
 
 /*===============================
