@@ -311,12 +311,13 @@ namespace SchoolDashboard.Web
                     for (int i = 0; i < rows.Count; i++)
                     {
                         var items = rows[i].ItemArray;
-                        var student = new DAL.Models.Student()
-                        {
-                            Name = items[1].ToString(),
-                            Class = items[3].ToString(),
-                            IsMale = items[4].ToString().StartsWith("чол")
-                        };
+                        var student = new DAL.Models.Student();
+                        student.Class = items[3].ToString();
+                        student.IsMale = items[4].ToString().StartsWith("чол");
+
+
+                        var name = items[1].ToString();
+                        student.Name = name.Remove(name.LastIndexOf(' '));
 
 
                         if (items[2] is DateTime)
@@ -438,13 +439,12 @@ namespace SchoolDashboard.Web
                     for (int i = 0; i < rows.Count; i++)
                     {
                         var items = rows[i].ItemArray;
-                        var teacher = new DAL.Models.Teacher()
-                        {
-                            Name = items[1].ToString(),
-                            Position = items[2].ToString(),
-                            IsMale = items[4].ToString().StartsWith("чол")
-                        };
+                        var teacher = new DAL.Models.Teacher();
+                        teacher.Position = items[2].ToString();
+                        teacher.IsMale = items[4].ToString().StartsWith("чол");
 
+                        var nameElements = items[1].ToString().Split(' ');
+                        teacher.Name = nameElements[0] + " " + nameElements[1].ToUpper()[0] + ". " +nameElements[2].ToUpper()[0] + ".";
 
                         if (items[3] is DateTime)
                         {
