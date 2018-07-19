@@ -59,14 +59,14 @@ tilesHandlers["timelinePanel"] = function (data, element) {
 };
 
 tilesHandlers["birthdaysPanel"] = function (data, element) {
-    let innerHtml = "";
-    $.each(data.items, function (i, el) {
-        innerHtml += "<div class='person'>" +
-            "<img class='avatar' src='/Images/BPhotos/" + el.photoName + "'>" +
-            "<h4>" + el.name + "</h4></div>";
-    });
+    //let innerHtml = "";
+    //$.each(data.items, function (i, el) {
+    //    innerHtml += "<div class='person'>" +
+    //        "<img class='avatar' src='/Images/BPhotos/" + el.photoName + "'>" +
+    //        "<h4>" + el.name + "</h4></div>";
+    //});
 
-    $(element).find(".people").html(innerHtml);
+    //$(element).find(".people").html(innerHtml);
 };
 
 tilesHandlers["awardsPanel"] = function (data, element) {
