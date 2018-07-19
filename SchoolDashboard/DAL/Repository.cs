@@ -78,7 +78,7 @@ namespace SchoolDashboard.DAL
         public static CalendarEvent[] GetCalendarEvents()
         {
             var today = DateTime.Now.Date.ToBinary();
-            
+
             return ExecuteToModel<CalendarEvent>(string.Format("SELECT * FROM CalendarEvents WHERE TimeBinary > {0} ORDER BY TimeBinary ASC", today));
         }
 
@@ -155,10 +155,16 @@ namespace SchoolDashboard.DAL
             Execute("insert into Students(Name, BirthdayDay, BirthdayMounth, Class, IsMale) values(@Name, @BirthdayDay, @BirthdayMounth, @Class, @IsMale)", model);
         }
 
-        public static void DeleteAllStudents()
+        public static void AddTeacher(Teacher model)
         {
-            Execute("delete from Students where Id > 0", new { });
+            Execute("insert into Teachers(Name, BirthdayDay, BirthdayMounth, Position, IsMale) values(@Name, @BirthdayDay, @BirthdayMounth, @Position, @IsMale)", model);
         }
+
+        public static FamousBirthday[] GetFamousBirthdaysByDay(int month, int day)
+        {
+            return ExecuteToModel<FamousBirthday>("select * from FamousBirthdays where Month = @Month and Day = @Day", new { Month = month, Day = day }).ToArray();
+        }
+
 
         #region Helpers
         private static SqliteConnection GetConnection()
@@ -183,6 +189,14 @@ namespace SchoolDashboard.DAL
             }
         }
 
+        public static T ExecuteScalar<T>(string sqlQuery, object parameters)
+        {
+            using (var conn = GetConnection())
+            {
+                return conn.ExecuteScalar<T>(sqlQuery, param: parameters);
+            }
+        }
+
         public static DataTable ExecuteDataTable(string sqlQuery)
         {
             using (var conn = GetConnection())
@@ -196,35 +210,42 @@ namespace SchoolDashboard.DAL
 
         public static void DeleteRow<T>(int id)
         {
-            var attr = typeof(T).GetCustomAttributes(true).Where(a => a is TableNameAttribute).FirstOrDefault() as TableNameAttribute;
-            if (attr == null)
-                throw new Exception("Missing TableNameAttribute for model " + typeof(T).FullName);
+            Execute(string.Format("delete from {0} where Id = @Id", GetTableName(typeof(T))), new { Id = id });
+        }
 
-            Execute(string.Format("delete from {0} where Id = @Id", attr.TableName), new { Id = id });
+        public static void DeleteAllRows<T>()
+        {
+            Execute(string.Format("delete from {0} where Id > 0", GetTableName(typeof(T))), null);
         }
 
         public static T GetById<T>(int id)
         {
-            var attr = typeof(T).GetCustomAttributes(true).Where(a => a is TableNameAttribute).FirstOrDefault() as TableNameAttribute;
-            if (attr == null)
-                throw new Exception("Missing TableNameAttribute for model " + typeof(T).FullName);
-
-            return ExecuteToModel<T>("select * from " + attr.TableName + " where Id = @Id", new { Id = id }).FirstOrDefault();
+            return ExecuteToModel<T>("select * from " + GetTableName(typeof(T)) + " where Id = @Id", new { Id = id }).FirstOrDefault();
         }
 
         public static T[] GetAllRows<T>()
         {
-            var attr = typeof(T).GetCustomAttributes(true).Where(a => a is TableNameAttribute).FirstOrDefault() as TableNameAttribute;
-            if (attr == null)
-                throw new Exception("Missing TableNameAttribute for model " + typeof(T).FullName);
+            return ExecuteToModel<T>("select * from " + GetTableName(typeof(T)));
+        }
 
-            return ExecuteToModel<T>("select * from " + attr.TableName);
+        public static int CountAllRws<T>()
+        {
+            return ExecuteScalar<int>("select count(*) from " + GetTableName(typeof(T)), null);
         }
 
         private static void RunScript(string filePath, SqliteConnection connection)
         {
             var script = File.ReadAllText(filePath);
             connection.Execute(script);
+        }
+
+        private static string GetTableName(Type modelType)
+        {
+            var attr = modelType.GetCustomAttributes(true).Where(a => a is TableNameAttribute).FirstOrDefault() as TableNameAttribute;
+            if (attr == null)
+                throw new Exception("Missing TableNameAttribute for model " + modelType.FullName);
+
+            return attr.TableName;
         }
         #endregion
     }

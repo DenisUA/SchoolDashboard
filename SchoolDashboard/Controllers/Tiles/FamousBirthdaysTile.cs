@@ -16,14 +16,29 @@ namespace SchoolDashboard.Controllers.Tiles
 {
     class FamousBirthdaysTile : Tile
     {
-        public override bool IsActive { get { return false; } }
+        public override bool IsActive
+        {
+            get
+            {
+                var today = DateTime.Now;
+                return Repository.GetFamousBirthdaysByDay(today.Month, today.Day).Length > 0;
+            }
+        }
 
-        public override string TileId { get { return ""; } }
+        public override string TileId { get { return "famousBirthday"; } }
 
         public override DataModel GetViewData()
         {
-            
-            return null;
+            var today = DateTime.Now;
+            var famousBirthday = Repository.GetFamousBirthdaysByDay(today.Month, today.Day).Random();
+            var model = new FamousBirthdayTileData()
+            {
+                Name = famousBirthday.Name,
+                Description = famousBirthday.Description,
+                PictureFileName = famousBirthday.Photo
+            };
+
+            return model;
         }
     }
 }

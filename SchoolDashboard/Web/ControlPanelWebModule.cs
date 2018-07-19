@@ -15,6 +15,7 @@ using System.Data;
 using System.Collections;
 using System.Net;
 using System.Reflection.Emit;
+using System.Data.SQLite;
 
 namespace SchoolDashboard.Web
 {
@@ -237,11 +238,12 @@ namespace SchoolDashboard.Web
             var file = Request.Files.FirstOrDefault();
 
             var birthdays = new List<DAL.Models.FamousBirthday>();
-            var picturesDirectory = new DirectoryInfo(Path.Combine(Directory.GetCurrentDirectory(), "Web", "Content", "Images", "FamousBirthdays", "NewImages"));
-            if (picturesDirectory.Exists)
-                picturesDirectory.Delete(true);
+            var picturesDirectory = new DirectoryInfo(Path.Combine(Directory.GetCurrentDirectory(), "Web", "Content", "Images", "FamousBirthdays"));
+            var newPicturesDirectory = new DirectoryInfo(Path.Combine(picturesDirectory.FullName, "NewImages"));
+            if (newPicturesDirectory.Exists)
+                newPicturesDirectory.Delete(true);
 
-            picturesDirectory.Create();
+            newPicturesDirectory.Create();
 
             var webClient = new WebClient();
 
@@ -256,15 +258,20 @@ namespace SchoolDashboard.Web
                     for (int i = 0; i < rows.Count; i++)
                     {
                         var items = rows[i].ItemArray;
-                        var birthday = new DAL.Models.FamousBirthday()
-                        {
-                            Day = (int)items[0],
-                            Month = (int)items[1],
-                            Name = items[2].ToString(),
-                            Description = items[3].ToString(),
-                        };
+                        var birthday = new DAL.Models.FamousBirthday();
 
-                        webClient.DownloadFile(items[4].ToString(), picturesDirectory.FullName);
+                        birthday.Month = Convert.ToInt32(items[0]);
+                        birthday.Day = Convert.ToInt32(items[1]);
+                        birthday.Name = items[2].ToString();
+                        birthday.Description = items[3].ToString();
+
+                        var fileUrl = items[4].ToString();
+                        var newFileName = Guid.NewGuid() + Path.GetExtension(fileUrl);
+                        var newFilePath = Path.Combine(newPicturesDirectory.FullName, newFileName);
+
+                        webClient.DownloadFile(fileUrl, newFilePath);
+
+                        birthday.Photo = newFileName;
 
                         birthdays.Add(birthday);
                     }
@@ -272,10 +279,17 @@ namespace SchoolDashboard.Web
             }
             catch (Exception ex)
             {
-                return Response.AsText(ex.Message);
+                return Response.AsText(ex.ToString());
             }
 
+            Parallel.ForEach(picturesDirectory.EnumerateFiles(), (f) => f.Delete());
+            Parallel.ForEach(newPicturesDirectory.EnumerateFiles(), (f) => f.MoveTo(Path.Combine(picturesDirectory.FullName, f.Name)));
 
+            Repository.DeleteAllRows<DAL.Models.FamousBirthday>();
+            foreach (var birthday in birthdays)
+            {
+                Repository.AddFamousBirthday(birthday);
+            }
 
             return Response.AsText("ok");
         }
@@ -325,10 +339,137 @@ namespace SchoolDashboard.Web
                 return Response.AsText(ex.Message);
             }
 
-            Repository.DeleteAllStudents();
+            Repository.DeleteAllRows<DAL.Models.Student>();
             foreach (var student in students)
             {
                 Repository.AddStudent(student);
+            }
+
+            return Response.AsText("ok");
+        }
+
+        public dynamic UploadHolidaysFile()
+        {
+            var file = Request.Files.FirstOrDefault();
+
+            var holidays = new List<DAL.Models.Holiday>();
+            var picturesDirectory = new DirectoryInfo(Path.Combine(Directory.GetCurrentDirectory(), "Web", "Content", "Images", "HolidaysPictures"));
+            var newPicturesDirectory = new DirectoryInfo(Path.Combine(picturesDirectory.FullName, "NewImages"));
+            if (newPicturesDirectory.Exists)
+                newPicturesDirectory.Delete(true);
+
+            newPicturesDirectory.Create();
+
+            var webClient = new WebClient();
+
+            try
+            {
+                using (var reader = ExcelReaderFactory.CreateReader(file.Value))
+                {
+                    var dataSet = reader.AsDataSet();
+                    var table = dataSet.Tables[0];
+                    var rows = table.Rows;
+
+                    for (int i = 0; i < rows.Count; i++)
+                    {
+                        var items = rows[i].ItemArray;
+                        var holiday = new DAL.Models.Holiday();
+
+                        holiday.Day = Convert.ToInt32(items[0]);
+                        holiday.Month = Convert.ToInt32(items[1]);
+                        holiday.Name = items[2].ToString();
+                        holiday.Description = items[3].ToString();
+
+                        var fileUrl = items[4].ToString();
+
+                        var newFileName = Guid.NewGuid() + Path.GetExtension(fileUrl);
+                        var argsIndex = newFileName.IndexOf('?');
+                        if (argsIndex > 0)
+                        {
+                            newFileName = newFileName.Remove(argsIndex);
+                        }
+
+                        var newFilePath = Path.Combine(newPicturesDirectory.FullName, newFileName);
+
+                        webClient.DownloadFile(fileUrl, newFilePath);
+
+                        holiday.Picture = newFileName;
+
+                        holidays.Add(holiday);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return Response.AsText(ex.ToString());
+            }
+
+            Parallel.ForEach(picturesDirectory.EnumerateFiles(), (f) => f.Delete());
+            Parallel.ForEach(newPicturesDirectory.EnumerateFiles(), (f) => f.MoveTo(Path.Combine(picturesDirectory.FullName, f.Name)));
+
+            Repository.DeleteAllRows<DAL.Models.Holiday>();
+            foreach (var holiday in holidays)
+            {
+                Repository.AddHoliday(holiday);
+            }
+
+            return Response.AsText("ok");
+        }
+
+        public dynamic Teachers()
+        {
+            return GetView();
+        }
+
+        public dynamic UploadTeachersFile()
+        {
+            var file = Request.Files.FirstOrDefault();
+
+            var teachers = new List<DAL.Models.Teacher>();
+
+            try
+            {
+                using (var reader = ExcelReaderFactory.CreateReader(file.Value))
+                {
+                    var dataSet = reader.AsDataSet();
+                    var table = dataSet.Tables[0];
+                    var rows = table.Rows;
+
+                    for (int i = 0; i < rows.Count; i++)
+                    {
+                        var items = rows[i].ItemArray;
+                        var teacher = new DAL.Models.Teacher()
+                        {
+                            Name = items[1].ToString(),
+                            Position = items[2].ToString(),
+                            IsMale = items[4].ToString().StartsWith("чол")
+                        };
+
+
+                        if (items[3] is DateTime)
+                        {
+                            var dateTime = (DateTime)items[3];
+                            teacher.BirthdayDay = dateTime.Day;
+                            teacher.BirthdayMounth = dateTime.Month;
+                        }
+                        else
+                        {
+                            throw new Exception("bad date" + items[1].ToString());
+                        }
+
+                        teachers.Add(teacher);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return Response.AsText(ex.Message);
+            }
+
+            Repository.DeleteAllRows<DAL.Models.Teacher>();
+            foreach (var teacher in teachers)
+            {
+                Repository.AddTeacher(teacher);
             }
 
             return Response.AsText("ok");
@@ -343,7 +484,22 @@ namespace SchoolDashboard.Web
             }
             else
             {
-                var table = Repository.ExecuteDataTable(model.Request);
+                DataTable table;
+                try
+                {
+                    table = Repository.ExecuteDataTable(model.Request);
+                }
+                catch (SQLiteException ex)
+                {
+                    model.Error = ex.Message;
+                    return model;
+                }
+                catch (Exception ex)
+                {
+                    model.Error = ex.ToString();
+                    return model;
+                }
+
                 var rows = new List<string[]>();
 
                 model.Headers = table.Columns.Cast<DataColumn>().Select(c => c.ColumnName).ToArray();
@@ -361,6 +517,8 @@ namespace SchoolDashboard.Web
 
                 model.Data = rows.ToArray();
             }
+
+            model.Error = null;
 
             return GetView(model);
         }

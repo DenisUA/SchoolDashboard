@@ -119,6 +119,7 @@
     <Compile Include="Controllers\Tiles\ViewDataModels\AwardsTileData.cs" />
     <Compile Include="Controllers\Tiles\ViewDataModels\BirthdayTileData.cs" />
     <Compile Include="Controllers\Tiles\ViewDataModels\DataModel.cs" />
+    <Compile Include="Controllers\Tiles\ViewDataModels\FamousBirthdayTileData.cs" />
     <Compile Include="Controllers\Tiles\ViewDataModels\HistoryDayTileData.cs" />
     <Compile Include="Controllers\Tiles\ViewDataModels\NoticesTileData.cs" />
     <Compile Include="Controllers\Tiles\ViewDataModels\TimelineTileData.cs" />
@@ -132,6 +133,7 @@
     <Compile Include="DAL\Models\Lesson.cs" />
     <Compile Include="DAL\Models\Notice.cs" />
     <Compile Include="DAL\Models\SchoolLevel.cs" />
+    <Compile Include="DAL\Models\Teachers.cs" />
     <Compile Include="DAL\Models\Student.cs" />
     <Compile Include="DAL\Models\TableNameAttribute.cs" />
     <Compile Include="DAL\Repository.cs" />
@@ -269,6 +271,7 @@
     <Content Include="Web\Content\JS\weather.js" />
     <None Include="Web\Views\ControlPanel\ExecuteSql.cshtml" />
     <None Include="Web\Views\ControlPanel\FamousBirthdays.cshtml" />
+    <None Include="Web\Views\ControlPanel\Teachers.cshtml" />
     <None Include="Web\Views\ControlPanel\Students.cshtml" />
     <None Include="Web\Views\ControlPanel\Awards.cshtml" />
     <None Include="Web\Views\ControlPanel\EditHoliday.cshtml" />

@@ -10,7 +10,7 @@
                 <label for="newFile">Завантажити файл з датами народження відомих людей</label>
                 <input type="file" class="form-control-file" id="newFile" name="file">
             </div>
-            <button id="upload" class="btn btn-primary">Зберегти</button>
+            <button id="upload" class="btn btn-primary">Завантажити</button>
         </form>
     </div>
 </div>
@@ -34,7 +34,7 @@
 <div class="row justify-content-md-center" id="successDiv" style="display: none; margin: 20px;">
     <div class="col-md-5">
         <div class="alert alert-success" role="alert">
-            Новий список успішно збережено
+            Новий список успішно завантажено
         </div>
     </div>
 </div>
@@ -50,9 +50,11 @@
 
             $("#waitDiv").show();
             $("#errorDiv").hide();
+            $("#successDiv").hide();
+
             $.ajax({
                 // Your server script to process the upload
-                url: '/ControlPanel/UploadStudentsFile',
+                url: '/ControlPanel/UplodaFamousBirthdaysFile',
                 type: 'POST',
 
                 // Form data
@@ -68,9 +70,6 @@
                     $("#waitDiv").hide();
                     if (x == "ok") {
                         $("#successDiv").show();
-                        setTimeout(function () {
-                            location.reload();
-                        }, 3000);
                     }
                     else {
                         $("#errorP").text(x);

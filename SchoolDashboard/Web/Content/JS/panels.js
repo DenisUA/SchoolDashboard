@@ -2,11 +2,18 @@
 tilesHandlers["historyDayPanel"] = function (data, element) {
     $(element).find("h1").text(data.title);
     $(element).find("p").text(data.text);
-    $(element).find("img").attr("src", data.image)
+    $(element).find("img").attr("src", data.image);
 };
 
 tilesHandlers["weatherPanel"] = function (data, element) {
 
+};
+
+tilesHandlers["famousBirthday"] = function (data, element) {
+    let el = $(element);
+    el.find("h2").text(data.name);
+    el.find("p").text(data.description);
+    el.find("img").attr("src", "/Images/FamousBirthdays/" + data.pictureFileName);
 };
 
 tilesHandlers["timelinePanel"] = function (data, element) {

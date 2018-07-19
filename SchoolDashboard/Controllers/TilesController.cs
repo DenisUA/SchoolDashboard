@@ -23,7 +23,7 @@ namespace SchoolDashboard.Controllers
                 new Tile[] { new HistoryDayTile(), new WeatherTile() },
                 new Tile[] { new TimelineTile() },
                 new Tile[] { new AwardsTile() },
-                new Tile[] { new BirthdaysTile() },
+                new Tile[] { new BirthdaysTile(), new FamousBirthdaysTile() },
                 new Tile[] { new NoticesTile() }
             };
             _currentTileSetIndex = 0;

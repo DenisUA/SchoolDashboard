@@ -99,5 +99,12 @@ namespace SchoolDashboard.Common
                 { AwardsTypes.Voleyboll,"voleyboll.png"},
             };
         }
+
+        public static T Random<T>(this T[] data)
+        {
+            var random = new Random();
+            var index = random.Next(0, data.Length);
+            return data[index];
+        }
     }
 }
