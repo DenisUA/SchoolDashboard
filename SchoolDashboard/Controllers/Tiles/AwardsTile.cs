@@ -12,7 +12,7 @@ namespace SchoolDashboard.Controllers.Tiles
 {
     class AwardsTile : Tile
     {
-        public override bool IsActive { get { return true; } }
+        public override bool IsActive { get { return Repository.GetAwards(10).Length > 0; } }
 
         public override string TileId { get { return "awardsPanel"; } }
 

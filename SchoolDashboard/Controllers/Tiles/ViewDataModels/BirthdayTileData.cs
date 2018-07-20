@@ -15,6 +15,7 @@ namespace SchoolDashboard.Controllers.Tiles.ViewDataModels
     class BirthdayItem
     {
         public string Name { get; set; }
-        public string PhotoName { get; set; }
+        public bool IsMale { get; set; }
+        public string Description { get; set; }
     }
 }

@@ -152,12 +152,12 @@ namespace SchoolDashboard.DAL
 
         public static void AddStudent(Student model)
         {
-            Execute("insert into Students(Name, BirthdayDay, BirthdayMounth, Class, IsMale) values(@Name, @BirthdayDay, @BirthdayMounth, @Class, @IsMale)", model);
+            Execute("insert into Students(Name, BirthdayDay, BirthdayMonth, Class, IsMale) values(@Name, @BirthdayDay, @BirthdayMonth, @Class, @IsMale)", model);
         }
 
         public static void AddTeacher(Teacher model)
         {
-            Execute("insert into Teachers(Name, BirthdayDay, BirthdayMounth, Position, IsMale) values(@Name, @BirthdayDay, @BirthdayMounth, @Position, @IsMale)", model);
+            Execute("insert into Teachers(Name, BirthdayDay, BirthdayMonth, Position, IsMale) values(@Name, @BirthdayDay, @BirthdayMonth, @Position, @IsMale)", model);
         }
 
         public static FamousBirthday[] GetFamousBirthdaysByDay(int month, int day)
@@ -165,6 +165,15 @@ namespace SchoolDashboard.DAL
             return ExecuteToModel<FamousBirthday>("select * from FamousBirthdays where Month = @Month and Day = @Day", new { Month = month, Day = day }).ToArray();
         }
 
+        public static Student[] GetStudentsBirthdays(int day, int month)
+        {
+            return ExecuteToModel<Student>("select * from Students where BirthdayDay = @Day and BirthdayMonth = @Month", new { Day = day, Month = month });
+        }
+
+        public static Teacher[] GetTeachersBirthdays(int day, int month)
+        {
+            return ExecuteToModel<Teacher>("select * from Teachers where BirthdayDay = @Day and BirthdayMonth = @Month", new { Day = day, Month = month });
+        }
 
         #region Helpers
         private static SqliteConnection GetConnection()

@@ -26,7 +26,7 @@ namespace SchoolDashboard.Controllers
                 new Tile[] { new BirthdaysTile(), new FamousBirthdaysTile() },
                 new Tile[] { new NoticesTile() }
             };
-            _currentTileSetIndex = 0;
+            _currentTileSetIndex = -1;
 
             FixedTile = null;
         }
@@ -36,26 +36,36 @@ namespace SchoolDashboard.Controllers
             if (FixedTile != null)
                 return new ShowTilesInfo[] { new ShowTilesInfo() { TileId = FixedTile.TileId, Data = FixedTile.GetViewData() } };
 
-            if (_currentTileSetIndex > _tilesSets.Length - 1)
-                _currentTileSetIndex = 0;
+            var newTilesSetIndex = _currentTileSetIndex + 1;
+            if (newTilesSetIndex > _tilesSets.Length - 1)
+                newTilesSetIndex = 0;
 
-            var setIndex = _currentTileSetIndex;
-            while (!_tilesSets[setIndex].Any(t => t.IsActive))
+            while (true)
             {
-                setIndex++;
-                if (setIndex > _tilesSets.Length - 1)
+                var tiles = _tilesSets[newTilesSetIndex];
+                var mainTile = tiles.FirstOrDefault(t => t.IsPriority);
+                if (mainTile == null)
                 {
-                    setIndex = 0;
-                    break;
+                    if (tiles.Any(t => t.IsActive))
+                        break;
                 }
+                else
+                {
+                    if (mainTile.IsActive)
+                        break;
+                }
+
+                newTilesSetIndex++;
+                if (newTilesSetIndex > _tilesSets.Length - 1)
+                    newTilesSetIndex = 0;
             }
 
-            var res = _tilesSets[setIndex]
+            var res = _tilesSets[newTilesSetIndex]
                 .Where(t => t.IsActive)
                 .Select(t => new ShowTilesInfo() { TileId = t.TileId, Data = t.GetViewData() })
                 .ToArray();
-            _currentTileSetIndex = setIndex + 1;
 
+            _currentTileSetIndex = newTilesSetIndex;
             return res;
         }
     }

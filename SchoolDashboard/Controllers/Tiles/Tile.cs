@@ -12,5 +12,6 @@ namespace SchoolDashboard.Controllers.Tiles
         public abstract bool IsActive { get; }
         public abstract string TileId { get; }
         public abstract DataModel GetViewData();
+        public virtual bool IsPriority { get; } = false;
     }
 }

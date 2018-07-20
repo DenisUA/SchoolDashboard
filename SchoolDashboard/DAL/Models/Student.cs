@@ -13,7 +13,7 @@ namespace SchoolDashboard.DAL.Models
         public string Name { get; set; }
         public string Class { get; set; }
         public int BirthdayDay { get; set; }
-        public int BirthdayMounth { get; set; }
+        public int BirthdayMonth { get; set; }
         public bool IsMale { get; set; }
     }
 }

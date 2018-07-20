@@ -59,14 +59,17 @@ tilesHandlers["timelinePanel"] = function (data, element) {
 };
 
 tilesHandlers["birthdaysPanel"] = function (data, element) {
-    //let innerHtml = "";
-    //$.each(data.items, function (i, el) {
-    //    innerHtml += "<div class='person'>" +
-    //        "<img class='avatar' src='/Images/BPhotos/" + el.photoName + "'>" +
-    //        "<h4>" + el.name + "</h4></div>";
-    //});
+    let template = "<div class='person'>"+
+                        "<img class='avatar {1}' src='/Images/BPhotos/{2}'>"+
+                        "<h4>{3}</h4>"+
+                        "<h5>{4}</h5>"+
+                    "</div>";
+    let res = "";
+    $.each(data.items, function (i, el) {
+        res += formatString(template, el.isMale ? "male" : "female", el.isMale ? "male1.png" : "female1.png", el.name, el.description);
+    });
 
-    //$(element).find(".people").html(innerHtml);
+    $(element).find(".people").html(res);
 };
 
 tilesHandlers["awardsPanel"] = function (data, element) {
@@ -154,3 +157,14 @@ $(document).ready(function () {
 
     processTiles();
 });
+
+function formatString()
+{
+    var args = [].slice.call(arguments);
+    //if (this.toString() != '[object Object]') {
+    //    args.unshift(this.toString());
+    //}
+
+    var pattern = new RegExp('{([1-' + args.length + '])}', 'g');
+    return String(args[0]).replace(pattern, function (match, index) { return args[index]; });
+}

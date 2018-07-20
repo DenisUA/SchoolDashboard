@@ -72,7 +72,7 @@ CREATE TABLE Students
   Id				INTEGER PRIMARY KEY AUTOINCREMENT	NOT NULL,
   Name				TEXT								NOT NULL,
   BirthdayDay		INTEGER								NOT NULL,
-  BirthdayMounth	INTEGER								NOT NULL,
+  BirthdayMonth	INTEGER								NOT NULL,
   Class				TEXT								NOT NULL,
   IsMale			INTEGER								NOT NULL
 );
@@ -82,7 +82,7 @@ CREATE TABLE Teachers
   Id				INTEGER PRIMARY KEY AUTOINCREMENT	NOT NULL,
   Name				TEXT								NOT NULL,
   BirthdayDay		INTEGER								NOT NULL,
-  BirthdayMounth	INTEGER								NOT NULL,
+  BirthdayMonth	INTEGER								NOT NULL,
   Position			TEXT								NOT NULL,
   IsMale			INTEGER								NOT NULL
 );

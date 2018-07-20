@@ -324,7 +324,7 @@ namespace SchoolDashboard.Web
                         {
                             var dateTime = (DateTime)items[2];
                             student.BirthdayDay = dateTime.Day;
-                            student.BirthdayMounth = dateTime.Month;
+                            student.BirthdayMonth = dateTime.Month;
                         }
                         else
                         {
@@ -450,7 +450,7 @@ namespace SchoolDashboard.Web
                         {
                             var dateTime = (DateTime)items[3];
                             teacher.BirthdayDay = dateTime.Day;
-                            teacher.BirthdayMounth = dateTime.Month;
+                            teacher.BirthdayMonth = dateTime.Month;
                         }
                         else
                         {
