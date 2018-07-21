@@ -12,7 +12,7 @@ tilesHandlers["weatherPanel"] = function (data, element) {
 tilesHandlers["famousBirthday"] = function (data, element) {
     let el = $(element);
     el.find("h2").text(data.name);
-    el.find("p").text(data.description);
+    el.find(".famous-description").text(data.description);
     el.find("img").attr("src", "/Images/FamousBirthdays/" + data.pictureFileName);
 };
 
@@ -30,12 +30,12 @@ tilesHandlers["timelinePanel"] = function (data, element) {
                             "</div>" +
                             "</div>" +
                             "<div class='event-description'>" +
-                            (el.hasTime ? "<div class='time'><div class='event-icon'><i class='fa fa-15x fa-clock-o' aria-hidden='true'></i></div>" + el.time + "</div>" : "") +
+                            (el.hasTime ? "<div class='time'><div class='event-icon'><i class='fa fa-15x fa-clock-o' aria-hidden='true'></i></div>" + "<div class='timeline-time-description'>" + el.time + "</div>" + "</div>" : "") +
                             "<div class='location'>" +
                             "<div class='event-icon'>" +
                             "<i class='fa fa-15x fa-map-marker' aria-hidden='true'></i>" +
-                            "</div>" + el.place +
-                            "</div>" + el.description +
+                            "</div>" + "<div class='timeline-location-description'>" + el.place + "</div>" +
+                            "</div>" + "<div class='timeline-description'>" + el.description + "</div>" +
                             "</div>" +
                             "</div>" +
                             "<div class='line circle'></div>" +

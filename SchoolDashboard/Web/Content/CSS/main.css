@@ -154,57 +154,57 @@
 		overflow: hidden;
 	}
 
-		body:before {
-			-moz-animation: load-spinner 1s infinite linear;
-			-webkit-animation: load-spinner 1s infinite linear;
-			-ms-animation: load-spinner 1s infinite linear;
-			animation: load-spinner 1s infinite linear;
-			-moz-transition: opacity 0.25s ease;
-			-webkit-transition: opacity 0.25s ease;
-			-ms-transition: opacity 0.25s ease;
-			transition: opacity 0.25s ease;
-			-moz-transition-delay: 0s;
-			-webkit-transition-delay: 0s;
-			-ms-transition-delay: 0s;
-			transition-delay: 0s;
-			-moz-pointer-events: none;
-			-webkit-pointer-events: none;
-			-ms-pointer-events: none;
-			pointer-events: none;
-			content: '';
-			display: block;
-			position: absolute;
-			top: 50%;
-			left: 50%;
-			width: 4rem;
-			height: 4rem;
-			margin: -2rem 0 0 -2rem;
-			background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='96px' height='96px' viewBox='0 0 96 96' zoomAndPan='disable'%3E%3Cstyle%3Ecircle %7Bfill: transparent%3B stroke: %232e2b37%3B stroke-width: 1.5px%3B %7D%3C/style%3E%3Cdefs%3E%3CclipPath id='corner'%3E%3Cpolygon points='0,0 48,0 48,48 96,48 96,96 0,96' /%3E%3C/clipPath%3E%3C/defs%3E%3Cg clip-path='url(%23corner)'%3E%3Ccircle cx='48' cy='48' r='32'/%3E%3C/g%3E%3C/svg%3E");
-			background-position: center;
-			background-repeat: no-repeat;
-			background-size: 4rem;
-			opacity: 0;
-		}
+		/*body:before {*/
+			/*-moz-animation: load-spinner 1s infinite linear;*/
+			/*-webkit-animation: load-spinner 1s infinite linear;*/
+			/*-ms-animation: load-spinner 1s infinite linear;*/
+			/*animation: load-spinner 1s infinite linear;*/
+			/*-moz-transition: opacity 0.25s ease;*/
+			/*-webkit-transition: opacity 0.25s ease;*/
+			/*-ms-transition: opacity 0.25s ease;*/
+			/*transition: opacity 0.25s ease;*/
+			/*-moz-transition-delay: 0s;*/
+			/*-webkit-transition-delay: 0s;*/
+			/*-ms-transition-delay: 0s;*/
+			/*transition-delay: 0s;*/
+			/*-moz-pointer-events: none;*/
+			/*-webkit-pointer-events: none;*/
+			/*-ms-pointer-events: none;*/
+			/*pointer-events: none;*/
+			/*content: '';*/
+			/*display: block;*/
+			/*position: absolute;*/
+			/*top: 50%;*/
+			/*left: 50%;*/
+			/*width: 4rem;*/
+			/*height: 4rem;*/
+			/*margin: -2rem 0 0 -2rem;*/
+			/*background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='96px' height='96px' viewBox='0 0 96 96' zoomAndPan='disable'%3E%3Cstyle%3Ecircle %7Bfill: transparent%3B stroke: %232e2b37%3B stroke-width: 1.5px%3B %7D%3C/style%3E%3Cdefs%3E%3CclipPath id='corner'%3E%3Cpolygon points='0,0 48,0 48,48 96,48 96,96 0,96' /%3E%3C/clipPath%3E%3C/defs%3E%3Cg clip-path='url(%23corner)'%3E%3Ccircle cx='48' cy='48' r='32'/%3E%3C/g%3E%3C/svg%3E");*/
+			/*background-position: center;*/
+			/*background-repeat: no-repeat;*/
+			/*background-size: 4rem;*/
+			/*opacity: 0;*/
+		/*}*/
 
-		body:after {
-			-moz-pointer-events: none;
-			-webkit-pointer-events: none;
-			-ms-pointer-events: none;
-			pointer-events: none;
-			content: '';
-			display: block;
-			position: fixed;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			z-index: -1;
-			background-attachment: fixed;
-			background-color: #e1e6e1;
-			background-image: url("../../images/overlay.png"), url("../../images/bg.jpg");
-			background-repeat: repeat, repeat-x;
-			background-size: 128px 128px, cover;
-		}
+		/*body:after {*/
+			/*-moz-pointer-events: none;*/
+			/*-webkit-pointer-events: none;*/
+			/*-ms-pointer-events: none;*/
+			/*pointer-events: none;*/
+			/*content: '';*/
+			/*display: block;*/
+			/*position: fixed;*/
+			/*top: 0;*/
+			/*left: 0;*/
+			/*width: 100%;*/
+			/*height: 100%;*/
+			/*z-index: -1;*/
+			/*background-attachment: fixed;*/
+			/*background-color: #e1e6e1;*/
+			/*background-image: url("../../images/overlay.png"), url("../../images/bg.jpg");*/
+			/*background-repeat: repeat, repeat-x;*/
+			/*background-size: 128px 128px, cover;*/
+		/*}*/
 
 		body.is-loading *, body.is-loading *:before, body.is-loading *:after {
 			-moz-animation: none !important;
@@ -319,10 +319,10 @@
 	h1, h2, h3, h4, h5, h6 {
 		color: rgba(255, 255, 255, 0.875);
 		font-family: Arial, Helvetica, sans-serif;
-		font-weight: 700;
+		/* font-weight: 700; */
 		line-height: 1.3;
 		margin: 0 0 0.75rem 0;
-		letter-spacing: -0.05em;
+		/*letter-spacing: -0.05em;*/
 	}
 
 		h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
@@ -3427,7 +3427,7 @@
 				position: absolute;
 				top: 0;
 				left: 0;
-				width: 100%;
+				width: 101%;
 				height: 100%;
 			}
 

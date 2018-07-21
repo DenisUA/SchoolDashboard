@@ -1,0 +1,18 @@
+﻿<Properties StartupConfiguration="{424022A3-7E13-4389-B4F3-56913BAED545}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="SchoolDashboard/Dashboard.cs">
+    <Files>
+      <File FileName="SchoolDashboard/Program.cs" Line="1" Column="1" />
+      <File FileName="SchoolDashboard/DAL/Repository.cs" Line="1" Column="1" />
+      <File FileName="SchoolDashboard/ConsoleCommands/LessonCirclesCommand.cs" Line="20" Column="4" />
+      <File FileName="SchoolDashboard/ConsoleCommands/FixTileCommand.cs" Line="30" Column="68" />
+      <File FileName="SchoolDashboard/Dashboard.cs" Line="41" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="MAC" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.SchoolDashboard PreferredExecutionTarget="MonoDevelop.Default" />
+  <MultiItemStartupConfigurations />
+</Properties>

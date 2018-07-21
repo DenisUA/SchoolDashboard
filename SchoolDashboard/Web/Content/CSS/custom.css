@@ -1,4 +1,16 @@
 /*===============================
+            Shared
+===============================*/
+
+.custom-title {
+  font-size: 3rem;
+}
+
+.custom-subtitle {
+  font-size: 2rem;
+}
+
+/*===============================
             Static header
 ===============================*/
 
@@ -57,12 +69,12 @@
 .static-header .logo {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: end;
   padding: 0 2rem;
 }
 
 .static-header .logo img {
-  height: 128px;
+  height: 215px;
 }
 
 /*===============================
@@ -79,12 +91,12 @@
 }
 
 .birthday h1 {
-  font-size: 4rem;
+  font-size: 3rem;
 }
 
 .birthday h4 {
   letter-spacing: normal;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   margin-bottom: 0;
 }
 
@@ -99,6 +111,10 @@
   padding: 0 0.5rem;
   flex-grow: 1;
   width: calc(100% * (1/5));
+}
+
+.birthday.image.filtered.tinted img {
+  opacity: 0.6;
 }
 
 /*===============================
@@ -124,14 +140,14 @@
   top: -3.5rem;
   height: 10rem;
   padding: 0.3rem;
-  width: 15rem;
+  width: 20rem;
   box-shadow: 0 0 20px rgba(0,0,0,0.3);
   overflow: hidden;
 }
 
 .awards .description h4 {
   letter-spacing: normal;
-  font-size: 1rem;
+  font-size: 1.5rem;
   padding-top: 3.5rem;
   margin: 0;
 }
@@ -139,6 +155,8 @@
 .awards .description p {
   margin: 0.5rem 0.2rem;
   line-height: normal;
+  height: 3.5rem;
+  overflow: hidden;
 }
 
 .awards .badge {
@@ -166,8 +184,24 @@
  .timeline-wrapper .timeline {
   display: flex;
   align-items: center;
-  height: 70%;
+  height: 75%;
   /*padding: 3.5rem;*/
+}
+
+.timeline .timeline-description {
+  max-height: 5rem;
+  overflow: hidden;
+  font-size: 1.7rem;
+}
+
+.timeline .timeline-location-description {
+  max-width: 13rem;
+  font-size: 1.2rem;
+}
+
+.timeline .timeline-time-description {
+  max-width: 6rem;
+  font-size: 1.5rem;
 }
 
 .timeline .line {
@@ -202,17 +236,17 @@
 .timeline .event-wrapper {
   position: absolute;
   display: flex;
-  width: 15rem;
-  min-height: 9rem;
+  width: 25rem;
+  min-height: 11rem;
 }
 
 .timeline .event-wrapper.top {
-  top: -10rem;
-  left: -3.55rem;
+  top: -12rem;
+  left: -4.7rem;
 }
 
 .timeline .event-wrapper.bot {
-  left: -3.55rem;
+  left: -4.8rem;
   top: 1.8rem;
 }
 
@@ -233,7 +267,7 @@
 }
 
 .timeline .event .day {
-  font-size: 0.9rem;
+  font-size: 1.5rem;
   font-weight: bold;
   font-family: Arial, Helvetica, sans-serif;
   padding-bottom: 1rem;
@@ -251,7 +285,6 @@
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  width: 50%;
 }
 
 .timeline .event .event-description .location {
@@ -263,11 +296,13 @@
 
 .timeline .event .event-description .event-icon {
   width: 2rem;
+  height: 2rem;
   text-align: center;
 }
 
 .fa-15x {
   font-size: 1.5rem;
+  line-height: 1.5;
 }
 
 .timeline .now {
@@ -307,10 +342,23 @@
 }
 
 .panel.spotlight.left.famous h5 {
-  font-size: 0.6rem;
+  font-size: 1rem;
   font-weight: normal;
   margin: initial;
   letter-spacing: normal;
+}
+
+.famous h4 {
+  font-size: 1.5rem;
+}
+
+.famous h2.major {
+  font-size: 3rem;
+}
+
+.famous .famous-description {
+  font-size: 1.5rem;
+  padding-bottom: 10px;
 }
 
 /*===============================
@@ -324,13 +372,25 @@
   column-gap: 0.2rem;
 }
 
+.notice-title {
+  font-size: 3rem;
+}
+
+.notice-description p {
+  font-size: 1.2rem;
+}
+
 .items-list .item {
   padding: 1rem;
   -webkit-column-break-inside: avoid;
 }
 
+.items-list .item h3 {
+  font-size: 2rem;
+}
+
 .items-list .item blockquote {
-  font-size: 1.15rem;
+  font-size: 1.5rem;
 }
 
 .items-list .item.important blockquote{
