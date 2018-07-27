@@ -250,6 +250,7 @@
     <Content Include="Web\Content\Images\gallery\thumbs\09.jpg" />
     <Content Include="Web\Content\Images\HolidaysPictures\1September.jpg" />
     <Content Include="Web\Content\Images\overlay.png" />
+    <Content Include="Web\Content\Images\person_0.jpg" />
     <Content Include="Web\Content\Images\question.jpeg" />
     <Content Include="Web\Content\Images\pic01.jpg" />
     <Content Include="Web\Content\Images\pic01_2.jpg" />
@@ -257,6 +258,8 @@
     <Content Include="Web\Content\Images\pic03.jpg" />
     <Content Include="Web\Content\Images\pic03_2.jpg" />
     <Content Include="Web\Content\Images\pic03_3.jpg" />
+    <Content Include="Web\Content\Images\s5_logo.png" />
+    <Content Include="Web\Content\Images\s5_logo1.png" />
     <Content Include="Web\Content\JS\bootstrap.bundle.min.js" />
     <Content Include="Web\Content\JS\validation.js" />
     <Content Include="Web\Content\JS\panels.js" />
