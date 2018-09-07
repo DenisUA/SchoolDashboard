@@ -16,6 +16,7 @@ using System.Collections;
 using System.Net;
 using System.Reflection.Emit;
 using System.Data.SQLite;
+using SchoolDashboard.Common;
 
 namespace SchoolDashboard.Web
 {
@@ -41,6 +42,7 @@ namespace SchoolDashboard.Web
             if (parameters.Id == null)
             {
                 var model = new CalendarEvent();
+                model.DateTime = DateTime.Now.Date;
                 return GetView(model);
             }
             else
@@ -84,11 +86,23 @@ namespace SchoolDashboard.Web
             var awards = Repository.GetAwards();
             var model = new Awards()
             {
-                ActiveAwards = awards.Take(10).Select(a => new Award(a)).ToArray(),
-                UnactiveAwards = awards.Skip(10).Select(a => new Award(a)).ToArray()
+                ActiveAwards = awards.Take(8).Select(a => new Award(a)).ToArray(),
+                UnactiveAwards = awards.Skip(8).Select(a => new Award(a)).ToArray()
             };
 
             return GetView(model);
+        }
+
+        public dynamic DeleteOldAwards()
+        {
+            var awards = Repository.GetAwards();
+            var awardsToDelete = awards.Skip(8);
+            foreach (var award in awardsToDelete)
+            {
+                Repository.DeleteRow<Award>(award.Id);
+            }
+
+            return Redirect(Awards);
         }
 
         public dynamic EditAward(dynamic parameters)
@@ -257,23 +271,41 @@ namespace SchoolDashboard.Web
 
                     for (int i = 0; i < rows.Count; i++)
                     {
-                        var items = rows[i].ItemArray;
-                        var birthday = new DAL.Models.FamousBirthday();
+                        try
+                        {
+                            var items = rows[i].ItemArray;
+                            var birthday = new DAL.Models.FamousBirthday();
 
-                        birthday.Month = Convert.ToInt32(items[0]);
-                        birthday.Day = Convert.ToInt32(items[1]);
-                        birthday.Name = items[2].ToString();
-                        birthday.Description = items[3].ToString();
+                            birthday.Month = Convert.ToInt32(items[0]);
+                            birthday.Day = Convert.ToInt32(items[1]);
+                            birthday.Name = items[2].ToString();
+                            birthday.Description = items[3].ToString().DeleteNonLetterSymbols();
 
-                        var fileUrl = items[4].ToString();
-                        var newFileName = Guid.NewGuid() + Path.GetExtension(fileUrl);
-                        var newFilePath = Path.Combine(newPicturesDirectory.FullName, newFileName);
+                            var fileUrl = items[4].ToString();
+                            var newFileName = Guid.NewGuid() + Path.GetExtension(fileUrl);
+                            var newFilePath = Path.Combine(newPicturesDirectory.FullName, newFileName);
 
-                        webClient.DownloadFile(fileUrl, newFilePath);
+                            try
+                            {
+                                if (Environment.OSVersion.Platform == PlatformID.Unix)
+                                    WebUtils.DownloadFile(fileUrl, newFilePath);
+                                else
+                                    webClient.DownloadFile(fileUrl, newFilePath);
 
-                        birthday.Photo = newFileName;
+                            }
+                            catch (Exception ex)
+                            {
+                                return Response.AsText("Не вдалося завантажити фото для " + birthday.Name + ", рядок " + (i + 1) + ". " + ex);
+                            }
 
-                        birthdays.Add(birthday);
+                            birthday.Photo = newFileName;
+
+                            birthdays.Add(birthday);
+                        }
+                        catch (Exception ex)
+                        {
+                            return Response.AsText("Помилка на рядку " + (i + 1) + " :" + ex);
+                        }
                     }
                 }
             }
@@ -312,15 +344,15 @@ namespace SchoolDashboard.Web
                     {
                         var items = rows[i].ItemArray;
                         var student = new DAL.Models.Student();
-                        student.Class = items[3].ToString();
-                        student.IsMale = items[4].ToString().StartsWith("чол");
+                        student.Class = items[2].ToString();
+                        student.IsMale = items[3].ToString().StartsWith("чол");
 
 
-                        var name = items[1].ToString();
+                        var name = items[0].ToString();
                         student.Name = name.Remove(name.LastIndexOf(' '));
 
 
-                        if (items[2] is DateTime)
+                        if (items[1] is DateTime)
                         {
                             var dateTime = (DateTime)items[2];
                             student.BirthdayDay = dateTime.Day;
@@ -328,7 +360,7 @@ namespace SchoolDashboard.Web
                         }
                         else
                         {
-                            throw new Exception("bad date" + items[1].ToString());
+                            throw new Exception("bad date" + items[0].ToString());
                         }
 
                         students.Add(student);
@@ -392,7 +424,10 @@ namespace SchoolDashboard.Web
 
                         var newFilePath = Path.Combine(newPicturesDirectory.FullName, newFileName);
 
-                        webClient.DownloadFile(fileUrl, newFilePath);
+                        if (Environment.OSVersion.Platform == PlatformID.Unix)
+                            WebUtils.DownloadFile(fileUrl, newFilePath);
+                        else
+                            webClient.DownloadFile(fileUrl, newFilePath);
 
                         holiday.Picture = newFileName;
 
@@ -440,13 +475,13 @@ namespace SchoolDashboard.Web
                     {
                         var items = rows[i].ItemArray;
                         var teacher = new DAL.Models.Teacher();
-                        teacher.Position = items[2].ToString();
-                        teacher.IsMale = items[4].ToString().StartsWith("чол");
+                        teacher.Position = items[1].ToString();
+                        teacher.IsMale = items[3].ToString().StartsWith("чол");
 
-                        var nameElements = items[1].ToString().Split(' ');
-                        teacher.Name = nameElements[0] + " " + nameElements[1].ToUpper()[0] + ". " +nameElements[2].ToUpper()[0] + ".";
+                        var nameElements = items[0].ToString().Split(' ');
+                        teacher.Name = nameElements[0] + " " + nameElements[1].ToUpper()[0] + ". " + nameElements[2].ToUpper()[0] + ".";
 
-                        if (items[3] is DateTime)
+                        if (items[2] is DateTime)
                         {
                             var dateTime = (DateTime)items[3];
                             teacher.BirthdayDay = dateTime.Day;
@@ -454,7 +489,7 @@ namespace SchoolDashboard.Web
                         }
                         else
                         {
-                            throw new Exception("bad date" + items[1].ToString());
+                            throw new Exception("bad date" + items[0].ToString());
                         }
 
                         teachers.Add(teacher);

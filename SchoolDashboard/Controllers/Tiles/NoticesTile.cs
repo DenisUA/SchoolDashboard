@@ -22,7 +22,7 @@ namespace SchoolDashboard.Controllers.Tiles
 
         public override ViewDataModels.DataModel GetViewData()
         {
-            var notices = Repository.GetNotices(9);
+            var notices = Repository.GetNotices(6);
             return new NoticesTileData() { Notices = notices };
         }
     }

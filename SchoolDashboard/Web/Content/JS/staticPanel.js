@@ -18,7 +18,7 @@ function processCircles() {
 
             circle.isLessonsEnded = false;
             circle.description = data.description;
-            circle.timeRemainingText = data.minutesRemaining + " хв";
+            circle.timeRemainingText = data.minutesRemaining == 0 ? "<1 хв" : data.minutesRemaining + " хв";
             circle.progressCirclePercent = data.percantage;
 
             if (data.isLesson) {

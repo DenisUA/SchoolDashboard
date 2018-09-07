@@ -106,6 +106,7 @@
   <ItemGroup>
     <Compile Include="Common\Helpers.cs" />
     <Compile Include="Common\StringConstants.cs" />
+    <Compile Include="Common\WebUtils.cs" />
     <Compile Include="ConsoleCommands\FixTileCommand.cs" />
     <Compile Include="Controllers\LessonsController.cs" />
     <Compile Include="Controllers\TilesController.cs" />
@@ -169,6 +170,10 @@
     <None Include="Web\Content\Fonts\fontawesome-webfont.woff" />
     <None Include="Web\Content\Fonts\fontawesome-webfont.woff2" />
     <None Include="Web\Content\Fonts\FontAwesome.otf" />
+    <None Include="Web\Content\Fonts\SourceSansPro\SourceSansPro-Italic.ttf" />
+    <None Include="Web\Content\Fonts\SourceSansPro\SourceSansPro-Light.ttf" />
+    <None Include="Web\Content\Fonts\SourceSansPro\SourceSansPro-LightItalic.ttf" />
+    <None Include="Web\Content\Fonts\SourceSansPro\SourceSansPro-Regular.ttf" />
     <None Include="Web\Content\Sass\base\_page.scss" />
     <None Include="Web\Content\Sass\base\_typography.scss" />
     <None Include="Web\Content\Sass\components\_button.scss" />
@@ -249,6 +254,17 @@
     <Content Include="Web\Content\Images\gallery\thumbs\08.jpg" />
     <Content Include="Web\Content\Images\gallery\thumbs\09.jpg" />
     <Content Include="Web\Content\Images\HolidaysPictures\1September.jpg" />
+    <Content Include="Web\Content\Images\logo.png" />
+    <Content Include="Web\Content\Images\Manual\Awards.PNG" />
+    <Content Include="Web\Content\Images\Manual\Birthdays.PNG" />
+    <Content Include="Web\Content\Images\Manual\BirthdaysExample.PNG" />
+    <Content Include="Web\Content\Images\Manual\Famous.PNG" />
+    <Content Include="Web\Content\Images\Manual\FamousExample.PNG" />
+    <Content Include="Web\Content\Images\Manual\HistoryDay.PNG" />
+    <Content Include="Web\Content\Images\Manual\HistoryDayExample.PNG" />
+    <Content Include="Web\Content\Images\Manual\Notices.PNG" />
+    <Content Include="Web\Content\Images\Manual\TeachersExample.PNG" />
+    <Content Include="Web\Content\Images\Manual\Timeline.PNG" />
     <Content Include="Web\Content\Images\overlay.png" />
     <Content Include="Web\Content\Images\person_0.jpg" />
     <Content Include="Web\Content\Images\question.jpeg" />

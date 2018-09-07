@@ -21,6 +21,7 @@
   position: fixed;
   display: flex;
   color: black;
+  justify-content: space-between;
 }
 
 .static-header h4 {
@@ -57,7 +58,8 @@
 }
 
 .static-header .circle-wrapper .circle-title{
-    font-size: 22px;
+  font-size: 25px;
+  font-weight: 400;
 }
 
 .static-header .circle-wrapper .circle-countdown {
@@ -67,14 +69,11 @@
 }
 
 .static-header .logo {
-  display: flex;
-  justify-content: center;
-  align-items: end;
-  padding: 0 2rem;
+  padding: 0.5rem 2rem;
 }
 
 .static-header .logo img {
-  height: 215px;
+  height: 220px;
 }
 
 /*===============================

@@ -8,7 +8,7 @@ namespace SchoolDashboard.Controllers.Tiles.ViewDataModels
 {
     class FamousBirthdayTileData : DataModel
     {
-        public override int ShowTime { get { return 10000; } }
+        public override int ShowTime { get { return 15000; } }
 
         public string Name { get; set; }
         public string Description { get; set; }

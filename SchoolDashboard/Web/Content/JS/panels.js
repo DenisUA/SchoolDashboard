@@ -90,14 +90,15 @@ tilesHandlers["awardsPanel"] = function (data, element) {
 
 tilesHandlers["noticesPanel"] = function (data, element) {
     let innerHtml = "";
+    let template = "<div class=\"item {1}\">" +
+        "<h3>{2}</h3>" +
+        "<blockquote>" +
+        "{3}" +
+        "</blockquote>" +
+        "</div>\n"
+    
     $.each(data.notices, function (i, el) {
-        innerHtml += "<div class=\"item" + (el.isImportant ? " important" : "") + "\">";
-        innerHtml += "<h3>" + el.title + "</h3>";
-        innerHtml += "<blockquote>";
-        innerHtml += "<p>" + el.dateString + "</p>";
-        innerHtml += el.text;
-        innerHtml += "</blockquote>";
-        innerHtml += "</div>\n";
+        innerHtml += formatString(template, (el.isImportant ? "important" : ""), el.title, el.text);
     })
 
     $(element).find(".items-list").html(innerHtml);

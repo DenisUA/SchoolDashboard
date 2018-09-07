@@ -106,5 +106,14 @@ namespace SchoolDashboard.Common
             var index = random.Next(0, data.Length);
             return data[index];
         }
+
+        public static string DeleteNonLetterSymbols(this string @this)
+        {
+            var array = @this.ToCharArray();
+            var letters = array.Where(c => char.IsLetterOrDigit(c) || char.IsWhiteSpace(c) || char.IsPunctuation(c)).ToArray();
+            var res = new string(letters);
+            res = res.Replace((char)160, ' ');
+            return res;
+        }
     }
 }

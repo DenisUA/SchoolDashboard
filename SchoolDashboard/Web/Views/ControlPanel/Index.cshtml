@@ -1,3 +1,179 @@
 ﻿@{
     Layout = "_Layout.cshtml";
-}
+
+
+
+    <div class="row justify-content-md-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    Панель керування інформаційним екраном
+                </div>
+                <div class="card-body">
+                    <p class="card-text h5">
+                        Це головна сторінка панелі керування інформаційним екраном.
+                        За допомогою даної панелі можна перегнядати та редагувати налаштування та інформацію, що відображається на інформаційному екрані.
+                    </p>
+                    <p class="card-text">
+                        У верхній частині сторінки розміщене навігаційне меню.
+                    </p>
+                    <p class="card-text">
+                        Нижче розміщений розділ з описом і інструкціями для кожного розділу.
+                    </p>
+
+                    <div class="accordion" id="accordionExample">
+                        <div class="card">
+                            <div class="card-header" id="headingCalendar">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#calendar" aria-expanded="true" aria-controls="calendar">
+                                        Календарні події
+                                    </button>
+                                </h5>
+                            </div>
+
+                            <div id="calendar" class="collapse show" aria-labelledby="headingCalendar" data-parent="#accordionExample">
+                                <div class="card-body">
+                                    <img src="/Images/Manual/Timeline.PNG" class="img-fluid" alt="Responsive image">
+
+                                    <div>
+                                        Відображення подій школи у хронологічній послідовності. Відображає дату, час, місце і короткий опис події. Подія може бути без точного часу.
+                                        Минулі події видаляються автоматично. Відображаються найближчі 7 подій.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" id="headingAwards">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#awards" aria-expanded="false" aria-controls="awards">
+                                        Нагороди
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="awards" class="collapse" aria-labelledby="headingAwards" data-parent="#accordionExample">
+                                <div class="card-body">
+                                    <img src="/Images/Manual/Awards.PNG" class="img-fluid" alt="Responsive image">
+
+                                    <div>
+                                        Нагороди учнів (та не тільки). Відображається прізвище, ім'я, та опис нагороди. Є можливість обрати піктограму нагороди (кубок, медаль, тощо.). На екрані завжди 8 останніх нагород.
+                                        Додавання нової нагороди змістить усі на одну і остання (восьма) не буде більше відображатися. Неактивні (старі) нагороди потрібно видаляти вручну. Для цього є кнопка "Видалити усі".
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" id="headingNotices">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#notices" aria-expanded="false" aria-controls="notices">
+                                        Оголошення
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="notices" class="collapse" aria-labelledby="headingNotices" data-parent="#accordionExample">
+                                <div class="card-body">
+                                    <img src="/Images/Manual/Notices.PNG" class="img-fluid" alt="Responsive image">
+
+                                    <div>
+                                        Дошка оголошеня. Відображається заголовок і текст оголошення. Також оголошення можуть бути пріоритетними - вони виділяються фоном. Також у оголошення є термін дії, після якого воно автоматично видаляється.
+                                        Одночасно на екрані може бути не більше 6 оголошень. Їх може бути меньше, за умови, якщо інші оголошення містять багато тексту в описі. Іншими словами - кількість оголошень на екрані вибирається автоматично.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" id="headingHistoryDay">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#historyDay" aria-expanded="false" aria-controls="historyDay">
+                                        Визначні дні
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="historyDay" class="collapse" aria-labelledby="headingHistoryDay" data-parent="#accordionExample">
+                                <div class="card-body">
+                                    <img src="/Images/Manual/HistoryDay.PNG" class="img-fluid" alt="Responsive image">
+
+                                    <div>
+                                        Відображення визначних днів чи свят на сьогодні. Може бути декілька на один календарний день. У контрольну панель завантажується Excel документ (приклад показано нижче) з списком визначних днів.
+                                        На кожне відображення обирається одне випадкове свято на цей день. Якщо таких немає - відображається випадковий цікавий факт.
+                                        У Excel домументі повинно бути 5 стовпців - день, місяць, назва, опис, посилання на фонове фото.
+                                        З першого рядка повинні починатися дані, без відступів, переривань, тощо.
+                                    </div>
+
+                                    <img src="/Images/Manual/HistoryDayExample.PNG" class="img-fluid" alt="Responsive image">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" id="headingBirthdays">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#birthdays" aria-expanded="false" aria-controls="birthdays">
+                                        Список учнів
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="birthdays" class="collapse" aria-labelledby="headingBirthdays" data-parent="#accordionExample">
+                                <div class="card-body">
+                                    <img src="/Images/Manual/Birthdays.PNG" class="img-fluid" alt="Responsive image">
+
+                                    <div>
+                                        Для відображення іменинників потрібно завантажити Excel документ з списком учнів школи. У випадку відсутності іменинників сьогодні - розділ не буде відображатися. Також не буде відображатися розділ відомих іменинників.
+                                        У Excel документі повинно бути 4 стовпці - ПІБ, дата народження, клас, стать. Дата повинна бути у форматі дд.мм.рррр. Стать - "жін." або "чол.".
+                                        З першого рядка повинні починатися дані, без відступів, переривань, тощо.
+                                        Нижче приклад документу.
+                                    </div>
+
+                                    <img src="/Images/Manual/BirthdaysExample.PNG" class="img-fluid" alt="Responsive image">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingTeachers">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#teachers" aria-expanded="false" aria-controls="teachers">
+                                    Список працівників
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="teachers" class="collapse" aria-labelledby="headingTeachers" data-parent="#accordionExample">
+                            <div class="card-body">
+                                <img src="/Images/Manual/Birthdays.PNG" class="img-fluid" alt="Responsive image">
+
+                                <div>
+                                    Разом з учнями-іменинниками також можуть відображатися іменинники-працівники. Список працівників завантажується за допомогою Excel документу, як і у випадку з списком учнів.
+                                    У Excel документі повинно бути 4 стовпці - ПІБ, посада, дата народження, стать. Дата повинна бути у форматі дд.мм.рррр. Стать - "жін." або "чол.".
+                                    Приклад Excel документу:
+                                </div>
+
+                                <img src="/Images/Manual/TeachersExample.PNG" class="img-fluid" alt="Responsive image">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingFamous">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#famous" aria-expanded="false" aria-controls="famous">
+                                    Відомі люди
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="famous" class="collapse" aria-labelledby="headingFamous" data-parent="#accordionExample">
+                            <div class="card-body">
+                                <img src="/Images/Manual/Famous.PNG" class="img-fluid" alt="Responsive image">
+
+                                <div>
+                                    Поруч з іменинниками школи можуть відображатися відомі іменинники (за наявності). Список відомих іменинників завантажується через Excel документ.
+                                    Документ повинен містити 5 стовпців - день, місяць, ПІБ, опис, посилання на фото.
+                                    Приклад Excel документу:
+                                </div>
+
+                                <img src="/Images/Manual/FamousExample.PNG" class="img-fluid" alt="Responsive image">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                </div>
+            </div>
+        </div>
+    </div>

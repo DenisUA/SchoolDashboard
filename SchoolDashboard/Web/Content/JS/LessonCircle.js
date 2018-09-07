@@ -13,9 +13,10 @@ class LessonCircle {
         this.width = canvas.width;
         this.height = canvas.height;
 
-        this.maxPulsarRadius = 15;
+        this.maxPulsarRadius = 20;
         this.pulsar1Radius = 0;
-        this.pulsar2Radius = 5;
+        this.pulsar2Radius = 8;
+        this.pulsarWidth = 5;
         this.progressCirclePercent = 0;
         this.lineWidth = 15;
         this.radian = 0;
@@ -71,7 +72,7 @@ class LessonCircle {
             //pulsar 1
             this.ctx.beginPath();
             this.ctx.arc(pointX, pointY, this.pulsar1Radius, 0, 2 * Math.PI);
-            this.ctx.lineWidth = 3;
+            this.ctx.lineWidth = this.pulsarWidth;
             var t = 1 - this.pulsar1Radius / this.maxPulsarRadius;
             this.ctx.strokeStyle = this.isBreak ? sprintf(this.breakEndpointColor, t) : sprintf(this.endPointColor, t);
             this.ctx.stroke();
@@ -79,7 +80,7 @@ class LessonCircle {
             //pulsar 2
             this.ctx.beginPath();
             this.ctx.arc(pointX, pointY, this.pulsar2Radius, 0, 2 * Math.PI);
-            this.ctx.lineWidth = 3;
+            this.ctx.lineWidth = this.pulsarWidth;
             var t1 = 1 - this.pulsar2Radius / this.maxPulsarRadius;
             this.ctx.strokeStyle = this.isBreak ? sprintf(this.breakEndpointColor, t1) : sprintf(this.endPointColor, t1);
             this.ctx.stroke();

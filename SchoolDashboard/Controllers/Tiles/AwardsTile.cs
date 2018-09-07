@@ -18,7 +18,7 @@ namespace SchoolDashboard.Controllers.Tiles
 
         public override DataModel GetViewData()
         {
-            var awards = Repository.GetAwards(10);
+            var awards = Repository.GetAwards(8);
             var res = awards.Select(a => new Award() { Title = a.Owner, Description = a.Description, ImageName = Helpers.AwardTypeToImageName(a.Type) });
             return new AwardsTileData() { Awards = res.ToArray()};
         }

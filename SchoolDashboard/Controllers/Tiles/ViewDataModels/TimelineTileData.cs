@@ -8,7 +8,7 @@ namespace SchoolDashboard.Controllers.Tiles.ViewDataModels
 {
     class TimelineTileData : DataModel
     {
-        public override int ShowTime { get { return 10000; } }
+        public override int ShowTime { get { return 20000; } }
         public TimelineItem[] TimelineItems { get; set; }
     }
 

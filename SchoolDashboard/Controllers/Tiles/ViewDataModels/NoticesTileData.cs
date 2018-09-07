@@ -11,7 +11,7 @@ namespace SchoolDashboard.Controllers.Tiles.ViewDataModels
     {
         public override int ShowTime
         {
-            get { return 10000; }
+            get { return 20000; }
         }
 
         public Notice[] Notices { get; set; }
