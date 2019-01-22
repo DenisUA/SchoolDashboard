@@ -848,8 +848,8 @@ CanvasBackground = {
 
 
 
-$(function() {
-    GLoc.init();
-    WeatherInfo.init();
-    CanvasBackground.init();
-});
+//$(function() {
+//    GLoc.init();
+//    WeatherInfo.init();
+//    CanvasBackground.init();
+//});

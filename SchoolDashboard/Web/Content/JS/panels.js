@@ -6,7 +6,15 @@ tilesHandlers["historyDayPanel"] = function (data, element) {
 };
 
 tilesHandlers["weatherPanel"] = function (data, element) {
+    GLoc.init();
+    WeatherInfo.init();
+    CanvasBackground.init();
+};
 
+tilesHandlers["videoPanel"] = function (data, element) {
+    let el = $(element);
+    let div = el.find("div");
+    div.html("<iframe type=\"text/html\" width=\"1000\" height=\"650\" src=\"https://www.youtube.com/embed/M7lc1UVf-VE?autoplay=1&controls=0&disablekb=1&enablejsapi=1&color=white\" frameborder=\"0\" allow=\"autoplay\"></iframe>");
 };
 
 tilesHandlers["famousBirthday"] = function (data, element) {

@@ -24,7 +24,8 @@ namespace SchoolDashboard.Controllers
                 new Tile[] { new TimelineTile() },
                 new Tile[] { new AwardsTile() },
                 new Tile[] { new BirthdaysTile(), new FamousBirthdaysTile() },
-                new Tile[] { new NoticesTile() }
+                new Tile[] { new NoticesTile() },
+                //new Tile[] { new VideoTile(), }
             };
             _currentTileSetIndex = -1;
 

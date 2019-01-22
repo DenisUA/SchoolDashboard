@@ -117,6 +117,7 @@
     <Compile Include="Controllers\Tiles\NoticesTile.cs" />
     <Compile Include="Controllers\Tiles\Tile.cs" />
     <Compile Include="Controllers\Tiles\TimelineTile.cs" />
+    <Compile Include="Controllers\Tiles\VideoTile.cs" />
     <Compile Include="Controllers\Tiles\ViewDataModels\AwardsTileData.cs" />
     <Compile Include="Controllers\Tiles\ViewDataModels\BirthdayTileData.cs" />
     <Compile Include="Controllers\Tiles\ViewDataModels\DataModel.cs" />
@@ -124,6 +125,7 @@
     <Compile Include="Controllers\Tiles\ViewDataModels\HistoryDayTileData.cs" />
     <Compile Include="Controllers\Tiles\ViewDataModels\NoticesTileData.cs" />
     <Compile Include="Controllers\Tiles\ViewDataModels\TimelineTileData.cs" />
+    <Compile Include="Controllers\Tiles\ViewDataModels\VideoTileData.cs" />
     <Compile Include="Controllers\Tiles\ViewDataModels\WeatherTileData.cs" />
     <Compile Include="Controllers\Tiles\WeatherTile.cs" />
     <Compile Include="DAL\Models\Awards.cs" />
